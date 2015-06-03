@@ -1,0 +1,5 @@
+total_storage_limit: 120M
+queue:
+- name: initializeDescriptions
+  rate: 35/s
+  bucket_size: 40

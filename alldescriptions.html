@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey - Finding topic from words</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js" type="text/javascript"></script>
+    <script>
+    	$(document).ready(function(){
+    		$("div.doc_fulltext").click(function() {
+				$(this).find(".rest").toggle();
+			});
+    	});
+    	
+    </script>
+    
+</head>
+<body>
+<div class="alldescriptions">
+	<div class="topicIdx"><span class='title'>TOPIC {{topicIdx}}</span>
+		{% for i in range(50) %}
+			<a href="allDescriptions?topicIdx={{i}}">{{i}}</a>
+		{% endfor %}
+	</div>  
+
+	<!-- <label>Your nick name:</label> <input type='text' name='nickname'/> 
+	<button class='submit'>Submit</button>
+ -->
+ 	<div class="documents">
+	 	<ul>
+		 	{% for document in documents %}
+		 	<li>
+		 		<div class='doc_title'>{{document.title}}<span class='doc_probability'>{{document.prob}}</span></div>
+		 		<div class='doc_fulltext'>{{document.fulltext[:170]}}
+                    <a class='show_more'>... MORE</a>
+                    <span class='rest'>{{document.fulltext[170:440]}}
+                    </span>
+                </div>
+		 	</li>
+		 	{% endfor %}
+	 	</ul>
+ 	</div>
+ 	<div class="descriptions">
+ 		{% for wordNum in wordNums %}
+ 			{% set descWordNum=descriptions[wordNum] %}
+ 			<label class='word_setting'>{{wordNum}}-word settings</label>
+ 			<div class='topic_terms'>
+ 				<ul>
+ 				{% for term in topic_terms[:wordNum] %}
+ 				<li>{{term}}</li>
+ 				{% endfor %}
+ 				</ul>
+ 			</div>
+ 			{% for shortOrLong in ['short','long'] %}	
+ 				<label class='shortOrLong_setting'>{{shortOrLong}} description</label>
+ 				{% set descShortOrLong = descWordNum[shortOrLong] %}
+ 				<table>
+ 					<tr>
+ 					{% for mode in modes %}
+ 					{% set descMode = descShortOrLong[mode] %}
+	 					<td>
+	 					<label class='desc_setting'>{{mode}}</label><br>
+		 				<ol class='desc_labels' type="a">
+		 					{% for desc in descMode %}
+		 					{% set k = topicIdx|string + "-" + wordNum|string +"-"+mode+"-"+loop.index0|string +"-"+shortOrLong   %}
+		 					<li class='desc_label'>
+		 						{{desc.label}}
+		 						{% if k in evaluation_dict %}
+		 							{% for i in range(evaluation_dict[k]['best']) %}
+		 							<span class='eval_best'> + </span>
+		 							{% endfor %}
+		 							{% for i in range(evaluation_dict[k]['worst']) %}
+		 								<span class='eval_worst'> - </span>
+		 							{% endfor %}
+		 						{% endif %}
+		 						
+		 					</li>
+		 					{% endfor %}
+		 				</ol>
+		 				</td>
+ 					{% endfor %}
+ 					</tr>
+ 				</table>
+ 				{% if shortOrLong=='short' %}
+ 					{% set k = topicIdx|string + "-" + wordNum|string +"-algorithm-0-short" %}
+ 					<div class='desc_setting' style="margin-top:10px;">algorithm</div>
+ 					<div class="desc_label"> 
+ 						{{algorithm_label}} 
+ 						{% if k in evaluation_dict %}
+ 							{% for i in range(evaluation_dict[k]['best']) %}
+ 							<span class='eval_best'> + </span>
+ 							{% endfor %}
+ 							{% for i in range(evaluation_dict[k]['worst']) %}
+ 								<span class='eval_worst'> - </span>
+ 							{% endfor %}
+ 						{% endif %}
+ 					</div>
+ 				{% endif %}
+ 			{% endfor %}
+ 		{% endfor %}
+ 	</div>
+</div>
+
+</body>
+</html>

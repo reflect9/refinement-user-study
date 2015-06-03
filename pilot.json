@@ -1,0 +1,490 @@
+[
+  {
+    "rid": "f07SG",
+    "ref_type": "merge-topic",
+    "topicNum1": "1",
+    "topicNum2": "6",
+    "desc": "Merge Topic <span class='color1'>1</span> and <span class='color2'>6</span>"
+  },
+  {
+    "rid": "zRhKK",
+    "ref_type": "overarching-word",
+    "overarching_word": "state",
+    "words_to_be_merged": [
+      "state",
+      "state's"
+    ],
+    "desc": "Make an overarching word 'state' that merges [state, state's]"
+  },
+  {
+    "rid": "JPAiN",
+    "ref_type": "add-stop-words",
+    "stop_words": [
+      "add",
+      "minutes",
+      "large",
+      "rev"
+    ],
+    "desc": "Ignore [add, minutes, large, rev]"
+  },
+  {
+    "rid": "wH5Ur",
+    "ref_type": "add-stop-words",
+    "stop_words": [
+      "add",
+      "minutes",
+      "large",
+      "rev",
+      "tonight"
+    ],
+    "desc": "Ignore [add, minutes, large, rev, tonight]"
+  },
+  {
+    "rid": "8nG9l",
+    "ref_type": "overarching-word",
+    "overarching_word": "state",
+    "words_to_be_merged": [
+      "state",
+      "state's"
+    ],
+    "desc": "Make an overarching word 'state' that merges [state, state's]"
+  },
+  {
+    "rid": "LGvw4",
+    "ref_type": "overarching-word",
+    "overarching_word": "state",
+    "words_to_be_merged": [
+      "use",
+      "users"
+    ],
+    "desc": "Make an overarching word 'state' that merges [use, users]"
+  },
+  {
+    "rid": "4LNjw",
+    "ref_type": "overarching-word",
+    "overarching_word": "users",
+    "words_to_be_merged": [
+      "use",
+      "users"
+    ],
+    "desc": "Make an overarching word 'users' that merges [use, users]"
+  },
+  {
+    "rid": "5nCfW",
+    "ref_type": "overarching-word",
+    "overarching_word": "bush",
+    "words_to_be_merged": [
+      "bush",
+      "bush's"
+    ],
+    "desc": "Make an overarching word 'bush' that merges [bush, bush's]"
+  },
+  {
+    "rid": "bjGzp",
+    "ref_type": "overarching-word",
+    "overarching_word": "work",
+    "words_to_be_merged": [
+      "work",
+      "worker",
+      "works",
+      "worked"
+    ],
+    "desc": "Make an overarching word 'work' that merges [work, worker, works, worked]"
+  },
+  {
+    "rid": "t5Xxc",
+    "ref_type": "overarching-word",
+    "overarching_word": "law",
+    "words_to_be_merged": [
+      "law",
+      "lawyer",
+      "lawyers",
+      ""
+    ],
+    "desc": "Make an overarching word 'law' that merges [law, lawyer, lawyers, ]"
+  },
+  {
+    "rid": "ysESu",
+    "ref_type": "overarching-word",
+    "overarching_word": "losangeles",
+    "words_to_be_merged": [
+      "los",
+      "angeles"
+    ],
+    "desc": "Make an overarching word 'losangeles' that merges [los, angeles]"
+  },
+  {
+    "rid": "smjvG",
+    "ref_type": "overarching-word",
+    "overarching_word": "write",
+    "words_to_be_merged": [
+      "write",
+      "writes",
+      "written",
+      "writer"
+    ],
+    "desc": "Make an overarching word 'write' that merges [write, writes, written, writer]"
+  },
+  {
+    "rid": "6pAMs",
+    "ref_type": "overarching-word",
+    "overarching_word": "family",
+    "words_to_be_merged": [
+      "mother",
+      "father",
+      "childre",
+      "son",
+      "daughter",
+      "hild",
+      "parents",
+      "wife",
+      "boy",
+      "husband"
+    ],
+    "desc": "Make an overarching word 'family' that merges [mother, father, childre, son, daughter, hild, parents, wife, boy, husband]"
+  },
+  {
+    "rid": "BLuDy",
+    "ref_type": "overarching-word",
+    "overarching_word": "death",
+    "words_to_be_merged": [
+      "death",
+      "deaths",
+      ""
+    ],
+    "desc": "Make an overarching word 'death' that merges [death, deaths, ]"
+  },
+  {
+    "rid": "ZDg12",
+    "ref_type": "overarching-word",
+    "overarching_word": "school",
+    "words_to_be_merged": [
+      "school",
+      "schools"
+    ],
+    "desc": "Make an overarching word 'school' that merges [school, schools]"
+  },
+  {
+    "rid": "IbYt9",
+    "ref_type": "overarching-word",
+    "overarching_word": "student",
+    "words_to_be_merged": [
+      "student",
+      "students"
+    ],
+    "desc": "Make an overarching word 'student' that merges [student, students]"
+  },
+  {
+    "rid": "JFP04",
+    "ref_type": "overarching-word",
+    "overarching_word": "music",
+    "words_to_be_merged": [
+      "song",
+      "songs",
+      "music",
+      "jazz",
+      "rock",
+      "singer",
+      "musical",
+      "musicians",
+      "guitar",
+      "pop",
+      "concert",
+      "singing",
+      ""
+    ],
+    "desc": "Make an overarching word 'music' that merges [song, songs, music, jazz, rock, singer, musical, musicians, guitar, pop, concert, singing, ]"
+  },
+  {
+    "rid": "QbDOC",
+    "ref_type": "overarching-word",
+    "overarching_word": "unitedstates",
+    "words_to_be_merged": [
+      "united",
+      "states",
+      ""
+    ],
+    "desc": "Make an overarching word 'unitedstates' that merges [united, states, ]"
+  },
+  {
+    "rid": "XOcv8",
+    "ref_type": "add-stop-words",
+    "stop_words": [
+      "add",
+      "minutes",
+      "large",
+      "rev",
+      "tonight",
+      "night",
+      "week",
+      "series",
+      "year",
+      "jews",
+      "includes",
+      "closes",
+      "like",
+      "opened",
+      "i'm",
+      "didn't",
+      "want",
+      "kind",
+      "that's",
+      "going",
+      "really",
+      "think",
+      "little",
+      "big",
+      "kind",
+      "took",
+      "says",
+      "ago",
+      "want",
+      "years",
+      "san",
+      "rhp",
+      "michael",
+      "scott",
+      "davis",
+      "ahl",
+      "david",
+      "jones",
+      "jason",
+      "chris",
+      "long",
+      "say",
+      "says",
+      "saying",
+      "libby",
+      "mrs",
+      "lived",
+      "day",
+      "known",
+      "peices",
+      ""
+    ],
+    "desc": "Ignore [add, minutes, large, rev, tonight, night, week, series, year, jews, includes, closes, like, opened, i'm, didn't, want, kind, that's, going, really, think, little, big, kind, took, says, ago, want, years, san, rhp, michael, scott, davis, ahl, david, jones, jason, chris, long, say, says, saying, libby, mrs, lived, day, known, peices, ]"
+  },
+  {
+    "rid": "OfjVN",
+    "ref_type": "overarching-word",
+    "overarching_word": "picture",
+    "words_to_be_merged": [
+      "picture",
+      "photo",
+      "pictures",
+      "photos"
+    ],
+    "desc": "Make an overarching word 'picture' that merges [picture, photo, pictures, photos]"
+  },
+  {
+    "rid": "pDjsC",
+    "ref_type": "overarching-word",
+    "overarching_word": "iraq",
+    "words_to_be_merged": [
+      "iraqi",
+      "iraq",
+      ""
+    ],
+    "desc": "Make an overarching word 'iraq' that merges [iraqi, iraq, ]"
+  },
+  {
+    "rid": "w9LkI",
+    "ref_type": "overarching-word",
+    "overarching_word": "war",
+    "words_to_be_merged": [
+      "military",
+      "army",
+      "war",
+      "soldiers",
+      "forces"
+    ],
+    "desc": "Make an overarching word 'war' that merges [military, army, war, soldiers, forces]"
+  },
+  {
+    "rid": "CyNcb",
+    "ref_type": "overarching-word",
+    "overarching_word": "die",
+    "words_to_be_merged": [
+      "dies",
+      "die"
+    ],
+    "desc": "Make an overarching word 'die' that merges [dies, die]"
+  },
+  {
+    "rid": "sTNkl",
+    "ref_type": "overarching-word",
+    "overarching_word": "tree",
+    "words_to_be_merged": [
+      "trees",
+      "tree"
+    ],
+    "desc": "Make an overarching word 'tree' that merges [trees, tree]"
+  },
+  {
+    "rid": "iYefd",
+    "ref_type": "overarching-word",
+    "overarching_word": "winter",
+    "words_to_be_merged": [
+      "snow",
+      "ice",
+      "cold",
+      ""
+    ],
+    "desc": "Make an overarching word 'winter' that merges [snow, ice, cold, ]"
+  },
+  {
+    "rid": "gQlSz",
+    "ref_type": "overarching-word",
+    "overarching_word": "tree",
+    "words_to_be_merged": [
+      "forest"
+    ],
+    "desc": "Make an overarching word 'tree' that merges [forest]"
+  },
+  {
+    "rid": "a08cy",
+    "ref_type": "overarching-word",
+    "overarching_word": "company",
+    "words_to_be_merged": [
+      "company",
+      "companies",
+      "firm",
+      "company's"
+    ],
+    "desc": "Make an overarching word 'company' that merges [company, companies, firm, company's]"
+  },
+  {
+    "rid": "SAaSO",
+    "ref_type": "overarching-word",
+    "overarching_word": "funds",
+    "words_to_be_merged": [
+      "fund",
+      "funds",
+      ""
+    ],
+    "desc": "Make an overarching word 'funds' that merges [fund, funds, ]"
+  },
+  {
+    "rid": "xtEp4",
+    "ref_type": "overarching-word",
+    "overarching_word": "investment",
+    "words_to_be_merged": [
+      "investment",
+      "investors",
+      ""
+    ],
+    "desc": "Make an overarching word 'investment' that merges [investment, investors, ]"
+  },
+  {
+    "rid": "hxkYu",
+    "ref_type": "overarching-word",
+    "overarching_word": "building",
+    "words_to_be_merged": [
+      "building",
+      "buildings",
+      "tower",
+      ""
+    ],
+    "desc": "Make an overarching word 'building' that merges [building, buildings, tower, ]"
+  },
+  {
+    "rid": "SLwaR",
+    "ref_type": "overarching-word",
+    "overarching_word": "politics",
+    "words_to_be_merged": [
+      "plitical",
+      "politics",
+      "democrats",
+      "democratic",
+      "republican",
+      "democrat",
+      "republicans",
+      "senator",
+      "senate",
+      ""
+    ],
+    "desc": "Make an overarching word 'politics' that merges [plitical, politics, democrats, democratic, republican, democrat, republicans, senator, senate, ]"
+  },
+  {
+    "rid": "qsAZy",
+    "ref_type": "overarching-word",
+    "overarching_word": "game",
+    "words_to_be_merged": [
+      "game",
+      "games",
+      ""
+    ],
+    "desc": "Make an overarching word 'game' that merges [game, games, ]"
+  },
+  {
+    "rid": "HnE8y",
+    "ref_type": "overarching-word",
+    "overarching_word": "play",
+    "words_to_be_merged": [
+      "play",
+      "players",
+      "played",
+      "player",
+      "playing"
+    ],
+    "desc": "Make an overarching word 'play' that merges [play, players, played, player, playing]"
+  },
+  {
+    "rid": "MWHw1",
+    "ref_type": "merge-topic",
+    "topicNum1": "40",
+    "topicNum2": "48",
+    "desc": "Merge Topic <span class='color1'>40</span> and <span class='color2'>48</span>"
+  },
+  {
+    "rid": "nwHGg",
+    "ref_type": "split-topic",
+    "topicNum": "1",
+    "words1": [
+      "food"
+    ],
+    "words2": [
+      "animal"
+    ],
+    "desc": "Split Topic 1 into two topics"
+  },
+  {
+    "rid": "btlMv",
+    "ref_type": "split-topic",
+    "topicNum": "1",
+    "words1": [
+      "dog",
+      "dogs",
+      "pet"
+    ],
+    "words2": [
+      "the",
+      "rest"
+    ],
+    "desc": "Split Topic 1 into two topics"
+  },
+  {
+    "rid": "Bwq3m",
+    "ref_type": "custom-refinement",
+    "description": [
+      "remove",
+      "dog",
+      "",
+      "dogs",
+      "pet",
+      "from",
+      "topic",
+      "0"
+    ],
+    "desc": [
+      "remove",
+      "dog",
+      "",
+      "dogs",
+      "pet",
+      "from",
+      "topic",
+      "0"
+    ]
+  }
+]

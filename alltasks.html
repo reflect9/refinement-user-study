@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey - Finding topic from words</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $('document').ready(function() {
+    	$("button.submit").click(function() {
+    		var tRows = $("table.alltasks").find("tr.topicRow");
+    		var results = $.map(tRows, function(row) {
+    			var coh = $(row).find("input[role='coherence']").val();
+    			var sig = $(row).find("input[role='significance']").val();
+    			return {"coherence":coh, "significance":sig};
+    		});
+    		var validationTest = _.every(results, function(r){
+    			if(r["coherence"]=="" || r["significance"]=="") return false;
+    			if(isNaN(parseInt(r["coherence"]))==true || isNaN(parseInt(r["significance"]))==true) return false;
+    			if(parseInt(r["coherence"])<0 || parseInt(r["coherence"])>10 ||
+    				parseInt(r["significance"])<0 || parseInt(r["significance"])>10) return false;
+    			return true;
+    		});
+    		if(validationTest==false) {
+    			alert("Please fill in all evalution inputs with numbers (0-10).");
+    			return;
+    		}
+    		var nickname = $("input[name='nickname']").val();
+    		if(nickname=="") {
+    			alert("Please provide your nickname in the textbox at the top of the page.");
+    			return;	
+    		}
+    		// send via ajax
+    		var answersJSON = JSON.stringify(results);
+    		window.location = "/submit_alltasks?nickname="+nickname+
+    				"&answers="+answersJSON;
+    	});
+    });
+    </script>
+</head>
+<body>
+<div>
+	<!-- <label>Your nick name:</label> <input type='text' name='nickname'/> 
+	<button class='submit'>Submit</button>
+ -->
+	<table class='alltasks'>
+	<thead>
+		<tr>
+			<th>HISTOGRAM</th>
+			<th>WORD CLOUD</th>
+			<th>TOPIC-IN-A-BOX</th>
+		</tr>
+	</thead>
+	{% for topic in topics %}
+		{% set topicIdx = loop.index %}
+		{% for wordNum in [5,10,20] %}
+		<tr class='topicRow' tIndex="{{topicIdx}}">
+			<td class='histogram'>
+				{% if wordNum == 20 %} 
+					<ul class='doubleColumn_1'>
+		            {% for term in topic.terms[0:10] %}
+		                <li><div class='wordIdx'>{{loop.index}}</div>
+		                    <div class='wordTerm'>{{term.first}}</div>
+		                    <div class='wordHisto' style='width:{{term.second * 1400}}px'></div>
+		                </li>
+		            {% endfor %}
+		            </ul>
+		            <ul class='doubleColumn_2'>
+		            {% for term in topic.terms[10:20] %}
+		                <li><div class='wordIdx'>{{loop.index+10}}</div>
+		                    <div class='wordTerm'>{{term.first}}</div>
+		                    <div class='wordHisto' style='width:{{term.second * 1400}}px'></div>
+		                </li>
+		            {% endfor %}
+		            </ul>
+	            {% else %}
+					<ul class='singleColumn'>
+                    {% for idx2 in range(wordNum) %}
+                        <li><div class='wordIdx'>{{idx2+1}}</div>
+                            <div class='wordTerm'>{{topic.terms[idx2].first}}</div>
+                            <div class='wordHisto' style='width:{{topic.terms[idx2].second * 1400}}px'>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+			</td>
+			{% set randomImage_idx=4 %}
+
+	        <td class='topic_rep wordcloud'>
+	            <img src="images/nyt_{{topicIdx-1}}_{{wordNum}}_{{randomImage_idx}}.png"/>
+	        </td>
+			<td class='topic_rep topicBox'>
+	            <div class='topicBoxImg' style="background-image: url('images/topicBox_{{topicIdx}}_{{wordNum}}_{{randomImage_idx}}.png')"></div>
+	        </td>
+			<!-- <td class='evaluation'>
+			<label>Coherence(0-10): </label><input type='text' role="coherence"><br>
+			<label>Significance(0-10): </label><input type='text' role="significance">
+			</p>
+			</td> -->
+		</tr>
+		{% endfor %}
+		<tr class='linebreaker'><td colspan=3></td></tr>
+	{% endfor %}	
+	</table>
+
+	<!-- <table>
+		<thead>
+			<tr>
+				<th>user code</th>
+				<th>mode</th>
+				{% for idx in range(5) %}
+					<th>short / long {{idx}}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for hit in hits %}
+			<tr>
+				<td>{{hit.usercode}}</td>
+				<td>{{hit.mode}}</td>
+				{% for ansTog in hit.ansTogether %}
+				<td><span class='shortAnswer'>[{{ansTog.0}}]</span><br>
+					<span class='longAnswer'>{{ansTog.1}}</span>
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table> -->
+</div>
+
+</body>
+</html>

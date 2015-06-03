@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey - Finding topic from words</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="task.js" type="text/javascript"></script>
+</head>
+<body>
+<div class='reportTitle'>
+Report all answers of topic {{topicIndex}}
+	<ul class='wordList'>
+		{% for i in range(20)  %}
+		<li>{{ topicWords[topicIndx|int]['terms'][i]['first'] }}</li>
+		{% endfor %}
+	</ul>
+</div>
+<div>
+	<table class='reportTable'>
+		<thead>
+			<tr>
+				{% for mode in modes %}
+				<th>{{mode}}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for wn in wordNums %}
+				<tr>
+				{% for mode in modes %}
+					{% for ans in mode %}
+					<td>
+						<span class='shortAnswer'>[{{ans.short}}]</span><br>
+						<span class='longAnswer'>{{ans.long}}</span> <br>
+						<span class='confidence'>confidence: {{ans.conf}}</span>
+						<span class='timeStamp'><br>took {{ans.duration}} sec</span>
+					</td>
+					{% endfor %}
+				{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>

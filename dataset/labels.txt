@@ -1,0 +1,600 @@
+0	[add smoking fish oil heat dogs cup dog minutes salt water products marine cigarettes pan pet food large cigarette pepper]
+----12254052, http://en.wikipedia.org/wiki?curid=12254052, Smoking
+----73298, http://en.wikipedia.org/wiki?curid=73298, Tobacco smoking
+----21797606, http://en.wikipedia.org/wiki?curid=21797606, History of smoking
+----712576, http://en.wikipedia.org/wiki?curid=712576, Passive smoking
+----52995, http://en.wikipedia.org/wiki?curid=52995, Smoking (cooking)
+----27555238, http://en.wikipedia.org/wiki?curid=27555238, Smoking in Syria
+----999306, http://en.wikipedia.org/wiki?curid=999306, Fish oil
+----4269567, http://en.wikipedia.org/wiki?curid=4269567, Dog
+----4512923, http://en.wikipedia.org/wiki?curid=4512923, Cannabis smoking
+----1029993, http://en.wikipedia.org/wiki?curid=1029993, The Smoking Room
+
+1	[state health insurance spitzer care governor eliot gov state's legislature coverage office assembly public commission people managed executive albany bruno]
+----21378255, http://en.wikipedia.org/wiki?curid=21378255, Eliot Spitzer
+----635422, http://en.wikipedia.org/wiki?curid=635422, State Children's Health Insurance Program
+----16295810, http://en.wikipedia.org/wiki?curid=16295810, Eliot Spitzer political surveillance controversy
+----490201, http://en.wikipedia.org/wiki?curid=490201, Health insurance
+----4860610, http://en.wikipedia.org/wiki?curid=4860610, Massachusetts health care reform
+----27553159, http://en.wikipedia.org/wiki?curid=27553159, Health care in the United States
+----1043143, http://en.wikipedia.org/wiki?curid=1043143, Single-payer health care
+----15176, http://en.wikipedia.org/wiki?curid=15176, Insurance
+----16220023, http://en.wikipedia.org/wiki?curid=16220023, Eliot Spitzer prostitution scandal
+----16297206, http://en.wikipedia.org/wiki?curid=16297206, Eliot Spitzer drivers license controversy
+
+2	[television news million series radio entertainment fox viewers night reported media editor week season network channel shows year ratings newspaper]
+----29831, http://en.wikipedia.org/wiki?curid=29831, Television
+----11121, http://en.wikipedia.org/wiki?curid=11121, Fox News Channel
+----339790, http://en.wikipedia.org/wiki?curid=339790, Television news in the United States
+----914291, http://en.wikipedia.org/wiki?curid=914291, Television in Australia
+----3721302, http://en.wikipedia.org/wiki?curid=3721302, Fox News Channel controversies
+----6062252, http://en.wikipedia.org/wiki?curid=6062252, NASCAR on television and radio
+----577444, http://en.wikipedia.org/wiki?curid=577444, Radio Television of Serbia
+----38539, http://en.wikipedia.org/wiki?curid=38539, Reality television
+----15147453, http://en.wikipedia.org/wiki?curid=15147453, Television in China
+----4598892, http://en.wikipedia.org/wiki?curid=4598892, Radio Television Digital News Association
+
+3	[church catholic jewish rev christian jews roman book carter secret john churches bishop father pastor god faith religious life holocaust]
+----606848, http://en.wikipedia.org/wiki?curid=606848, Catholic Church
+----24459344, http://en.wikipedia.org/wiki?curid=24459344, Catholic Church and Nazi Germany
+----410784, http://en.wikipedia.org/wiki?curid=410784, Criticism of the Catholic Church
+----24745263, http://en.wikipedia.org/wiki?curid=24745263, Catholic Church and women
+----18266484, http://en.wikipedia.org/wiki?curid=18266484, History of the Catholic Church
+----24592945, http://en.wikipedia.org/wiki?curid=24592945, Catholic Church in the 20th century
+----320768, http://en.wikipedia.org/wiki?curid=320768, Christian Church
+----395673, http://en.wikipedia.org/wiki?curid=395673, Marriage (Catholic Church)
+----554378, http://en.wikipedia.org/wiki?curid=554378, Catholic Apostolic Church
+----6299542, http://en.wikipedia.org/wiki?curid=6299542, Roman Catholic Church in Kongo
+
+4	[street west east avenue tomorrow manhattan village theater brooklyn broadway center cover lower chelsea includes life tonight times closes park]
+----199065, http://en.wikipedia.org/wiki?curid=199065, Street
+----37274, http://en.wikipedia.org/wiki?curid=37274, Wall Street
+----30863746, http://en.wikipedia.org/wiki?curid=30863746, 14th Street (Manhattan)
+----2658000, http://en.wikipedia.org/wiki?curid=2658000, Street art
+----8093339, http://en.wikipedia.org/wiki?curid=8093339, 85th Street (Manhattan)
+----7461533, http://en.wikipedia.org/wiki?curid=7461533, 66th Street (Manhattan)
+----11384188, http://en.wikipedia.org/wiki?curid=11384188, Washington Street (Manhattan)
+----4030447, http://en.wikipedia.org/wiki?curid=4030447, 4th Street (Manhattan)
+----952904, http://en.wikipedia.org/wiki?curid=952904, 23rd Street (Manhattan)
+----952805, http://en.wikipedia.org/wiki?curid=952805, Christopher Street
+
+5	[hotel city restaurant like bar open night street place rooms town neighborhood room local square small opened downtown east park]
+----32768739, http://en.wikipedia.org/wiki?curid=32768739, Hotel Jerome
+----14276, http://en.wikipedia.org/wiki?curid=14276, Hotel
+----17744320, http://en.wikipedia.org/wiki?curid=17744320, Dunbar Hotel
+----37324674, http://en.wikipedia.org/wiki?curid=37324674, The Houstonian Hotel
+----30760829, http://en.wikipedia.org/wiki?curid=30760829, Elton Hotel
+----35748547, http://en.wikipedia.org/wiki?curid=35748547, Meeker Hotel
+----1265261, http://en.wikipedia.org/wiki?curid=1265261, Ice hotel
+----35120191, http://en.wikipedia.org/wiki?curid=35120191, Ridpath Hotel
+----13683045, http://en.wikipedia.org/wiki?curid=13683045, Old Town Bar and Restaurant
+----26437, http://en.wikipedia.org/wiki?curid=26437, Restaurant
+
+6	[bush states iraq president american war military administration troops bush's white plan international house george armament strategy politics congress officials]
+----9961802, http://en.wikipedia.org/wiki?curid=9961802, George W. Bush and the Iraq War
+----5043324, http://en.wikipedia.org/wiki?curid=5043324, Iraq War
+----7515928, http://en.wikipedia.org/wiki?curid=7515928, Iraq
+----1143897, http://en.wikipedia.org/wiki?curid=1143897, George W. Bush's second term as President of the United States
+----1143844, http://en.wikipedia.org/wiki?curid=1143844, George W. Bush's first term as President of the United States
+----957730, http://en.wikipedia.org/wiki?curid=957730, Foreign policy of the George W. Bush administration
+----3891386, http://en.wikipedia.org/wiki?curid=3891386, Rationale for the Iraq War
+----8772658, http://en.wikipedia.org/wiki?curid=8772658, Iraq War troop surge of 2007
+----1032342, http://en.wikipedia.org/wiki?curid=1032342, Withdrawal of U.S. troops from Iraq
+----17528, http://en.wikipedia.org/wiki?curid=17528, Laura Bush
+
+7	[number house weeks estate building real listed room million half taxes kitchen lot apartment property street floors market area garage]
+----63089, http://en.wikipedia.org/wiki?curid=63089, Real estate
+----871336, http://en.wikipedia.org/wiki?curid=871336, Real estate appraisal
+----40837867, http://en.wikipedia.org/wiki?curid=40837867, AG Real Estate
+----440273, http://en.wikipedia.org/wiki?curid=440273, Real estate broker
+----1327762, http://en.wikipedia.org/wiki?curid=1327762, Real estate economics
+----207655, http://en.wikipedia.org/wiki?curid=207655, Astral Weeks
+----26605747, http://en.wikipedia.org/wiki?curid=26605747, Real estate in China
+----40167621, http://en.wikipedia.org/wiki?curid=40167621, Real estate in Kenya
+----29438457, http://en.wikipedia.org/wiki?curid=29438457, Sawbuck (real estate website)
+----8225223, http://en.wikipedia.org/wiki?curid=8225223, Room number
+
+8	[percent year million billion market prices sales states years increase price cost according rates average rate growth pay money report]
+----8899631, http://en.wikipedia.org/wiki?curid=8899631, Friedman's k-percent rule
+----29113463, http://en.wikipedia.org/wiki?curid=29113463, Percent allocation management module
+----215905, http://en.wikipedia.org/wiki?curid=215905, Five-Percent Nation
+----34341, http://en.wikipedia.org/wiki?curid=34341, Year
+----5620868, http://en.wikipedia.org/wiki?curid=5620868, The One Percent Doctrine
+----16671676, http://en.wikipedia.org/wiki?curid=16671676, One Percent for the Planet
+----20211596, http://en.wikipedia.org/wiki?curid=20211596, Ten percent of brain myth
+----1829286, http://en.wikipedia.org/wiki?curid=1829286, Percent-encoding
+----25842095, http://en.wikipedia.org/wiki?curid=25842095, Fifteen Percent
+----10968506, http://en.wikipedia.org/wiki?curid=10968506, Percent for Art
+
+9	[world ski mountain year states golf united games race winter club cup olympic woods mexican event team women's international skiing]
+----4139033, http://en.wikipedia.org/wiki?curid=4139033, United States Ski Team
+----6717170, http://en.wikipedia.org/wiki?curid=6717170, United States Ski and Snowboard Association
+----183628, http://en.wikipedia.org/wiki?curid=183628, FIS Alpine Ski World Cup
+----6440015, http://en.wikipedia.org/wiki?curid=6440015, FIS Nordic World Ski Championships 2009
+----3226813, http://en.wikipedia.org/wiki?curid=3226813, FIS Alpine World Ski Championships
+----424477, http://en.wikipedia.org/wiki?curid=424477, Ski mountaineering
+----19568112, http://en.wikipedia.org/wiki?curid=19568112, Golf
+----25147744, http://en.wikipedia.org/wiki?curid=25147744, United States at the 2010 Winter Olympics
+----21558415, http://en.wikipedia.org/wiki?curid=21558415, World Championships of Ski Mountaineering
+----6834272, http://en.wikipedia.org/wiki?curid=6834272, Blue Mountain Ski Area
+
+10	[security air travel airport international airlines travelers flight service united airline flights passengers trip caribbean plane jet beach airways delta]
+----284770, http://en.wikipedia.org/wiki?curid=284770, Airport security
+----26977557, http://en.wikipedia.org/wiki?curid=26977557, Air travel disruption after the 2010 Eyjafjallajökull eruption
+----31978, http://en.wikipedia.org/wiki?curid=31978, United Airlines Flight 93
+----32307, http://en.wikipedia.org/wiki?curid=32307, United Airlines
+----31974, http://en.wikipedia.org/wiki?curid=31974, United Airlines Flight 175
+----7929784, http://en.wikipedia.org/wiki?curid=7929784, Standby (air travel)
+----2551957, http://en.wikipedia.org/wiki?curid=2551957, Kiwi Travel International Airlines
+----24983778, http://en.wikipedia.org/wiki?curid=24983778, United Airlines Flight 736
+----597759, http://en.wikipedia.org/wiki?curid=597759, Travel agency
+----31178974, http://en.wikipedia.org/wiki?curid=31178974, Air Charter Travel
+
+11	[like know people think little good say going really i'm want got that's didn't long lot look come big kind]
+----175715, http://en.wikipedia.org/wiki?curid=175715, Like a Virgin
+----21459006, http://en.wikipedia.org/wiki?curid=21459006, Be Like That
+----2681178, http://en.wikipedia.org/wiki?curid=2681178, Like a Prayer (song)
+----38891294, http://en.wikipedia.org/wiki?curid=38891294, ...Like Clockwork
+----2248143, http://en.wikipedia.org/wiki?curid=2248143, Like a Virgin (song)
+----24742495, http://en.wikipedia.org/wiki?curid=24742495, Like It Like That (album)
+----1215338, http://en.wikipedia.org/wiki?curid=1215338, Like a Rolling Stone
+----567140, http://en.wikipedia.org/wiki?curid=567140, Like
+----40371068, http://en.wikipedia.org/wiki?curid=40371068, Brick Like Me
+----6433229, http://en.wikipedia.org/wiki?curid=6433229, Like It Was
+
+12	[web site internet online video technology software company like digital service sites companies use microsoft phone telecommunications information apple users]
+----14539, http://en.wikipedia.org/wiki?curid=14539, Internet
+----1555022, http://en.wikipedia.org/wiki?curid=1555022, Web 2.0
+----1134191, http://en.wikipedia.org/wiki?curid=1134191, Social web
+----54293, http://en.wikipedia.org/wiki?curid=54293, Web portal
+----13692, http://en.wikipedia.org/wiki?curid=13692, History of the Internet
+----9538947, http://en.wikipedia.org/wiki?curid=9538947, History of web syndication technology
+----4192777, http://en.wikipedia.org/wiki?curid=4192777, History of the World Wide Web
+----4253083, http://en.wikipedia.org/wiki?curid=4253083, Mobile Web
+----2475872, http://en.wikipedia.org/wiki?curid=2475872, Web analytics
+----20790388, http://en.wikipedia.org/wiki?curid=20790388, Web Sheriff
+
+13	[police man yesterday officers killed attempted officer charged men murder city death shot arrested shooting car killing crime wilson black]
+----23627, http://en.wikipedia.org/wiki?curid=23627, Police
+----9075903, http://en.wikipedia.org/wiki?curid=9075903, Police of The Wire
+----43410976, http://en.wikipedia.org/wiki?curid=43410976, Misconduct in the Philadelphia Police Department
+----22093173, http://en.wikipedia.org/wiki?curid=22093173, 2009 shootings of Oakland police officers
+----27948617, http://en.wikipedia.org/wiki?curid=27948617, 2010 Northumbria Police manhunt
+----4068178, http://en.wikipedia.org/wiki?curid=4068178, Police misconduct
+----69080, http://en.wikipedia.org/wiki?curid=69080, Royal Canadian Mounted Police
+----3384137, http://en.wikipedia.org/wiki?curid=3384137, Baltimore Police Department
+----25244331, http://en.wikipedia.org/wiki?curid=25244331, Lakewood, Washington police officer shooting
+----30862713, http://en.wikipedia.org/wiki?curid=30862713, Omaha Police Department
+
+14	[health drug medical research conditions disease study patients drugs care cancer people hospital brain doctors researchers human risk heart use]
+----27553159, http://en.wikipedia.org/wiki?curid=27553159, Health care in the United States
+----811741, http://en.wikipedia.org/wiki?curid=811741, Health care in Canada
+----80381, http://en.wikipedia.org/wiki?curid=80381, Health
+----4726127, http://en.wikipedia.org/wiki?curid=4726127, Health care in Cuba
+----261925, http://en.wikipedia.org/wiki?curid=261925, Health care
+----1043143, http://en.wikipedia.org/wiki?curid=1043143, Single-payer health care
+----1716947, http://en.wikipedia.org/wiki?curid=1716947, Disease management (health)
+----13746759, http://en.wikipedia.org/wiki?curid=13746759, Health care in Australia
+----42024949, http://en.wikipedia.org/wiki?curid=42024949, Health care in Kosovo
+----8053575, http://en.wikipedia.org/wiki?curid=8053575, Maternal health
+
+15	[film art museum movie films director work artist artists movies festival awards exhibition works documentary best painting gallery hollywood paintings]
+----540784, http://en.wikipedia.org/wiki?curid=540784, Art film
+----2383774, http://en.wikipedia.org/wiki?curid=2383774, Honolulu Museum of Art
+----33915362, http://en.wikipedia.org/wiki?curid=33915362, Mexican art
+----66107, http://en.wikipedia.org/wiki?curid=66107, Museum of Modern Art
+----752, http://en.wikipedia.org/wiki?curid=752, Art
+----5870562, http://en.wikipedia.org/wiki?curid=5870562, Indianapolis Museum of Art
+----66076, http://en.wikipedia.org/wiki?curid=66076, Art museum
+----404194, http://en.wikipedia.org/wiki?curid=404194, Philadelphia Museum of Art
+----1638154, http://en.wikipedia.org/wiki?curid=1638154, Portland Art Museum
+----1355859, http://en.wikipedia.org/wiki?curid=1355859, American Visionary Art Museum
+
+16	[years home work job year people like says family help want times months going left money ago working worked took]
+----760646, http://en.wikipedia.org/wiki?curid=760646, Refusal of work
+----29875101, http://en.wikipedia.org/wiki?curid=29875101, Care work
+----1803590, http://en.wikipedia.org/wiki?curid=1803590, Job interview
+----7989113, http://en.wikipedia.org/wiki?curid=7989113, No Wit, No Help Like a Woman's
+----30583, http://en.wikipedia.org/wiki?curid=30583, Thirty Years' War
+----7330565, http://en.wikipedia.org/wiki?curid=7330565, The Years
+----142892, http://en.wikipedia.org/wiki?curid=142892, The Wonder Years
+----24756137, http://en.wikipedia.org/wiki?curid=24756137, The Help
+----9211747, http://en.wikipedia.org/wiki?curid=9211747, Make-work job
+----16888425, http://en.wikipedia.org/wiki?curid=16888425, Job
+
+17	[court federal case law judge lawyer justice lawyers trial states legal state investigation charges supreme prison jury years prosecutors officials]
+----561684, http://en.wikipedia.org/wiki?curid=561684, Federal Court of Justice of Germany
+----36032048, http://en.wikipedia.org/wiki?curid=36032048, Criminal law in the Waite Court
+----75358, http://en.wikipedia.org/wiki?curid=75358, Court
+----58598, http://en.wikipedia.org/wiki?curid=58598, State court (United States)
+----35760048, http://en.wikipedia.org/wiki?curid=35760048, Criminal law in the Marshall Court
+----17541, http://en.wikipedia.org/wiki?curid=17541, Lawyer
+----35913228, http://en.wikipedia.org/wiki?curid=35913228, Criminal law in the Taney Court
+----834368, http://en.wikipedia.org/wiki?curid=834368, United States federal judge
+----306967, http://en.wikipedia.org/wiki?curid=306967, Trial court
+----21244909, http://en.wikipedia.org/wiki?curid=21244909, Gun Court
+
+18	[san los angeles terms francisco league coach contract california rhp chicago michael scott davis ahl david jones jason chris minor]
+----2492023, http://en.wikipedia.org/wiki?curid=2492023, History of the Los Angeles Lakers
+----72892, http://en.wikipedia.org/wiki?curid=72892, Los Angeles Clippers
+----25036565, http://en.wikipedia.org/wiki?curid=25036565, History of the Los Angeles Dodgers
+----72893, http://en.wikipedia.org/wiki?curid=72893, Los Angeles Lakers
+----73136, http://en.wikipedia.org/wiki?curid=73136, Los Angeles Kings
+----37210704, http://en.wikipedia.org/wiki?curid=37210704, 2013 Los Angeles Dodgers season
+----29006967, http://en.wikipedia.org/wiki?curid=29006967, 2011 Los Angeles Dodgers season
+----40782341, http://en.wikipedia.org/wiki?curid=40782341, 2014 Los Angeles Dodgers season
+----37765, http://en.wikipedia.org/wiki?curid=37765, University of California, Los Angeles
+----6039093, http://en.wikipedia.org/wiki?curid=6039093, History of the National Football League in Los Angeles
+
+19	[book life review books history world story novel war reviews human writes man read written like writer author english words]
+----3778, http://en.wikipedia.org/wiki?curid=3778, Book
+----398028, http://en.wikipedia.org/wiki?curid=398028, Night (book)
+----297129, http://en.wikipedia.org/wiki?curid=297129, The New York Review of Books
+----29564231, http://en.wikipedia.org/wiki?curid=29564231, Life (book)
+----590089, http://en.wikipedia.org/wiki?curid=590089, Sex (book)
+----20230427, http://en.wikipedia.org/wiki?curid=20230427, Outliers (book)
+----392807, http://en.wikipedia.org/wiki?curid=392807, Book of Enoch
+----838451, http://en.wikipedia.org/wiki?curid=838451, Hiroshima (book)
+----10876585, http://en.wikipedia.org/wiki?curid=10876585, The Graveyard Book
+----7658110, http://en.wikipedia.org/wiki?curid=7658110, The Seekers (book)
+
+20	[city state island jersey local town mayor officials county long million city's council department board development authority public bloomberg michael]
+----125237, http://en.wikipedia.org/wiki?curid=125237, Jersey City, New Jersey
+----125242, http://en.wikipedia.org/wiki?curid=125242, Union City, New Jersey
+----106211, http://en.wikipedia.org/wiki?curid=106211, Atlantic City, New Jersey
+----125120, http://en.wikipedia.org/wiki?curid=125120, Sea Isle City, New Jersey
+----125118, http://en.wikipedia.org/wiki?curid=125118, Ocean City, New Jersey
+----125079, http://en.wikipedia.org/wiki?curid=125079, Gloucester City, New Jersey
+----59265, http://en.wikipedia.org/wiki?curid=59265, Long Island City
+----206327, http://en.wikipedia.org/wiki?curid=206327, Mayor of New York City
+----124969, http://en.wikipedia.org/wiki?curid=124969, Ventnor City, New Jersey
+----124966, http://en.wikipedia.org/wiki?curid=124966, Margate City, New Jersey
+
+21	[public news says say issue question recent questions report article asked right people statement interview decision saying libby letter wrote]
+----19096270, http://en.wikipedia.org/wiki?curid=19096270, Alaska Public Safety Commissioner dismissal
+----26370879, http://en.wikipedia.org/wiki?curid=26370879, News International phone hacking scandal
+----40410960, http://en.wikipedia.org/wiki?curid=40410960, Recent history of the District of Columbia Fire and Emergency Medical Services Department
+----19317464, http://en.wikipedia.org/wiki?curid=19317464, Public image of Sarah Palin
+----26747363, http://en.wikipedia.org/wiki?curid=26747363, 2010 Georgian news report hoax
+----1838984, http://en.wikipedia.org/wiki?curid=1838984, The Colbert Report
+----16605074, http://en.wikipedia.org/wiki?curid=16605074, CIA influence on public opinion
+----220856, http://en.wikipedia.org/wiki?curid=220856, Mackinac Center for Public Policy
+----3201, http://en.wikipedia.org/wiki?curid=3201, Attribution of recent climate change
+----207522, http://en.wikipedia.org/wiki?curid=207522, Drudge Report
+
+22	[family mother father home children son house daughter years child apartment parents life wife boy lived mrs husband man day]
+----10401954, http://en.wikipedia.org/wiki?curid=10401954, Family
+----18296177, http://en.wikipedia.org/wiki?curid=18296177, Hitler family
+----256804, http://en.wikipedia.org/wiki?curid=256804, Brontë family
+----181082, http://en.wikipedia.org/wiki?curid=181082, Mother and Son
+----647442, http://en.wikipedia.org/wiki?curid=647442, Father Divine
+----11109485, http://en.wikipedia.org/wiki?curid=11109485, Branning family
+----83427, http://en.wikipedia.org/wiki?curid=83427, Father
+----37816459, http://en.wikipedia.org/wiki?curid=37816459, Bennet family
+----23880464, http://en.wikipedia.org/wiki?curid=23880464, Honour thy father and thy mother
+----17276237, http://en.wikipedia.org/wiki?curid=17276237, Unwed Mother
+
+23	[death family board friend president deaths passing member loss wife condolences foundation love years beloved extend mourn jewish entire staff]
+----23404081, http://en.wikipedia.org/wiki?curid=23404081, Death of Michael Jackson
+----37650288, http://en.wikipedia.org/wiki?curid=37650288, Death of the Family
+----123443, http://en.wikipedia.org/wiki?curid=123443, Death squad
+----43885123, http://en.wikipedia.org/wiki?curid=43885123, Death of Aaliyah
+----27287626, http://en.wikipedia.org/wiki?curid=27287626, Death of Gerry Ryan
+----156587, http://en.wikipedia.org/wiki?curid=156587, Death Eater
+----40879640, http://en.wikipedia.org/wiki?curid=40879640, A Friend of the Family
+----8627512, http://en.wikipedia.org/wiki?curid=8627512, Death and state funeral of Gerald Ford
+----1758494, http://en.wikipedia.org/wiki?curid=1758494, Death and state funeral of Ronald Reagan
+----232872, http://en.wikipedia.org/wiki?curid=232872, Family Affairs
+
+24	[football game season bowl coach super team giants quarterback patriots colts manning bears playoff yards jets state play england field]
+----27718, http://en.wikipedia.org/wiki?curid=27718, Super Bowl
+----1259428, http://en.wikipedia.org/wiki?curid=1259428, Super Bowl XLII
+----1227585, http://en.wikipedia.org/wiki?curid=1227585, Super Bowl XLI
+----3853051, http://en.wikipedia.org/wiki?curid=3853051, Super Bowl XLVI
+----1406500, http://en.wikipedia.org/wiki?curid=1406500, Super Bowl XLIV
+----1263005, http://en.wikipedia.org/wiki?curid=1263005, Super Bowl XLIII
+----4051607, http://en.wikipedia.org/wiki?curid=4051607, Super Bowl XLVII
+----427707, http://en.wikipedia.org/wiki?curid=427707, Super Bowl XXXVIII
+----29564, http://en.wikipedia.org/wiki?curid=29564, Super Bowl XXXVI
+----29138, http://en.wikipedia.org/wiki?curid=29138, Super Bowl XII
+
+25	[school university students college schools high education student public program state children class professor parents middle teachers campus harvard graduate]
+----38821723, http://en.wikipedia.org/wiki?curid=38821723, High School for Gifted Students, Hanoi University of Science
+----12833453, http://en.wikipedia.org/wiki?curid=12833453, High School for Gifted Students, Hanoi National University of Education
+----533769, http://en.wikipedia.org/wiki?curid=533769, Hunter College High School
+----42556, http://en.wikipedia.org/wiki?curid=42556, High school
+----28022, http://en.wikipedia.org/wiki?curid=28022, School
+----10368700, http://en.wikipedia.org/wiki?curid=10368700, Boston University School of Education
+----598424, http://en.wikipedia.org/wiki?curid=598424, University College School
+----4715591, http://en.wikipedia.org/wiki?curid=4715591, Pace University High School
+----9191435, http://en.wikipedia.org/wiki?curid=9191435, Affiliated High School of Peking University
+----7537118, http://en.wikipedia.org/wiki?curid=7537118, Post Secondary Transition for High School Students with Disabilities
+
+26	[music band songs jazz album song rock singer musical like musicians sound guitar john pop playing concert singing played voice]
+----18839, http://en.wikipedia.org/wiki?curid=18839, Music
+----25423, http://en.wikipedia.org/wiki?curid=25423, Rock music
+----23932051, http://en.wikipedia.org/wiki?curid=23932051, 1960s in music
+----5247, http://en.wikipedia.org/wiki?curid=5247, Country music
+----67530, http://en.wikipedia.org/wiki?curid=67530, Music of Australia
+----1380472, http://en.wikipedia.org/wiki?curid=1380472, Appropriation (music)
+----7903659, http://en.wikipedia.org/wiki?curid=7903659, Mouth Music (band)
+----1291965, http://en.wikipedia.org/wiki?curid=1291965, Music of Maine
+----242838, http://en.wikipedia.org/wiki?curid=242838, Music of Finland
+----183304, http://en.wikipedia.org/wiki?curid=183304, Dub (music)
+
+27	[fashion indian like design collection museum american greek designer years pieces designers london india antiques french ancient known van photos]
+----7984172, http://en.wikipedia.org/wiki?curid=7984172, History of fashion design
+----11657, http://en.wikipedia.org/wiki?curid=11657, Fashion
+----10799117, http://en.wikipedia.org/wiki?curid=10799117, Fashion design
+----34274901, http://en.wikipedia.org/wiki?curid=34274901, Peter Jensen (fashion designer)
+----37953327, http://en.wikipedia.org/wiki?curid=37953327, Fashion Design Council of India
+----43900773, http://en.wikipedia.org/wiki?curid=43900773, Clive Evans (fashion designer)
+----43871310, http://en.wikipedia.org/wiki?curid=43871310, Michael Donnellan (fashion designer)
+----11182286, http://en.wikipedia.org/wiki?curid=11182286, Patrick Robinson (fashion designer)
+----18160210, http://en.wikipedia.org/wiki?curid=18160210, Advanced Fashion Design and Technology
+----39324123, http://en.wikipedia.org/wiki?curid=39324123, Jane Carr (fashion designer)
+
+28	[united states nuclear world international iran countries trade foreign european nations europe economic president american south orleans officials china north]
+----23794617, http://en.wikipedia.org/wiki?curid=23794617, Foreign trade of the United States
+----7564, http://en.wikipedia.org/wiki?curid=7564, Foreign policy of the United States
+----2032576, http://en.wikipedia.org/wiki?curid=2032576, Nuclear weapons and the United States
+----310477, http://en.wikipedia.org/wiki?curid=310477, Iran–United States relations
+----3434750, http://en.wikipedia.org/wiki?curid=3434750, United States
+----6174686, http://en.wikipedia.org/wiki?curid=6174686, India–United States Civil Nuclear Agreement
+----31284652, http://en.wikipedia.org/wiki?curid=31284652, Nuclear energy policy of the United States
+----13634972, http://en.wikipedia.org/wiki?curid=13634972, Anti-nuclear movement in the United States
+----22557286, http://en.wikipedia.org/wiki?curid=22557286, United States foreign aid
+----4075736, http://en.wikipedia.org/wiki?curid=4075736, United States–European Union relations
+
+29	[article misstated advertising stores referred ads incorrectly marketing group company picture day president campaign column agency business media brand vice]
+----2861, http://en.wikipedia.org/wiki?curid=2861, Advertising
+----9707139, http://en.wikipedia.org/wiki?curid=9707139, Article marketing
+----28014782, http://en.wikipedia.org/wiki?curid=28014782, Criticism of advertising
+----31646, http://en.wikipedia.org/wiki?curid=31646, Article One of the United States Constitution
+----30505282, http://en.wikipedia.org/wiki?curid=30505282, Article 14 of the Constitution of Singapore
+----2199688, http://en.wikipedia.org/wiki?curid=2199688, Tobacco advertising
+----25902560, http://en.wikipedia.org/wiki?curid=25902560, Article 15 of the Constitution of Singapore
+----27553226, http://en.wikipedia.org/wiki?curid=27553226, Article video marketing
+----2400336, http://en.wikipedia.org/wiki?curid=2400336, Article 19
+----549799, http://en.wikipedia.org/wiki?curid=549799, X Article
+
+30	[american iraqi states government military army officials war iraq shiite minister baghdad killed international prime forces soldiers people political sunni]
+----1576797, http://en.wikipedia.org/wiki?curid=1576797, Iraqi Army
+----847626, http://en.wikipedia.org/wiki?curid=847626, Iraqi insurgency (2003–11)
+----5043324, http://en.wikipedia.org/wiki?curid=5043324, Iraq War
+----933377, http://en.wikipedia.org/wiki?curid=933377, Iraqi insurgency (2003–06)
+----35796744, http://en.wikipedia.org/wiki?curid=35796744, 2006 Iraqi government formation
+----34507632, http://en.wikipedia.org/wiki?curid=34507632, Iraqi insurgency (2011–present)
+----679693, http://en.wikipedia.org/wiki?curid=679693, Iraqi Kurdistan
+----5706858, http://en.wikipedia.org/wiki?curid=5706858, Iraqi Turkmens
+----762287, http://en.wikipedia.org/wiki?curid=762287, Iraqi Interim Government
+----1595906, http://en.wikipedia.org/wiki?curid=1595906, Anglo-Iraqi War
+
+31	[food restaurant wine like dining chicken chef restaurants menu eat foods meat good dinner wines chocolate farm dishes fresh red]
+----10646, http://en.wikipedia.org/wiki?curid=10646, Food
+----1045978, http://en.wikipedia.org/wiki?curid=1045978, Wine and food matching
+----38736209, http://en.wikipedia.org/wiki?curid=38736209, Food and dining in the Roman Empire
+----54923, http://en.wikipedia.org/wiki?curid=54923, Fast food restaurant
+----360101, http://en.wikipedia.org/wiki?curid=360101, Fast food
+----26437, http://en.wikipedia.org/wiki?curid=26437, Restaurant
+----28367, http://en.wikipedia.org/wiki?curid=28367, Spam (food)
+----34986061, http://en.wikipedia.org/wiki?curid=34986061, Whisky with food
+----5741239, http://en.wikipedia.org/wiki?curid=5741239, Chicken (food)
+----1326380, http://en.wikipedia.org/wiki?curid=1326380, Food truck
+
+32	[died martin years wife wrote war later life dies american novel father born book age known french family author john]
+----945462, http://en.wikipedia.org/wiki?curid=945462, Martin Dies, Jr.
+----30963746, http://en.wikipedia.org/wiki?curid=30963746, Wife selling
+----7330565, http://en.wikipedia.org/wiki?curid=7330565, The Years
+----590565, http://en.wikipedia.org/wiki?curid=590565, Later life of Isaac Newton
+----15192497, http://en.wikipedia.org/wiki?curid=15192497, Later life of Winston Churchill
+----177428, http://en.wikipedia.org/wiki?curid=177428, Wife
+----102910, http://en.wikipedia.org/wiki?curid=102910, Steve Martin
+----41278151, http://en.wikipedia.org/wiki?curid=41278151, Robert Corbet (died 1420)
+----40674891, http://en.wikipedia.org/wiki?curid=40674891, John Paston (died 1479)
+----38011461, http://en.wikipedia.org/wiki?curid=38011461, Robert Constable (died 1591)
+
+33	[people like years says better social percent say good work think long help black want far american number different example]
+----175715, http://en.wikipedia.org/wiki?curid=175715, Like a Virgin
+----102383, http://en.wikipedia.org/wiki?curid=102383, Fula people
+----4841708, http://en.wikipedia.org/wiki?curid=4841708, Marathi people
+----24338030, http://en.wikipedia.org/wiki?curid=24338030, Blues People
+----4745, http://en.wikipedia.org/wiki?curid=4745, Black people
+----775859, http://en.wikipedia.org/wiki?curid=775859, Irish people
+----2681178, http://en.wikipedia.org/wiki?curid=2681178, Like a Prayer (song)
+----567140, http://en.wikipedia.org/wiki?curid=567140, Like
+----9337, http://en.wikipedia.org/wiki?curid=9337, Ecuadorian people
+----21459006, http://en.wikipedia.org/wiki?curid=21459006, Be Like That
+
+34	[trees water winter tree weather snow river park ice lights warming like forest fish miles species near cold climate air]
+----18955875, http://en.wikipedia.org/wiki?curid=18955875, Tree
+----28191, http://en.wikipedia.org/wiki?curid=28191, Snow
+----11593538, http://en.wikipedia.org/wiki?curid=11593538, Severe weather
+----33978, http://en.wikipedia.org/wiki?curid=33978, Weather
+----33306, http://en.wikipedia.org/wiki?curid=33306, Water
+----73231, http://en.wikipedia.org/wiki?curid=73231, Weather forecasting
+----34270012, http://en.wikipedia.org/wiki?curid=34270012, Trail trees
+----33335855, http://en.wikipedia.org/wiki?curid=33335855, Propagation of Christmas Trees
+----1516234, http://en.wikipedia.org/wiki?curid=1516234, Across the River and into the Trees
+----7559746, http://en.wikipedia.org/wiki?curid=7559746, Drunken trees
+
+35	[company chief executive business companies stock million financial investors executives investment funds billion fund deal group board firm market company's]
+----362024, http://en.wikipedia.org/wiki?curid=362024, Joint-stock company
+----35476668, http://en.wikipedia.org/wiki?curid=35476668, Executive compensation in the United States
+----19283891, http://en.wikipedia.org/wiki?curid=19283891, Executive compensation
+----263137, http://en.wikipedia.org/wiki?curid=263137, Daimler Company
+----21695823, http://en.wikipedia.org/wiki?curid=21695823, Reliance Insurance Company
+----1233473, http://en.wikipedia.org/wiki?curid=1233473, The Corporate Executive Board Company
+----262293, http://en.wikipedia.org/wiki?curid=262293, Public company
+----19578716, http://en.wikipedia.org/wiki?curid=19578716, Charter Company
+----41902084, http://en.wikipedia.org/wiki?curid=41902084, Lafarge (company)
+----14168420, http://en.wikipedia.org/wiki?curid=14168420, Executive Life Insurance Company
+
+36	[building center street buildings park space city project construction trade tower site design brooklyn west avenue manhattan years commercial square]
+----7777427, http://en.wikipedia.org/wiki?curid=7777427, Construction of the World Trade Center
+----9620733, http://en.wikipedia.org/wiki?curid=9620733, Chicago Board of Trade Building
+----11395198, http://en.wikipedia.org/wiki?curid=11395198, World Trade Center
+----2980679, http://en.wikipedia.org/wiki?curid=2980679, Monadnock Building
+----359510, http://en.wikipedia.org/wiki?curid=359510, MetLife Building
+----6788, http://en.wikipedia.org/wiki?curid=6788, Chrysler Building
+----253850, http://en.wikipedia.org/wiki?curid=253850, Flatiron Building
+----5506629, http://en.wikipedia.org/wiki?curid=5506629, PSFS Building
+----32895314, http://en.wikipedia.org/wiki?curid=32895314, Construction of One World Trade Center
+----4252108, http://en.wikipedia.org/wiki?curid=4252108, The New York Times Building
+
+37	[democrats democratic republican house senator senate election political presidential party campaign clinton politics president republicans committee states democrat vote john]
+----32080, http://en.wikipedia.org/wiki?curid=32080, Democratic-Republican Party
+----861808, http://en.wikipedia.org/wiki?curid=861808, Southern Democrats
+----8168445, http://en.wikipedia.org/wiki?curid=8168445, Republican Party presidential primaries, 2008
+----32070, http://en.wikipedia.org/wiki?curid=32070, Republican Party (United States)
+----1459958, http://en.wikipedia.org/wiki?curid=1459958, Kansas Republican Party
+----319459, http://en.wikipedia.org/wiki?curid=319459, Democratic Party presidential primaries, 2004
+----16172650, http://en.wikipedia.org/wiki?curid=16172650, Republican Party presidential primaries, 1964
+----9428860, http://en.wikipedia.org/wiki?curid=9428860, Texas Democratic Party
+----15016390, http://en.wikipedia.org/wiki?curid=15016390, Republican Party presidential primaries, 1976
+----30872339, http://en.wikipedia.org/wiki?curid=30872339, War Democrats
+
+38	[open second final won williams year set win left came end going hit game match fourth lead victory night round]
+----30343436, http://en.wikipedia.org/wiki?curid=30343436, 2011 Lamar Hunt U.S. Open Cup Final
+----167378, http://en.wikipedia.org/wiki?curid=167378, Venus Williams
+----164910, http://en.wikipedia.org/wiki?curid=164910, Serena Williams
+----12112814, http://en.wikipedia.org/wiki?curid=12112814, 2008 US Open (tennis)
+----27972897, http://en.wikipedia.org/wiki?curid=27972897, 2010 Lamar Hunt U.S. Open Cup Final
+----34375780, http://en.wikipedia.org/wiki?curid=34375780, 2013 Australian Open
+----39214449, http://en.wikipedia.org/wiki?curid=39214449, 2005 Serena Williams tennis season
+----28668518, http://en.wikipedia.org/wiki?curid=28668518, 1996 Football League Second Division play-off Final
+----33274378, http://en.wikipedia.org/wiki?curid=33274378, 2012 Lamar Hunt U.S. Open Cup Final
+----34583549, http://en.wikipedia.org/wiki?curid=34583549, 2012 Australian Open – Men's Singles final
+
+39	[oil energy gas power neediest fund environmental electricity emissions global cases ethanol carbon chávez natural times companies light prices plants]
+----1055890, http://en.wikipedia.org/wiki?curid=1055890, Sustainable energy
+----299368, http://en.wikipedia.org/wiki?curid=299368, Oil sands
+----849508, http://en.wikipedia.org/wiki?curid=849508, Peak oil
+----193939, http://en.wikipedia.org/wiki?curid=193939, Alternative energy
+----25784, http://en.wikipedia.org/wiki?curid=25784, Renewable energy
+----533487, http://en.wikipedia.org/wiki?curid=533487, Energy development
+----45010, http://en.wikipedia.org/wiki?curid=45010, Oil shale
+----24130, http://en.wikipedia.org/wiki?curid=24130, Energy storage
+----1252235, http://en.wikipedia.org/wiki?curid=1252235, Unconventional oil
+----9649, http://en.wikipedia.org/wiki?curid=9649, Energy
+
+40	[game team points games basketball season knicks play nets players thomas teams coach night hockey played jersey player scored playing]
+----72855, http://en.wikipedia.org/wiki?curid=72855, New York Knicks
+----38225707, http://en.wikipedia.org/wiki?curid=38225707, Knicks–Nets rivalry
+----44025962, http://en.wikipedia.org/wiki?curid=44025962, History of the Brooklyn Nets
+----39806308, http://en.wikipedia.org/wiki?curid=39806308, 2013–14 Brooklyn Nets season
+----1960952, http://en.wikipedia.org/wiki?curid=1960952, List of basketball players who have scored 100 points in a single game
+----72852, http://en.wikipedia.org/wiki?curid=72852, Brooklyn Nets
+----2739286, http://en.wikipedia.org/wiki?curid=2739286, Bulls–Knicks rivalry
+----4391236, http://en.wikipedia.org/wiki?curid=4391236, Points per game
+----18723138, http://en.wikipedia.org/wiki?curid=18723138, Game
+----16385079, http://en.wikipedia.org/wiki?curid=16385079, List of players with eight or more points in an NHL game
+
+41	[hussein government execution saddam muslim somalia hussein's crimes officials hanging king death islamist turkey video islamic transitional country somalia's mogadishu]
+----8648790, http://en.wikipedia.org/wiki?curid=8648790, Execution of Saddam Hussein
+----29490, http://en.wikipedia.org/wiki?curid=29490, Saddam Hussein
+----2943846, http://en.wikipedia.org/wiki?curid=2943846, Trial of Saddam Hussein
+----23472745, http://en.wikipedia.org/wiki?curid=23472745, Interrogation of Saddam Hussein
+----1767662, http://en.wikipedia.org/wiki?curid=1767662, Saddam Hussein and al-Qaeda link allegations
+----5580856, http://en.wikipedia.org/wiki?curid=5580856, Saddam Hussein and al-Qaeda link allegations timeline
+----27358, http://en.wikipedia.org/wiki?curid=27358, Somalia
+----18586363, http://en.wikipedia.org/wiki?curid=18586363, House of Saddam
+----5522742, http://en.wikipedia.org/wiki?curid=5522742, Saddam Hussein's alleged shredder
+----5199227, http://en.wikipedia.org/wiki?curid=5199227, Saddam Hussein's novels
+
+42	[death deaths beloved wife died late funeral husband survived memorial loving father services service mother held son brother years devoted]
+----6318986, http://en.wikipedia.org/wiki?curid=6318986, In Death characters
+----1758494, http://en.wikipedia.org/wiki?curid=1758494, Death and state funeral of Ronald Reagan
+----8627512, http://en.wikipedia.org/wiki?curid=8627512, Death and state funeral of Gerald Ford
+----97645, http://en.wikipedia.org/wiki?curid=97645, Death by burning
+----11182, http://en.wikipedia.org/wiki?curid=11182, Funeral
+----38723257, http://en.wikipedia.org/wiki?curid=38723257, Death and state funeral of Hugo Chávez
+----43885123, http://en.wikipedia.org/wiki?curid=43885123, Death of Aaliyah
+----23821153, http://en.wikipedia.org/wiki?curid=23821153, Death and funeral of Corazon Aquino
+----156587, http://en.wikipedia.org/wiki?curid=156587, Death Eater
+----30865451, http://en.wikipedia.org/wiki?curid=30865451, Death and state funeral of Pierre Trudeau
+
+43	[women children young woman men marriage parents child sex play life gay series married love girls school baby mother care]
+----29746527, http://en.wikipedia.org/wiki?curid=29746527, Sex trafficking of women and children in Thailand
+----14130977, http://en.wikipedia.org/wiki?curid=14130977, Women in China
+----4724183, http://en.wikipedia.org/wiki?curid=4724183, Women in Islam
+----39780200, http://en.wikipedia.org/wiki?curid=39780200, Women in Asia
+----1939300, http://en.wikipedia.org/wiki?curid=1939300, Women in Pakistan
+----1516511, http://en.wikipedia.org/wiki?curid=1516511, Women in India
+----29602837, http://en.wikipedia.org/wiki?curid=29602837, Refugee women and children
+----3793631, http://en.wikipedia.org/wiki?curid=3793631, Children of Men
+----10329352, http://en.wikipedia.org/wiki?curid=10329352, Women in Christianity
+----14670194, http://en.wikipedia.org/wiki?curid=14670194, Children of Passions
+
+44	[theater dance work ballet opera music performance play program company orchestra production director american hall stage works symphony city night]
+----27144341, http://en.wikipedia.org/wiki?curid=27144341, Misnomer dance theater
+----7524082, http://en.wikipedia.org/wiki?curid=7524082, Alvin Ailey American Dance Theater
+----22298633, http://en.wikipedia.org/wiki?curid=22298633, Brazz Dance Theater
+----36110612, http://en.wikipedia.org/wiki?curid=36110612, Diavolo Dance Theater
+----19085957, http://en.wikipedia.org/wiki?curid=19085957, Luna Negra Dance Theater
+----35049932, http://en.wikipedia.org/wiki?curid=35049932, Colon Theater Ballet
+----34569171, http://en.wikipedia.org/wiki?curid=34569171, Chuvash State Opera and Ballet Theater
+----1218943, http://en.wikipedia.org/wiki?curid=1218943, The Public Theater
+----1012585, http://en.wikipedia.org/wiki?curid=1012585, The Flea Theater
+----6234186, http://en.wikipedia.org/wiki?curid=6234186, Odessa Opera and Ballet Theater
+
+45	[ford car cars auto gerald toyota design motor detroit vehicles motors ford's drive american drivers company engine concept miles north]
+----30433662, http://en.wikipedia.org/wiki?curid=30433662, Ford Motor Company
+----13673345, http://en.wikipedia.org/wiki?curid=13673345, Car
+----159083, http://en.wikipedia.org/wiki?curid=159083, Ford Taurus
+----816396, http://en.wikipedia.org/wiki?curid=816396, Economy car
+----477085, http://en.wikipedia.org/wiki?curid=477085, Ford Fiesta
+----802817, http://en.wikipedia.org/wiki?curid=802817, Ford Escape
+----546601, http://en.wikipedia.org/wiki?curid=546601, Ford Capri
+----13371, http://en.wikipedia.org/wiki?curid=13371, Henry Ford
+----11830, http://en.wikipedia.org/wiki?curid=11830, Ford GT40
+----10249749, http://en.wikipedia.org/wiki?curid=10249749, Ford Flex
+
+46	[street road free center arts avenue art museum theater main children works sundays library saturdays music hall presented members students]
+----5870562, http://en.wikipedia.org/wiki?curid=5870562, Indianapolis Museum of Art
+----380569, http://en.wikipedia.org/wiki?curid=380569, John F. Kennedy Center for the Performing Arts
+----1246709, http://en.wikipedia.org/wiki?curid=1246709, National Museum of Women in the Arts
+----707146, http://en.wikipedia.org/wiki?curid=707146, Museum of Contemporary Art, Chicago
+----29876515, http://en.wikipedia.org/wiki?curid=29876515, Park Performing Arts Center
+----7848768, http://en.wikipedia.org/wiki?curid=7848768, Kauffman Center for the Performing Arts
+----3159839, http://en.wikipedia.org/wiki?curid=3159839, Virginia Museum of Fine Arts
+----7323232, http://en.wikipedia.org/wiki?curid=7323232, Adrienne Arsht Center for the Performing Arts
+----2658000, http://en.wikipedia.org/wiki?curid=2658000, Street art
+----41476538, http://en.wikipedia.org/wiki?curid=41476538, Free Street Theater
+
+47	[tax money federal government law congress rules say plan companies policy changes use members budget support proposal pay proposed security]
+----30297, http://en.wikipedia.org/wiki?curid=30297, Tax
+----31175, http://en.wikipedia.org/wiki?curid=31175, Tobin tax
+----84107, http://en.wikipedia.org/wiki?curid=84107, Carbon tax
+----3136256, http://en.wikipedia.org/wiki?curid=3136256, Income tax in the United States
+----46334, http://en.wikipedia.org/wiki?curid=46334, Flat tax
+----4849012, http://en.wikipedia.org/wiki?curid=4849012, History of tax resistance
+----18618102, http://en.wikipedia.org/wiki?curid=18618102, Tax haven
+----166496, http://en.wikipedia.org/wiki?curid=166496, Dividend tax
+----447435, http://en.wikipedia.org/wiki?curid=447435, Tax avoidance
+----31105432, http://en.wikipedia.org/wiki?curid=31105432, Amazon tax
+
+48	[league team baseball players contract sports yankees johnson season million soccer mets years red bonds hall player yesterday deal home]
+----2726862, http://en.wikipedia.org/wiki?curid=2726862, Major League Baseball on Fox
+----1141484, http://en.wikipedia.org/wiki?curid=1141484, Yankees–Red Sox rivalry
+----3850, http://en.wikipedia.org/wiki?curid=3850, Baseball
+----38776, http://en.wikipedia.org/wiki?curid=38776, Major League Baseball
+----224893, http://en.wikipedia.org/wiki?curid=224893, List of highest paid Major League Baseball players
+----11487460, http://en.wikipedia.org/wiki?curid=11487460, 1976 New York Yankees season
+----13848348, http://en.wikipedia.org/wiki?curid=13848348, 2008 New York Yankees season
+----1195333, http://en.wikipedia.org/wiki?curid=1195333, Howard Johnson (baseball)
+----5876694, http://en.wikipedia.org/wiki?curid=5876694, ESPN Major League Baseball
+----19408837, http://en.wikipedia.org/wiki?curid=19408837, New York Yankees minor league players
+
+49	[china chinese train hong kong canadian bus transit city trains immigration closed veterans rail government immigrants subway transportation offices homeless]
+----13404, http://en.wikipedia.org/wiki?curid=13404, Hong Kong
+----5405, http://en.wikipedia.org/wiki?curid=5405, China
+----261918, http://en.wikipedia.org/wiki?curid=261918, Chinese Canadian
+----268964, http://en.wikipedia.org/wiki?curid=268964, Chinese University of Hong Kong
+----3634847, http://en.wikipedia.org/wiki?curid=3634847, China Hong Kong City
+----23242, http://en.wikipedia.org/wiki?curid=23242, Transport in China
+----13411, http://en.wikipedia.org/wiki?curid=13411, Transport in Hong Kong
+----277914, http://en.wikipedia.org/wiki?curid=277914, Science and technology in China
+----1145762, http://en.wikipedia.org/wiki?curid=1145762, Bank of China (Hong Kong)
+----10384597, http://en.wikipedia.org/wiki?curid=10384597, Urban rail transit in China
+

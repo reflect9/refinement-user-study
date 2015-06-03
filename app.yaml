@@ -1,0 +1,49 @@
+application: refinetopic
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+builtins:
+- remote_api: on
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /images
+  static_dir: images
+
+- url: /lib
+  static_dir: lib
+
+- url: /data
+  static_dir: data
+
+- url: /style.css
+  static_files: style.css
+  upload: style.css
+
+- url: /task.js
+  static_files: task.js
+  upload: task.js
+
+- url: /refine.js
+  static_files: refine.js
+  upload: refine.js
+
+- url: /evaluation.js
+  static_files: evaluation.js
+  upload: evaluation.js
+
+- url: .*
+  script: main.app
+
+
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: latest

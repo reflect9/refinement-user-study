@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey - Refine Topic Model</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="lib/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="refine.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class='introduction hidden'>
+
+We are researchers from the University of Maryland attempting to measure how people understand topics discovered from newspaper articles, and suggest improvements. If you have any questions about this study, please contact Leah Findlater (http://terpconnect.umd.edu/~leahkf/). 
+<br>
+<br>Participants of the study are required to be at least 18 years old. Press the START button if you voluntarily agree to participate.
+    <div class='start'><button class='start_button'>START</button></div>
+</div>
+
+<div class='main_container'>
+    <div class='topic_container'>
+        <label class='inst'>50 Topics Discovered from Newspaper Articles</label>
+        <ul class='topic_list'>
+            {% for topic in topics %}
+            <li class='topic' tid='{{loop.index}}'>
+                <div class='topic_rep'>
+                    <label class='topic_index'>{{loop.index}}</label>    
+                    <ul class='topic_terms'>
+                    {% for term in topic.terms %}
+                        {% set size = 12+ (term.second * 200) %}
+                        <li><div class='term' style="font-size:{{size}}px">{{term.first}}</div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class='document_container'>
+        <label class='inst'>News Articles Containing Topic <span class='tidx'></span></label>
+        <ul class='document_list'>
+            
+        </ul>
+    </div>
+    <div class='refinement_container'>
+        <label class='inst'>Make Refinements To Fix </label>
+        
+        
+        <!--  Phase 1 without any template -->
+        <div class='open_refinement_tool' phase='1'>
+            <div class='instruction'>
+                50 topics were discovered from the news articles of January 2007. The topics and related articles together provide an overview of news during the period. However, you may notice a variety of flaws of them. Your task is to identify the flaws and to propose refinements to improve them.  
+            </div>
+            <label class='main'>Describe refinements with the following details</label>
+            <ul class='questions'>
+                <li>Target (topics, words, or assignment of articles) of the refinement</li>
+                <li>Why the target needs to be refined</li>
+                <li>How the target will be changed</li>
+            </ul>
+            <div class='open_template'>
+                <textarea type='text' class='full-col-text' placeholder=""></textarea>
+                <center><button class='add_open_ref'>Create this refinement</button></center>
+            </div>
+        </div>
+
+        <!-- Phase 2 with predefined types -->
+        <div class='refinement_tool hidden' phase='2'>
+            <div class='instruction'>
+                Try creating refinements, using the types of refinements shown below. You can create the same refinements again.        
+            </div>
+            <label>Choose one refinement type and fill in the details</label>
+            <div class='template' type='split-topic'>
+                <div class='ref_title'>Split Topic</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Split words in Topic <input type='text' class='topicNum'/> into two groups</label>
+                    <div class='details'>
+                        <div class='smallInst'>Specify a topic, and click words to swtich between two groups</div>
+                        <ul class='wordBucket words1' bucketNum='1'></ul>
+                        <ul class='wordBucket words2' bucketNum='2'></ul>
+                        <div style='clear:both;'></div>
+                        
+                    </div>
+                    <center>
+                        <button class='add'>Create this refinement</button>
+                        <button class='reset'>Reset</button>
+                    </center>
+                </div>
+            </div>  
+            <div class='template' type='merge-topic'>
+                <div class='ref_title'>Merge Topics</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Merge Topic <input type='text' class='topicNum topic1'/> and <input type='text' class='topicNum topic2'/></label>
+                    <center><button class='add'>Create this refinement</button>
+                    <button class='reset'>Reset</button>
+                    </center>
+                </div>
+            </div> 
+            <div class='template' type='add-words-to-topic'>
+                <div class='ref_title'>Add Words to Topic</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Add the following words to topic <input type='text' class='topicNum'/> </label>
+                    <div class='details'>
+                        <textarea type='text' class='full-col-text' placeholder="Type words. (separated by space)"></textarea>
+                    </div>
+                    <center><button class='add'>Create this refinement</button>
+                    <button class='reset'>Reset</button>
+                    </center>
+                </div>
+            </div> 
+            <div class='template' type='remove-words-from-topic'>
+                <div class='ref_title'>Remove Words from Topic</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Remove words from topic <input type='text' class='topicNum'/> </label>
+                    <div class='details'>
+                        <div class='smallInst'>Specify a topic and click words to be removed</div>
+                        <ul class='wordBucket'></ul>
+                    </div>
+                    <center><button class='add'>Create this refinement</button>
+                    <button class='reset'>Reset</button>
+                    </center>
+                </div>
+            </div>
+            <div class='template' type='overarching-word'>
+                <div class='ref_title'>Merge Words</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Make an overarching word <input type='text' class='singleWord'/> that encompasses the following words.</label>
+                    <div class='details'>
+                        <textarea type='text' class='full-col-text' placeholder="Type words to be merged. (separated by space)"></textarea>
+                    </div>
+                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
+                </div>
+            </div>  
+            <div class='template' type='add-stop-words'>
+                <div class='ref_title'>Ignore Words</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Ignore the following words in every topic</label>
+                    <div class='details'>
+                        <textarea type='text' class='full-col-text' placeholder="Type words to be ignored. (separated by space)"></textarea>
+                    </div>
+                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
+                </div>
+            </div> 
+            <div class='template' type='move-documents'>
+                <div class='ref_title'>Move Documents to Topic</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Reassign the following documents to topic <input type='text' class='topicNum'/></label>
+                    <div class='details'>
+                        <div class='smallInst'>Type document codes to be moved. (separated by a space) </div>
+                        <textarea type='text' class='full-col-text' placeholder="E.g. 1a 1c 5e"></textarea>
+                    </div>
+                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
+                </div>
+            </div> 
+            <div class='template' type='remove-documents'>
+                <div class='ref_title'>Remove Documents from Topic</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Remove the following documents from topic <input type='text' class='topicNum'/></label>
+                    <div class='details'>
+                        <div class='smallInst'>Type document codes to be removed from the topic. (separated by a space) </div>
+                        <textarea type='text' class='full-col-text' placeholder="E.g. 1a 1c"></textarea>
+                    </div>
+                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
+                </div>
+            </div> 
+            <div class='template' type='custom-refinement'>
+                <div class='ref_title'>Describe your own refinement</div>
+                <div class='ref_instruction hidden'> 
+                    <label>Describe your own refinement</label>
+                    <div class='details'>
+                        <textarea type='text' class='full-col-text' placeholder=""></textarea>
+                    </div>
+                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
+                </div>
+            </div> 
+        </div>
+
+        <ul class='open_ref_list'></ul>
+        <ul class='ref_list hidden'>
+            <!-- <label class='inst inst_ref_list'>List of created refinements</label> -->
+        </ul>
+        
+        <div class='bottom_UI'>
+            <!-- <button class='start_phase1'>Start Creating Refinements</button></center> -->
+            <button class='next_stage hidden'>Finish and Proceed to Next Step</button>
+            <button class='finish_phase2 hidden'>Finish and Proceed to Next Step</button>
+            <div class='clock'></div>
+        </div>
+
+        
+    </div>
+    
+    <div class='overlay hidden'></div>
+    <div class='questionnaire hidden' phase='1'>
+        <div class='q_content'>
+            <label class='q_main_inst'>Please answer the following questions.</label>
+            <div class='q_list'>
+                <li class='q_item' qid='1'>
+                    <label class='q_inst'>It was easy to understanding meaning every topic.</label>
+                    <div class='likert_scales'>
+                        <div class='likert_dot'><input type='radio' num='1'><br><label>Strongly Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='2'><br><label>Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='3'><br><label>Somewhat Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='4'><br><label>Moderate</label></div>
+                        <div class='likert_dot'><input type='radio' num='5'><br><label>Somewhat Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='6'><br><label>Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='7'><br><label>Strongly Disagree</label></div>
+                    </div>
+                    <label>Explain any reason of the topics being hard to understand.</label>
+                    <textarea class='q_extra_explanation'></textarea>
+                </li>
+                <li class='q_item' qid='2'>
+                    <label class='q_inst'>It was easy to identify low-quality topics.</label>
+                    <div class='likert_scales'>
+                        <div class='likert_dot'><input type='radio' num='1'><br><label>Strongly Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='2'><br><label>Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='3'><br><label>Somewhat Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='4'><br><label>Moderate</label></div>
+                        <div class='likert_dot'><input type='radio' num='5'><br><label>Somewhat Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='6'><br><label>Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='7'><br><label>Strongly Disagree</label></div>
+                    </div>
+                    <label>Explain any issue you had while identifying low-quality topics.</label>
+                    <textarea class='q_extra_explanation'></textarea>
+                </li>
+                <li class='q_item' qid='3'>
+                    <label class='q_inst'>It was easy to create refinements.</label>
+                    <div class='likert_scales'>
+                        <div class='likert_dot'><input type='radio' num='1'><br><label>Strongly Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='2'><br><label>Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='3'><br><label>Somewhat Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='4'><br><label>Moderate</label></div>
+                        <div class='likert_dot'><input type='radio' num='5'><br><label>Somewhat Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='6'><br><label>Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='7'><br><label>Strongly Disagree</label></div>
+                    </div>
+                    <label>Explain any issue you had while creating refinements.</label>
+                    <textarea class='q_extra_explanation'></textarea>
+                </li>
+                <label>For each refinement you created, answer the following questions.</label>
+
+
+                <li class='q_item' qid='4'>
+                    <label class='q_inst'>It was easy to propose refinements for the low-quality topics.</label>
+                    <div class='likert_scales'>
+                        <div class='likert_dot'><input type='radio' num='1'><br><label>Strongly Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='2'><br><label>Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='3'><br><label>Somewhat Agree</label></div>
+                        <div class='likert_dot'><input type='radio' num='4'><br><label>Moderate</label></div>
+                        <div class='likert_dot'><input type='radio' num='5'><br><label>Somewhat Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='6'><br><label>Disagree</label></div>
+                        <div class='likert_dot'><input type='radio' num='7'><br><label>Strongly Disagree</label></div>
+                    </div>
+                    <label>Explain any issue you had while proposing refinements.</label>
+                    <textarea class='q_extra_explanation'></textarea>
+                </li>
+            </div>
+
+        </div>
+        <div class='q_UI'>
+        <button class='q_submit'>Submit Answers</button>
+        </div>
+
+    </div>
+    <div class='questionnaire hidden' phase='2'>
+        <div class='q_UI'>
+        <button class='q_submit'>Submit Answers</button>
+        </div>
+    </div>
+
+    
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+<!--
+@purple: rgb(155, 70, 129);
+@purple-light: #bf81b3;
+@skyblue: #02aff0;
+@yellow: #ffdc48;
+@grassgreen: #889a0f;
+@orange: #ea7e00;
+
+
+@paleblue: #54a6ad;
+@palegreen: #92ba67;
+@palered: #c96b6b;
+-->
