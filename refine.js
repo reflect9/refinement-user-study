@@ -3,22 +3,36 @@ function showDocuments(topicIdx) {
 	$.get("relatedDocuments", {
 		topicIdx: topicIdx
 	}, function(documentData) {
+		$(".document_container").find(".tidx").text(topicIdx);
+		$("li.topic").removeClass("selected");
+		$("li.topic[tid='"+topicIdx+"']").addClass("selected");
+		if($("li.topic.selected").attr("unlocked")=="true") {
+			$("ul.document_list").empty().show();
+			$(".document_show_all").hide();
+		} else {
+			$("ul.document_list").empty().hide();
+			$(".document_show_all").show();
+		}
 		// update ul.document_list with documentData
-		$("ul.document_list").empty();
 		docs = JSON.parse(documentData);
 		_.each(docs, function(doc,i) {
 			var lastSpaceIdx = doc.fulltext.substring(0,230).search(/ [^ ]*$/);
 			var trimmedFulltext = doc.fulltext.substring(0,lastSpaceIdx);
-			var prob = (i==0) ? "("+Math.floor(doc.prob*100)+"% matching)" : "("+Math.floor(doc.prob*100)+"%)";
-			$("<li>\
+			//var prob = (i==0) ? "("+Math.floor(doc.prob*100)+"% matching)" : "("+Math.floor(doc.prob*100)+"%)";
+			var el = $("<li>\
 				<div class='idx'>"+topicIdx+ALPHABET[i]+"</div>\
-				<div class='title'>"+doc.title+"<span class='prob'>"+prob+"</span></div>\
+				<div class='title'>"+doc.title+"</div>\
 				<div class='fulltext'>"+trimmedFulltext+"...</div>\
-			</li>").appendTo("ul.document_list");
+			</li>");
+			var showmore_el = $("<span class='showmore'>See More</span>")
+				.click($.proxy(function(event) {
+					//console.log(this.fulltext);
+					showModal(this);
+				},{title:doc.title, content:doc.fulltext}));
+			$(el).find(".fulltext").append(showmore_el);
+			$(el).appendTo("ul.document_list");
 		});
-		$(".document_container").find(".tidx").text(topicIdx);
-		$("li.topic").removeClass("selected");
-		$("li.topic[tid='"+topicIdx+"']").addClass("selected");
+		
 	});
 }
 
@@ -26,6 +40,19 @@ function makeid() {
 	var text = ""; 	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	for (var i = 0; i < 5; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
 	return text;
+}
+
+function showModal(config) {
+	$(".modal_title").html(config.title);
+	$(".modal_content").html(config.content);
+	$(".modal_frame").click(function(event) {
+		event.stopPropagation();
+	});
+	$(".overlay, .modal_close").click(function(event) {
+		$(".overlay").hide();
+	});
+	$(".overlay").show();
+	$(".modal_frame").scrollTop(0);
 }
 
 // function showPreview(data) {
@@ -433,10 +460,18 @@ function submitAnswers() {
 
 function updateClock(startTimeStamp, totalMinutes, clockEl) {
 	currentTime = new Date();
-	var remainingSeconds = (totalMinutes*60) - Math.floor((currentTime-startTimeStamp)/1000);
-	var min = Math.floor(remainingSeconds/60);
-	var sec = remainingSeconds % 60;
-    $(clockEl).text(min + ":" + sec + " remaining until you can finish");
+	// var remainingSeconds = (totalMinutes*60) - Math.floor((currentTime-startTimeStamp)/1000);
+	// var min = Math.floor(remainingSeconds/60);
+	// var sec = remainingSeconds % 60;
+ //    $(clockEl).text(min + ":" + sec + " remaining until you can finish");
+ 	var elapsedSeconds = Math.floor((currentTime-startTimeStamp)/1000);
+ 	var min = Math.floor(elapsedSeconds/60);
+	var sec = elapsedSeconds % 60;
+ 	$(clockEl).text(min + ":" + sec);
+}
+
+function showWarning(message) {
+	$(".warning").text(message);
 }
 
 $(document).ready(function() {
@@ -444,31 +479,66 @@ $(document).ready(function() {
 	refPhase1 = [];
 	refPhase2 = [];
 
+	// HIDE ALL TOPICS EXCEPT 10 
+	$("li.topic").hide();
+	$.each(_.sample($("li.topic").toArray(),10), function(i,el){ 
+		$(el).show(); 
+	});
+
+
 	// GENERAL EVENT HANDLER
 	//  	SELECTING TOPIC WHEN CLICKED
 	$("li.topic").click(function() {
 		var topicIdx = $(this).attr('tid');
 		showDocuments(parseInt(topicIdx));
 	});
-	showDocuments(1);
+	$(".document_show_all").click(function(){
+		$(this).hide();
+		$("ul.document_list").show();
+		$("li.topic.selected").attr("unlocked","true");
+	});
+	$(".document_hide_all").click(function() {
+		$("li.topic").attr("unlocked","false");
+		$("ul.document_list").hide();
+	});
+	showDocuments(parseInt($("li.topic:visible:first").attr('tid')));
 
+	$(".show_questionnaire").click(function() {
+		var q_html = "<p>Do you think the themes were easy to understand their meanings?</p>\
+			<p>Was it easy to identify low-quality themes?</p>\
+			<p>Was it easy to propose how to improve low-quality themes?</p>\
+			<p>Can you think of any extra feature or information helpful for improving themes?</p>\
+		";
+		showModal({
+			title:"Please answer the following questions",
+			content:q_html
+		});
+	});
 
 	// PHASE1 : OPEN_ENDED REFINEMENT 
 	function startPhase1() {
 		$(".bottom_UI > .clock").show();
-		$("button.next_stage").show();
+		// $("button.next_stage").show();
 		openingPhase1 = new Date().getTime();
 		updateClock(openingPhase1, 15, $(".bottom_UI").find(".clock"));
     	int_clock1 = setInterval(function() {updateClock(openingPhase1, 15, $(".bottom_UI").find(".clock"));  }, 1000); 
 	}
-	$(".open_template > textarea").click(function() {
-		if (typeof openingPhase1 == "undefined") startPhase1();
-	});
+	startPhase1();
+	// $(".open_template > textarea").click(function() {
+	// 	if (typeof openingPhase1 == "undefined") startPhase1();
+	// });
 	$("button.add_open_ref").click(function() {
+		var ref_desc = $(".open_template").find("textarea.full-col-text").val();
+		if(ref_desc=="") {
+			showWarning("Cannot create an empty description.");
+			return;
+		} else {  
+			showWarning("");
+		}
 		var new_open_ref = {
 			'rid': makeid(),
 			'ref_type':"open-refinement",
-			'description' : $(".open_template").find("textarea.full-col-text").val(),
+			'description' : ref_desc,
 			'timestamp': new Date().getTime()
 		};
 		new_open_ref['desc'] = new_open_ref['description'];

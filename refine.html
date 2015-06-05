@@ -19,10 +19,10 @@ We are researchers from the University of Maryland attempting to measure how peo
 
 <div class='main_container'>
     <div class='topic_container'>
-        <label class='inst'>50 Topics Discovered from Newspaper Articles</label>
+        <label class='inst'>10 Random Themes of News Articles</label>
         <ul class='topic_list'>
             {% for topic in topics %}
-            <li class='topic' tid='{{loop.index}}'>
+            <li class='topic' tid='{{loop.index}}' unlocked="false">
                 <div class='topic_rep'>
                     <label class='topic_index'>{{loop.index}}</label>    
                     <ul class='topic_terms'>
@@ -38,29 +38,36 @@ We are researchers from the University of Maryland attempting to measure how peo
         </ul>
     </div>
     <div class='document_container'>
-        <label class='inst'>News Articles Containing Topic <span class='tidx'></span></label>
+        <label class='inst'>News Articles of Theme <span class='tidx'></span></label>
+        <span class='document_hide_all'>lock all</span>
+        <button class='document_show_all'>See Articles</button>
         <ul class='document_list'>
             
         </ul>
     </div>
     <div class='refinement_container'>
-        <label class='inst'>Make Refinements To Fix </label>
-        
+        <label class='inst'>Introduction</label>
         
         <!--  Phase 1 without any template -->
         <div class='open_refinement_tool' phase='1'>
             <div class='instruction'>
-                50 topics were discovered from the news articles of January 2007. The topics and related articles together provide an overview of news during the period. However, you may notice a variety of flaws of them. Your task is to identify the flaws and to propose refinements to improve them.  
+                Someone was asked to come up with the main themes from the news in January of 2007 given a large set of news articles from that time period. What you are looking at is the first cut of the task. The set of themes should provide an overview of all of the articles, and each theme should be clear and understandable. Also, each theme should be associated with representative documents.
+            </div>
+            <label class='main'>How would you improve the themes?</label>
+            <div class='instruction'>
+                You may notice rooms for improvements (such as a confusing theme description or an article that does not make sense for a given theme). Can you help to identify them and to modify the themes appropriately?  
             </div>
             <label class='main'>Describe refinements with the following details</label>
             <ul class='questions'>
-                <li>Target (topics, words, or assignment of articles) of the refinement</li>
+                <li>What to refine</li>
                 <li>Why the target needs to be refined</li>
-                <li>How the target will be changed</li>
+                <li>How the target should be refined</li>
             </ul>
             <div class='open_template'>
                 <textarea type='text' class='full-col-text' placeholder=""></textarea>
-                <center><button class='add_open_ref'>Create this refinement</button></center>
+                <center><button class='add_open_ref'>Create this refinement</button>
+                <div class='warning'></div>
+                </center>
             </div>
         </div>
 
@@ -184,13 +191,28 @@ We are researchers from the University of Maryland attempting to measure how peo
             <!-- <button class='start_phase1'>Start Creating Refinements</button></center> -->
             <button class='next_stage hidden'>Finish and Proceed to Next Step</button>
             <button class='finish_phase2 hidden'>Finish and Proceed to Next Step</button>
+            <button class='show_questionnaire'>Questionnaire</button>
             <div class='clock'></div>
         </div>
-
-        
     </div>
     
-    <div class='overlay hidden'></div>
+
+
+
+
+
+
+
+
+
+    <div class='overlay hidden'>
+        <div class='modal_frame'>
+            <div class='modal_title'></div>
+            <div class='modal_content'></div>
+            <img class='modal_close' src='images/icon-x.png'>
+        </div> 
+    </div>
+
     <div class='questionnaire hidden' phase='1'>
         <div class='q_content'>
             <label class='q_main_inst'>Please answer the following questions.</label>
