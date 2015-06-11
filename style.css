@@ -167,6 +167,17 @@ body {
   font-family: sans-serif, helvetica, Arial;
   color: #54a6ad;
 }
+.document_container span.document_show_all {
+  position: absolute;
+  top: 15px;
+  right: 60px;
+  font-size: 12px;
+  margin-left: 20px;
+  font-weight: 300;
+  cursor: pointer;
+  font-family: sans-serif, helvetica, Arial;
+  color: #54a6ad;
+}
 .document_container span.document_hide_all {
   position: absolute;
   top: 15px;
@@ -178,7 +189,7 @@ body {
   font-family: sans-serif, helvetica, Arial;
   color: #54a6ad;
 }
-.document_container button.document_show_all {
+.document_container button.document_show {
   display: block;
   position: absolute;
   width: 150px;
@@ -193,13 +204,34 @@ body {
 .document_container ul.document_list {
   list-style-type: none;
   list-style: none;
-  margin: 15px;
+  margin: 10px;
   padding: 0px;
 }
-.document_container ul.document_list li {
-  margin-bottom: 5px;
+.document_container ul.document_list li.document_item:hover {
+  border: 1px solid #54a6ad;
 }
-.document_container ul.document_list li .idx {
+.document_container ul.document_list li.document_item {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+  cursor: zoom-in;
+  height: 45px;
+  overflow: hidden;
+}
+.document_container ul.document_list li.document_item .fadeCurtain {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 20px;
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 0%, #d6f6f9 100%);
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0) 0%, #d6f6f9 100%);
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0) 0%, #d6f6f9 100%);
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, #d6f6f9 100%);
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0) 0%, #d6f6f9 100%);
+}
+.document_container ul.document_list li.document_item .idx {
   display: inline-block;
   margin-right: 5px;
   color: #54a6ad;
@@ -207,7 +239,7 @@ body {
   font-size: 16px;
   font-family: sans-serif, helvetica, Arial;
 }
-.document_container ul.document_list li .prob {
+.document_container ul.document_list li.document_item .prob {
   font-weight: 400;
   font-family: sans-serif, helvetica, Arial;
   font-size: 16px;
@@ -215,21 +247,29 @@ body {
   font-style: italic;
   color: #54a6ad;
 }
-.document_container ul.document_list li .title {
+.document_container ul.document_list li.document_item .title {
   display: inline;
   font-weight: 500;
   font-size: 16px;
   font-family: sans-serif, helvetica, Arial;
 }
-.document_container ul.document_list li .fulltext {
+.document_container ul.document_list li.document_item .fulltext {
   font-size: 13px;
 }
-.document_container ul.document_list li span.showmore {
+.document_container ul.document_list li.document_item span.showmore {
+  display: block;
   font-family: sans-serif, helvetica, Arial;
-  margin-left: 10px;
+  margin-top: 5px;
   color: #54a6ad;
   fint-weight: 800;
   cursor: pointer;
+}
+.document_container ul.document_list li.selectedDoc {
+  cursor: zoom-out;
+  height: auto;
+}
+.document_container ul.document_list li.selectedDoc .fadeCurtain {
+  display: none;
 }
 .refinement_container {
   display: none;

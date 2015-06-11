@@ -19,16 +19,16 @@ We are researchers from the University of Maryland attempting to measure how peo
 
 <div class='main_container'>
     <div class='topic_container'>
-        <label class='inst'>10 Random Themes of News Articles</label>
+        <label class='inst'>20 Themes From News Articles</label>
         <ul class='topic_list'>
-            {% for topic in topics %}
+            {% for i, topic in topics.iteritems() %}
             <li class='topic' tid='{{loop.index}}' unlocked="false">
                 <div class='topic_rep'>
                     <label class='topic_index'>{{loop.index}}</label>    
                     <ul class='topic_terms'>
-                    {% for term in topic.terms %}
-                        {% set size = 12+ (term.second * 200) %}
-                        <li><div class='term' style="font-size:{{size}}px">{{term.first}}</div>
+                    {% for term in topic.words %}
+                        {% set size = 12+ (term.freq/300) %}
+                        <li><div class='term' style="font-size:{{size}}px">{{term.word}}</div>
                         </li>
                     {% endfor %}
                     </ul>
@@ -40,7 +40,8 @@ We are researchers from the University of Maryland attempting to measure how peo
     <div class='document_container'>
         <label class='inst'>News Articles of Theme <span class='tidx'></span></label>
         <span class='document_hide_all'>lock all</span>
-        <button class='document_show_all'>See Articles</button>
+        <span class='document_show_all'>unlock / </span>
+        <button class='document_show'>See Articles</button>
         <ul class='document_list'>
             
         </ul>

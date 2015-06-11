@@ -8,30 +8,46 @@ function showDocuments(topicIdx) {
 		$("li.topic[tid='"+topicIdx+"']").addClass("selected");
 		if($("li.topic.selected").attr("unlocked")=="true") {
 			$("ul.document_list").empty().show();
-			$(".document_show_all").hide();
+			$(".document_show").hide();
 		} else {
 			$("ul.document_list").empty().hide();
-			$(".document_show_all").show();
+			$(".document_show").show();
 		}
 		// update ul.document_list with documentData
 		docs = JSON.parse(documentData);
 		_.each(docs, function(doc,i) {
-			var lastSpaceIdx = doc.fulltext.substring(0,230).search(/ [^ ]*$/);
-			var trimmedFulltext = doc.fulltext.substring(0,lastSpaceIdx);
-			//var prob = (i==0) ? "("+Math.floor(doc.prob*100)+"% matching)" : "("+Math.floor(doc.prob*100)+"%)";
-			var el = $("<li>\
-				<div class='idx'>"+topicIdx+ALPHABET[i]+"</div>\
-				<div class='title'>"+doc.title+"</div>\
-				<div class='fulltext'>"+trimmedFulltext+"...</div>\
+			var title = doc['content']['title'];
+			var fulltext = doc['content']['text'];
+			var lastSpaceIdx = fulltext.substring(0,1500).search(/ [^ ]*$/);
+			var trimmedFulltext = fulltext.substring(0,lastSpaceIdx);
+			// var restText = fulltext.substring(lastSpaceIdx, fulltext.length);
+			// var prob = (i==0) ? "("+Math.floor(doc.prob*100)+"% matching)" : "("+Math.floor(doc.prob*100)+"%)";
+			var el = $("<li class='document_item'>\
+				<!--<div class='idx'>"+topicIdx+ALPHABET[i]+"</div>-->\
+				<div class='title'>"+title+"</div>\
+				<div class='fulltext'>"+trimmedFulltext+"</div>\
+				<div class='fadeCurtain'></div>\
 			</li>");
-			var showmore_el = $("<span class='showmore'>See More</span>")
+			$(el).click(function(event) {
+				if ($(event.target).hasClass("showmore")) {
+					return false;
+				}
+				$(this).toggleClass("selectedDoc");
+				// $(this).find(".restText").toggleClass('hidden');
+				// $(this).find(".restText").click(function() { $(this).hide(); });
+
+			});
+			if(fulltext.length>1500) {
+				var showmore_el = $("<span class='showmore'>Full article</span>")
 				.click($.proxy(function(event) {
 					//console.log(this.fulltext);
 					showModal(this);
-				},{title:doc.title, content:doc.fulltext}));
-			$(el).find(".fulltext").append(showmore_el);
+				},{title:title, content:fulltext}));
+				$(el).find(".fulltext").append(showmore_el);	
+			}
 			$(el).appendTo("ul.document_list");
 		});
+		$(".document_container").scrollTop(0);
 		
 	});
 }
@@ -480,10 +496,10 @@ $(document).ready(function() {
 	refPhase2 = [];
 
 	// HIDE ALL TOPICS EXCEPT 10 
-	$("li.topic").hide();
-	$.each(_.sample($("li.topic").toArray(),10), function(i,el){ 
-		$(el).show(); 
-	});
+	// $("li.topic").hide();
+	// $.each(_.sample($("li.topic").toArray(),10), function(i,el){ 
+	// 	$(el).show(); 
+	// });
 
 
 	// GENERAL EVENT HANDLER
@@ -492,7 +508,7 @@ $(document).ready(function() {
 		var topicIdx = $(this).attr('tid');
 		showDocuments(parseInt(topicIdx));
 	});
-	$(".document_show_all").click(function(){
+	$(".document_show").click(function(){
 		$(this).hide();
 		$("ul.document_list").show();
 		$("li.topic.selected").attr("unlocked","true");
@@ -500,6 +516,11 @@ $(document).ready(function() {
 	$(".document_hide_all").click(function() {
 		$("li.topic").attr("unlocked","false");
 		$("ul.document_list").hide();
+	});
+	$(".document_show_all").click(function() {
+		$("li.topic").attr("unlocked","true");
+		$("ul.document_list").show();
+		$(".document_show").hide();
 	});
 	showDocuments(parseInt($("li.topic:visible:first").attr('tid')));
 
