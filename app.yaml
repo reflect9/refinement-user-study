@@ -33,6 +33,10 @@ handlers:
   static_files: refine.js
   upload: refine.js
 
+- url: /turkrefine.js
+  static_files: turkrefine.js
+  upload: turkrefine.js
+
 - url: /evaluation.js
   static_files: evaluation.js
   upload: evaluation.js

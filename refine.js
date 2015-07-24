@@ -3,7 +3,8 @@ function showDocuments(topicIdx) {
 	$.get("relatedDocuments", {
 		topicIdx: topicIdx
 	}, function(documentData) {
-		$(".document_container").find(".tidx").text(topicIdx);
+		var kid = $("li.topic[tid='"+topicIdx+"']").attr("kid");  
+		$(".document_container").find(".tidx").text(kid);
 		$("li.topic").removeClass("selected");
 		$("li.topic[tid='"+topicIdx+"']").addClass("selected");
 		if($("li.topic.selected").attr("unlocked")=="true") {
@@ -14,41 +15,106 @@ function showDocuments(topicIdx) {
 			$(".document_show").show();
 		}
 		// update ul.document_list with documentData
-		docs = JSON.parse(documentData);
+		docs_all = JSON.parse(documentData);
+		docs = docs_all.slice(0,30);
+		// previous_weight=100; 
+		current_weight_base = 100;
 		_.each(docs, function(doc,i) {
 			var title = doc['content']['title'];
 			var fulltext = doc['content']['text'];
+			var other_topics = doc['other_topics'];
 			var lastSpaceIdx = fulltext.substring(0,1500).search(/ [^ ]*$/);
 			var trimmedFulltext = fulltext.substring(0,lastSpaceIdx);
+			var weight = Math.round(doc['weight']*100);
 			// var restText = fulltext.substring(lastSpaceIdx, fulltext.length);
 			// var prob = (i==0) ? "("+Math.floor(doc.prob*100)+"% matching)" : "("+Math.floor(doc.prob*100)+"%)";
-			var el = $("<li class='document_item'>\
-				<!--<div class='idx'>"+topicIdx+ALPHABET[i]+"</div>-->\
+			while(weight<=current_weight_base) {
+				current_weight_base-=10;
+				$("<div class='separation'>"+current_weight_base+"-"+(current_weight_base+10)+
+					"% association to the theme</div>").appendTo("ul.document_list");
+			}
+
+			// if (weight<90) $("<div class='separation'>100-90% association</div>").appendTo("ul.document_list");
+			// if (previous_weight>=80 && weight<80) $("<div class='separation'>90-80% association</div>").appendTo("ul.document_list");
+			// if (previous_weight>=70 && weight<70) $("<div class='separation'>80-70% association</div>").appendTo("ul.document_list");
+			// if (previous_weight>=60 && weight<60) $("<div class='separation'>70-60% association</div>").appendTo("ul.document_list");
+			// if (previous_weight>=50 && weight<50) $("<div class='separation'>60-% association</div>").appendTo("ul.document_list");
+			// previous_weight = weight;
+			var el = $("<li class='document_item' docID='"+(topicIdx+ALPHABET[i])+"'>\
 				<div class='title'>"+title+"</div>\
+				<div class='keyPhrase'></div>\
 				<div class='fulltext'>"+trimmedFulltext+"</div>\
+				<div class='relevancyScore'>"+weight+"% associated to this theme.</div>\
+				<div class='otherTopics'></div>\
 				<div class='fadeCurtain'></div>\
 			</li>");
+			// RENDERING OTHER ASSOCIATED TOPICS
+			var association_values_of_major_themes = weight;
+			var topRelatedTopics = _.first(
+				_.filter(
+					_.sortBy(_.pairs(other_topics), function(tuple) {
+						return tuple[1]; 	// SORT ASSOCIATED TOPICS BY THEIR PROBABILITIES
+					}), function(tuple) {
+					return tuple[1]>0.1 && tuple[0]!=topicIdx-1;	// EXCLUDE TOPICS < 0.1 OR CURRENT TOPIC
+				}),3); // GET THE TOP 3 TOPICS
+			_.each(topRelatedTopics, function(tuple) {
+				var tid = parseInt(tuple[0])+1; // original topic id
+				var kid = $("li.topic[tid='"+tid+"']").attr("kid");  
+				var topic_words = $("li.topic[tid='"+tid+"']").find("ul.topic_terms").text().replace(/\s+/ig," ").split(" ").slice(0,10).join(" ");
+				var relatedTopicEl = $("<div class='relatedTopic'> "+Math.round(tuple[1]*100)+"% associated to Theme "+kid+" ("+topic_words+" ... )</div>");
+				$(el).find(".otherTopics").append(relatedTopicEl);	
+				association_values_of_major_themes = association_values_of_major_themes + Math.round(tuple[1]*100);
+			});
+			// ADD THE REMAINING ASSOCIATION VALUE TO OTHER THEMES
+			$(el).find(".otherTopics").append("<div class='relatedTopic'>"+(100-association_values_of_major_themes)+"% to other themes.</div>");
+			// EXPAND WHEN CLICKED
 			$(el).click(function(event) {
 				if ($(event.target).hasClass("showmore")) {
 					return false;
 				}
 				$(this).toggleClass("selectedDoc");
+				events.push({type:'expand_document',topicIdx:$("li.topic.selected").attr("tid"),kID:$("li.topic.selected").attr("kid"), docId:$(this).attr('docID'), timestamp:new Date().getTime()});
 				// $(this).find(".restText").toggleClass('hidden');
 				// $(this).find(".restText").click(function() { $(this).hide(); });
-
 			});
+			// ADD FULL ARTICLE BUTTON IF THE DOCUMENT IS TOO LONG
 			if(fulltext.length>1500) {
-				var showmore_el = $("<span class='showmore'>Full article</span>")
+				var showmore_el = $("<span class='showmore'>... FULL ARTICLE</span>")
 				.click($.proxy(function(event) {
 					//console.log(this.fulltext);
+					var docID = $(event.target).parents("li.document_item").attr("docID");
+					events.push({type:'show_full_article', topicIdx:$("li.topic.selected").attr("tid"),kID:$("li.topic.selected").attr("kid"), docId:docID, timestamp:new Date().getTime()});
 					showModal(this);
 				},{title:title, content:fulltext}));
-				$(el).find(".fulltext").append(showmore_el);	
+				$(el).find(".fulltext").after(showmore_el);	
 			}
 			$(el).appendTo("ul.document_list");
 		});
 		$(".document_container").scrollTop(0);
 		
+		// HIGHLIGHT WORDS IF FOCUSED WORDS ARE NOT EMPTY
+		_.each(focusedWords, function(w) {
+			$("li.document_item").each(function(i,el) {
+				// HIGHLIGHTING TITLE
+				// TBD
+				// HIGHLIGHTING FULLTEXT
+				var fulltext = $(el).find(".fulltext").text();
+				var indices = findAllIndicesOfSubstring(fulltext, w);
+				var w_reg = new RegExp(w,'ig');
+				if(indices.length>0) {
+					var ind = indices[0];
+					var phraseAroundWord = fulltext.substring(Math.max(0,ind-40), Math.min(fulltext.length,ind+40))
+						.replace(/^[a-zA-Z0-9]+\s/i,"").replace(/\s[a-zA-Z0-9]+$/i,""); 
+					phraseAroundWord= phraseAroundWord.replace(w_reg, "<span class='keyword'>"+w+"</span>");
+					$(el).find(".keyPhrase").html("... "+phraseAroundWord+ " ...");
+					$(el).addClass("showingKeyPhrase");
+					// ALSO HIGHLIGHT THE WORD IN THE FULLTEXT
+					text_with_highlight = fulltext.replace(w_reg, "<span class='keyword'>"+w+"</span>"); 
+					$(el).find(".fulltext").html(text_with_highlight);
+				} 
+			});
+		});
+
 	});
 }
 
@@ -104,6 +170,25 @@ function showModal(config) {
 // 		showPreview(ref);
 // 	});
 // }
+
+function submitLog() {
+	var user_id = $("input.user_id").val();
+	if(user_id=="") {
+		alert("Please provide adequate user name.");
+		return;
+	}
+	var data = {
+		'user_id':user_id,
+		'events':events
+	}
+	$.post("submitLog",{
+		data:JSON.stringify(data)
+	},function(response){
+		console.log(response);
+		alert(response);
+	});
+}
+
 
 function submitReport() {
 	var result = {
@@ -490,10 +575,68 @@ function showWarning(message) {
 	$(".warning").text(message);
 }
 
+function findAllIndicesOfSubstring(long, short) {
+	var reg = new RegExp("[^a-zA-Z]"+short+"[^a-zA-Z]", 'ig');
+	var match, matches = [];
+	while ((match = reg.exec(long)) != null) {
+	  matches.push(match.index);
+	}
+	return matches;
+}
+
+
+function focusWord(word, onoff) {
+	if(onoff==true) focusedWords = [word];
+	else focusedWords = [];
+	// UPDATE TOPIC WORDS
+	$("div.term").removeClass("highlighted");
+	$("div.term").filter(function() { return focusedWords.indexOf($(this).text())!=-1; })
+		.addClass("highlighted");
+	// SHOW WORDS IN THE DOCUMENTS
+	if(focusedWords.length==0) {
+		$(".keyPhrase").empty();
+		$("li.document_item").removeClass("showingKeyPhrase");
+	}
+	// REMOVE ALL HIGHLIGHTS IN DOCUMENTS
+	$(".keyPhrase").empty();
+	$(".fulltext").each(function(i,el) {
+		$(el).html($(el).text());
+	});
+	$("li.document_item").removeClass("showingKeyPhrase");
+	// ADD NEW HIGHLIGHTS
+	_.each(focusedWords, function(w) {
+		$("li.document_item").each(function(i,el) {
+			var w_reg_raw = new RegExp("("+w+")", 'ig');
+			var w_reg_with_space_around = new RegExp("([^a-zA-Z]|^)("+w+")[^a-zA-Z]", 'ig');
+			// HIGHLIGHTING TITLE
+			var title = $(el).find(".title").text();
+			title_with_highlight = title.replace(w_reg_with_space_around, " <span class='keyword'>$2</span> "); 
+			$(el).find(".title").html(title_with_highlight);
+			// HIGHLIGHTING FULLTEXT
+			var fulltext = $(el).find(".fulltext").text();
+			var indices = findAllIndicesOfSubstring(fulltext, w);
+			
+			if(indices.length>0) {
+				var ind = indices[0];
+				var phraseAroundWord = fulltext.substring(Math.max(0,ind-40), Math.min(fulltext.length,ind+40))
+					.replace(/^[a-zA-Z0-9]+\s/i,"").replace(/\s[a-zA-Z0-9]+$/i,""); 
+				phraseAroundWord= phraseAroundWord.replace(w_reg_with_space_around, " <span class='keyword'>$2</span> ");
+				$(el).find(".keyPhrase").html("... "+phraseAroundWord+ " ...");
+				$(el).addClass("showingKeyPhrase");
+				// ALSO HIGHLIGHT THE WORD IN THE FULLTEXT
+				text_with_highlight = fulltext.replace(w_reg_with_space_around, " <span class='keyword'>$2</span> "); 
+				$(el).find(".fulltext").html(text_with_highlight);
+			} 
+		});
+	});
+}
+
 $(document).ready(function() {
 	ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+	focusedWords = [];
 	refPhase1 = [];
 	refPhase2 = [];
+	events = [];
 
 	// HIDE ALL TOPICS EXCEPT 10 
 	// $("li.topic").hide();
@@ -505,36 +648,53 @@ $(document).ready(function() {
 	// GENERAL EVENT HANDLER
 	//  	SELECTING TOPIC WHEN CLICKED
 	$("li.topic").click(function() {
+		if($(event.target).parents("li.topic").hasClass("selected")==true) return; 
 		var topicIdx = $(this).attr('tid');
+		var kID = $(this).attr('kid');
 		showDocuments(parseInt(topicIdx));
+		events.push({type:'click_topic',topicIdx:topicIdx,kID:kID,timestamp:new Date().getTime()});
 	});
 	$(".document_show").click(function(){
 		$(this).hide();
 		$("ul.document_list").show();
 		$("li.topic.selected").attr("unlocked","true");
+		events.push({type:'show_document',topicIdx:$("li.topic.selected").attr("tid"),kID:$("li.topic.selected").attr("kid"),timestamp:new Date().getTime()});
 	});
 	$(".document_hide_all").click(function() {
 		$("li.topic").attr("unlocked","false");
 		$("ul.document_list").hide();
+		events.push({type:'show_all_documents',timestamp:new Date().getTime()});
 	});
 	$(".document_show_all").click(function() {
 		$("li.topic").attr("unlocked","true");
 		$("ul.document_list").show();
 		$(".document_show").hide();
+		events.push({type:'hide_all_documents',timestamp:new Date().getTime()});
 	});
 	showDocuments(parseInt($("li.topic:visible:first").attr('tid')));
 
-	$(".show_questionnaire").click(function() {
-		var q_html = "<p>Do you think the themes were easy to understand their meanings?</p>\
-			<p>Was it easy to identify low-quality themes?</p>\
-			<p>Was it easy to propose how to improve low-quality themes?</p>\
-			<p>Can you think of any extra feature or information helpful for improving themes?</p>\
-		";
-		showModal({
-			title:"Please answer the following questions",
-			content:q_html
-		});
+	// WORD CLICK EVENT HANDLER
+	$("ul.topic_list").on("mouseover", "div.term" ,function(event) {
+		// WORKS FOR SELECTION TOPIC ONLY
+		// if($(event.target).parents("li.topic").hasClass("selected")==false) return; 
+		var tid = $(event.target).parents("li.topic").attr('tid');
+		focusWord($(event.target).text(),true);
+		//events.push({type:'focus_word',topicIdx:tid,kID:$("li.topic.selected").attr("kid"), word:$(event.target).text(), timestamp:new Date().getTime()});
+		event.stopPropagation();
 	});
+	$("ul.topic_list").on("mouseout", "div.term" ,function(event) {
+		// WORKS FOR SELECTION TOPIC ONLY
+		// if($(event.target).parents("li.topic").hasClass("selected")==false) return; 
+		// var tid = $(event.target).parents("li.topic").attr('tid');
+		focusWord($(event.target).text(),false);
+		//events.push({type:'focus_word',topicIdx:tid,kID:$("li.topic.selected").attr("kid"), word:$(event.target).text(), timestamp:new Date().getTime()});
+		event.stopPropagation();
+	});
+	// LOG SUBMIT EVENT
+	$("button.submit_log").click(function() {
+		submitLog();
+	});
+
 
 	// PHASE1 : OPEN_ENDED REFINEMENT 
 	function startPhase1() {
