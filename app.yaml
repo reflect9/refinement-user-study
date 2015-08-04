@@ -25,6 +25,10 @@ handlers:
   static_files: style.css
   upload: style.css
 
+- url: /turkrefine.css
+  static_files: turkrefine.css
+  upload: turkrefine.css
+
 - url: /task.js
   static_files: task.js
   upload: task.js

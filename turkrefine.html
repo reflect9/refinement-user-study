@@ -2,304 +2,272 @@
 <html>
 <head>
     <title>Survey - Refine Topic Model</title>
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="turkrefine.css" rel="stylesheet" type="text/css"/>
     <link href="lib/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     <script src="lib/jquery-2.0.3.min.js" type="text/javascript"></script>
     <script src="lib/jquery-ui.min.js" type="text/javascript"></script>
     <script src="lib/underscore-min.js"></script>
     <script src="turkrefine.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300,300italic,900,900italic,700italic,700,500italic,100,100italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<div class='container'>
-    <div class='introduction'>
-        We are researchers from the University of Maryland attempting to measure how people understand topics discovered from newspaper articles, and suggest improvements. Participants of the study are required to be at least 18 years old. If you have any questions about this study, please contact Leah Findlater (http://terpconnect.umd.edu/~leahkf/). <br><br>
-        Press the START button if you voluntarily agree to participate.
-        <center><button class='start_button simple'>START</button></center>
+<div class='introduction'>
+    <div class='titl'>Understanding and Improving News Topics</div>
+    <div class='txt'>
+        We are researchers from the University of Maryland attempting to measure how people understand themes discovered from newspaper articles, and suggest improvements. Participants of the study are required to be at least 18 years old. If you have any questions about this study, please contact Leah Findlater (http://terpconnect.umd.edu/~leahkf/).
+        Press the button below if you voluntarily agree to participate.
+    <center><a class='participate_button'>..Loading data..</a></center>
+    <button class='dummy_shortcut'>shortcut</button>
     </div>
-    <div class="turk_tasks hidden"> 
-        <ul class="turk_tasks_ul">
-            {% for i, topic in topics %}
-            <li class='turk_task hidden' tid='{{(i|int)+1}}' kid='{{loop.index}}' unlocked="false">
-                <div class='topic_rep'>
-                    <ul class='topic_terms'>
-                    {% for term in topic.words %}
-                        {% set size = 14+ (term.freq/350) %}
-                        <li><div class='term' style="font-size:{{size}}px">{{term.word}}</div>
-                        </li>
-                    {% endfor %}
-                    </ul>
+</div>
+
+<div class='main_container hidden'>
+    <!-- TOP BAR -->
+    <div class='topbar'>
+        <label class='top_title'>Introduction</label>
+    </div>
+    <!-- LEFT SIDE OF THE UI --> 
+    <div class='information_container'>
+        <!-- TUTORIAL INSTRUCTION -->
+        <div class="page" pagetype="tutorial">
+            <div class="card">
+                <div class='section' secnum=1>
+                    <div class="request">
+                        Imagine that you have thousands of New York Times articles published in January 2007, and have to summarize what the articles are about into multiple themes. While the task sounds tedious and time consuming, computers can help. <br><br>This screen shows one of the themes that have been automatically identified by the computer, and the articles that go with that theme. 
+                    </div>
                 </div>
-                <div class="doc_rep">
-                    <ul class='doc_list_ul'>
-                    {% for doc in topic.documents %}
-                        <li class='doc_item'>
-                            
-                            <div class='doc_title'>{{doc.content.title}}</div>
-                            <div class='doc_weight'>{{(doc.weight*100)|round|int}}%</div>
-                            <div class='doc_text'>{{doc.content.text}}</div>
-                            <div class='fadeCurtain'></div>
-                        </li>
-                    {% endfor %}
-                    </ul>
+                <div class='section' secnum=2 highlight="div.words_section">
+                    <div class="request">
+                        <b>1. Read over the words in the theme.</b> The computer has grouped words that appear together frequently in news articles. This is a "theme". The sizes and order of words represent how frequently they appear in the associated articles. 
+                        <div class="mini_task">
+                            What is the most frequently appeared word in the theme?  
+                            <textarea data-autoresize class='mini_task'></textarea>
+                        </div>
+                    </div>
                 </div>
-                <div style="clear:both;"></div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>    
-
-
-    <div class='refinement_container hidden'>
-        <div class="tutorial">
-            Imagine that you have thousands of news articles, and want to summarize what the articles are about. It sounds very time consuming, doesn't it?  But computer can make it easier.
-            <br><br>
-            Look at the <span class='clue' id='clue_topic_words'>words in the left box</span>. Computer grouped them as a theme because they frequently appear together in <span class='clue' id='clue_associated_documents'>associated documents</span>, which are listed below. Font size and order of words represent frequency.  
-            <br><br>
-            Let's explore the theme and articles. Hover mouse cursor over words to see in which context they were used. Click a few articles to read full text.       
-
-            <br><br>
-            Idealy, both theme and documents are consistent and correlated with each other. But if you look closer, you may notice problems. Can you identify problems and suggest how to improve them?      
+                <div class='section' secnum=3 highlight="div.documents_section">
+                    <div class="request">
+                        <b>2. Explore the theme and articles.</b> Click a few articles to see full text. Hover the mouse cursor over a word to see some context for where it appears in the articles.       
+                    </div>
+                    <div class="mini_task">
+                         Find the articles that contain the first word. What is the first article of them?      
+                        <textarea data-autoresize class='mini_task' placeholder="Copy and paste the title of the article."></textarea>
+                    </div>
+                </div>
+                <div class='section' secnum=4>
+                    <div class="request">
+                        <!--Idealy, both theme and articles are consistent and correlated with each other. But if you look closer, you may notice problems. Your task is to identify problems and to suggest how to improve three themes in this HIT.  
+                        <br><br>-->
+                        Idealy the theme and articles should be clear and closely related to each other. But, the computer isn't perfect and you may notice problems. Your task is to identify these problems and suggest how to fix them.
+                        <br><br>
+                        Through this HIT, you will see three more themes. For each theme, you will be asked to answer questions about how you understand and improve them. Completing the entire HIT will take around 15 minutes. Please read questions carefully and answer every question.  
+                    </div>
+                    <div class="mini_task">
+                        Participants who were best at improving themes will receive $10 gift cards. Please provide your email address. 
+                        <input type='text' class="answer" placeholder="Your e-mail address">
+                    </div>
+                </div>
+                <a class='next_section'>next</a>
+                <a class='next_theme'>
+                    Start <img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
             <!--Someone was asked to come up with the main themes from the news in January of 2007 given a large set of news articles from that time period. What you are looking at is the first cut of the task. The set of themes should provide an overview of all of the articles, and each theme should be clear and understandable. Also, each theme should be associated with representative documents.  You may notice rooms for improvements (such as a confusing theme description or an article that does not make sense for a given theme). Can you help to identify them and to modify the themes appropriately? Try creating refinements, using the types of refinements shown below. You can create the same refinements again.        -->
-            <center><button class='lets_begin simple'>LET'S BEGIN</button></center>
         </div>
 
-        <div class='refining_tool hidden'>
-            <label class='task_num'>1 / 5 </label>
-            <div class='refining_stage' stage="1">
-                <div class='ref_question'>What do you think the theme is about?</div>
-                <textarea class='ref_answer'></textarea>
-                <div class='ref_question'>Do you find any problem for understanding the theme?</div>
-                <div class='ref_answer'>
-                    <input type="checkbox"><label>The theme is too broad</label><br>
-                    <input type="checkbox"><label>The words are inconsistent</label><br> 
-                    <input type="checkbox"><label>Cannot imagine news articles for the theme</label>  <br>
-                    <input type="text" placeholder="Other problems">
+        <!-- TASK INSTURCTION PAGE 1 -->
+        <div class="page" pagetype="theme-questions">
+            <div class='card'>
+                <label class='page_title'>Understanding the theme</label>
+                <div class='section' secnum=1>
+                    <div class='request'><b>Read every word of the theme shown on the right.</b> What do you think the theme is about? Describe what kind of news articles you expect to be associated with this theme.</div>
+                    <textarea data-autoresize class='answer required' role='theme_meaning'></textarea>
                 </div>
-
-                <center><button class='next simple' targetstage="2">Next question</button></center>
-            </div>
-            <div class='refining_stage hidden' stage="2">
-                <div class='ref_question'>Read through the articles. What do you think the articles are about?</div>
-                <textarea class='ref_answer'></textarea>
-                <div class='ref_question'>Do you find any problem of the articles?</div>
-                <div class='ref_answer'>
-                    <input type="checkbox"><label>The articles are inconsistent.</label><br>
-                    <input type="checkbox"><label>The articles do not match with the theme.</label><br> 
-                    <input type="checkbox"><label>The articles do not make sense.</label> <br>
-                    <input type="text" placeholder="Other problems">
-                </div>
-                <center><button class='next simple' targetstage="3">Next question</button></center>
-            </div>
-            <div class='refining_stage hidden' stage="3">
-                <div class='ref_question'>Are the theme and articles perfectly correlated? If not, please explain below why.</div>
-                <textarea class='ref_answer'></textarea>
-                <div class='ref_question'>Let's improve the theme. You can add, remove, and change word order below.</div>
-                <!--
-                <div class='ref_answer'> 
-                    <ul class='ref_theme_editor'></ul>
-                    <div class='ref_theme_editing_ui'>
-                        Add a new word <input type='text' class="ref_theme_add_word" placeholder="Type word and press Enter">
-                        <br>
-                        <button class="ref_theme_remove_words forSelection" disabled>Remove</button>
-                        <button class="ref_theme_merge_words forSelection" disabled>Merge</button>
-                        <button class="ref_theme_split_topic forSelection" disabled>Separate</button>
-                        selected words
-                        <br>
-                        <button class="ref_theme_reset">Reset theme</button>
+                <div class='section' secnum=2>
+                    <div class='request'>How clear or unclear is the theme?</div>
+                    <div class='likert_chart'>
+                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='5'><br>very clear</div>
+                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='4'><br>clear</div>
+                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='3' checked><br>neutral</div>
+                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='2'><br>unclear</div>
+                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='1'><br>very unclear</div>
                     </div>
+                    <div class='request'>Do you have any problems understanding the theme? If so, what?</div>
+                    <textarea data-autoresize class='answer' role='theme_problem' placeholder='Describe problems you experienced.'></textarea>
                 </div>
-                -->
-
-
-                <center><button class='next simple' targetstage="end">Finish</button></center>
+                <div class='section' secnum=3>
+                    <div class='request'>The theme may contain words that are <b>hard to understand</b> or <b>irrelevant with others</b>. If you found any, click those words below.</div>
+                    <ul class='topic_words' role='unclear_words'></ul>
+                </div>
+                <!--<div class='section' secnum=4>
+                    <div class='request'>Click words that are <b>inconsistent with the rest words</b>.</div>
+                    <ul class='topic_words' role='inconsistent_words'></ul>
+                </div>-->
+                <a class='next_section'>next</a>
+                <a class='next_page' target='document-questions'>
+                    Next Questions<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
             </div>
         </div>
 
-
-
-
-        <div class='refinement_tool hidden' phase='2'>
-            <label>Choose one refinement type and fill in the details</label>
-            <div class='template' type='split-topic'>
-                <div class='ref_title'>Split Topic</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Split words in Topic <input type='text' class='topicNum'/> into two groups</label>
-                    <div class='details'>
-                        <div class='smallInst'>Specify a topic, and click words to swtich between two groups</div>
-                        <ul class='wordBucket words1' bucketNum='1'></ul>
-                        <ul class='wordBucket words2' bucketNum='2'></ul>
-                        <div style='clear:both;'></div>
-                        
-                    </div>
-                    <center>
-                        <button class='add'>Create this refinement</button>
-                        <button class='reset'>Reset</button>
-                    </center>
+        <!-- TASK INSTURCTION PAGE 2 -->
+        <div class="page" pagetype="document-questions">
+            <div class='card'>
+                <label class='page_title'>Understanding articles</label>
+                <div class='section' secnum=1>
+                    <div class='request'>Skim through the articles associated with the theme. What do you think the articles are about regardless of the theme?<br><b>Describe the central topic of the articles.</b></div>
+                    <textarea data-autoresize class='answer required' role="document_meaning" ></textarea>
                 </div>
-            </div>  
-            <div class='template' type='merge-topic'>
-                <div class='ref_title'>Merge Topics</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Merge Topic <input type='text' class='topicNum topic1'/> and <input type='text' class='topicNum topic2'/></label>
-                    <center><button class='add'>Create this refinement</button>
-                    <button class='reset'>Reset</button>
-                    </center>
+                <div class='section question_about_inconsistent_articles' secnum=2>
+                    <div class='request'>Some articles may not fit with the others. If you find any that are not related to the central topic you identified above, <b>mark them</b> by clicking <img class='x-icon' src='images/x.png' style='width:24px; opacity:0.8; vertical-align:bottom;'> next to them.</div>
+                    <input type="text" class='answer_inconsistent_articles hidden' role='inconsistent_documents'>
                 </div>
-            </div> 
-            <div class='template' type='add-words-to-topic'>
-                <div class='ref_title'>Add Words to Topic</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Add the following words to topic <input type='text' class='topicNum'/> </label>
-                    <div class='details'>
-                        <textarea type='text' class='full-col-text' placeholder="Type words. (separated by space)"></textarea>
-                    </div>
-                    <center><button class='add'>Create this refinement</button>
-                    <button class='reset'>Reset</button>
-                    </center>
-                </div>
-            </div> 
-            <div class='template' type='remove-words-from-topic'>
-                <div class='ref_title'>Remove Words from Topic</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Remove words from topic <input type='text' class='topicNum'/> </label>
-                    <div class='details'>
-                        <div class='smallInst'>Specify a topic and click words to be removed</div>
-                        <ul class='wordBucket'></ul>
-                    </div>
-                    <center><button class='add'>Create this refinement</button>
-                    <button class='reset'>Reset</button>
-                    </center>
-                </div>
+                <a class='next_section'>next</a>
+                <a class='next_page' target='correlation-questions'>
+                    Next Questions<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
             </div>
-            <div class='template' type='overarching-word'>
-                <div class='ref_title'>Merge Words</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Make an overarching word <input type='text' class='singleWord'/> that encompasses the following words.</label>
-                    <div class='details'>
-                        <textarea type='text' class='full-col-text' placeholder="Type words to be merged. (separated by space)"></textarea>
-                    </div>
-                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
-                </div>
-            </div>  
-            <div class='template' type='add-stop-words'>
-                <div class='ref_title'>Ignore Words</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Ignore the following words in every topic</label>
-                    <div class='details'>
-                        <textarea type='text' class='full-col-text' placeholder="Type words to be ignored. (separated by space)"></textarea>
-                    </div>
-                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
-                </div>
-            </div> 
-            <div class='template' type='move-documents'>
-                <div class='ref_title'>Move Documents to Topic</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Reassign the following documents to topic <input type='text' class='topicNum'/></label>
-                    <div class='details'>
-                        <div class='smallInst'>Type document codes to be moved. (separated by a space) </div>
-                        <textarea type='text' class='full-col-text' placeholder="E.g. 1a 1c 5e"></textarea>
-                    </div>
-                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
-                </div>
-            </div> 
-            <div class='template' type='remove-documents'>
-                <div class='ref_title'>Remove Documents from Topic</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Remove the following documents from topic <input type='text' class='topicNum'/></label>
-                    <div class='details'>
-                        <div class='smallInst'>Type document codes to be removed from the topic. (separated by a space) </div>
-                        <textarea type='text' class='full-col-text' placeholder="E.g. 1a 1c"></textarea>
-                    </div>
-                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
-                </div>
-            </div> 
-            <div class='template' type='custom-refinement'>
-                <div class='ref_title'>Describe your own refinement</div>
-                <div class='ref_instruction hidden'> 
-                    <label>Describe your own refinement</label>
-                    <div class='details'>
-                        <textarea type='text' class='full-col-text' placeholder=""></textarea>
-                    </div>
-                    <center><button class='add'>Create this refinement</button><button class='reset'>Reset</button></center>
-                </div>
-            </div> 
         </div>
 
-        <ul class='open_ref_list'></ul>
-        <ul class='ref_list hidden'>
-            <!-- <label class='inst inst_ref_list'>List of created refinements</label> -->
-        </ul>
-        
-        <!--
-        <div class='bottom_UI'>
-            <button class='next_stage hidden'>Finish and Proceed to Next Step</button>
-            <button class='finish_phase2 hidden'>Finish and Proceed to Next Step</button>
-            <button class='show_questionnaire'>Questionnaire</button>
-            <div class='clock'></div>
+        <!-- TASK INSTURCTION PAGE 3 -->
+        <div class="page" pagetype="correlation-questions">
+            <div class='card'>
+                <label class='page_title'>Relating the theme and articles</label>
+                <div class='section evaluate_theme_and_articles' secnum=1> <!-- HOW WELL CORRELATED THEY ARE -->
+                    <div class='request'>You described the theme as <span class='quote theme_meaning'></span> and the articles as <span class='quote document_meaning'></span>.
+                    </div>
+                    <div class='request'><b>How related or unrelated are the theme and articles?</b></div>
+                    <div class='likert_chart'>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='5'><br>Highly related</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='4'><br>Related</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='3' checked><br>Neutral</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='2'><br>Unrelated</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='1'><br>Highyl unrelated</div>
+                    </div>
+                </div>
+                <a class='next_section'>next</a>
+                <a class='next_page' target='improving'>
+                    Next Questions<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
         </div>
-        -->
-    </div>
-    
+        <!-- TASK INSTURCTION PAGE 4 -->
+        <div class="page" pagetype="improving">
+            <div class='card'>
+                <label class='page_title'>Improving theme and articles</label>
+                <div class='section improve_theme_and_documents' secnum=2> <!-- IMPROVE THEME AND ARTICLES -->
+                    <div class='request'><b>Unless the theme and the documents are clear and highly related, suggest how to improve them with the tools below</b> so that both themes and articles are consistent and clear. Participants who made the best result for each theme will receive $10 prizes.
+                    <br><br>
+                    To improve the theme, you can <br>
+                    &nbsp;&nbsp;- <span class='hint' target='span.add_word'>Add new words</span><br>
+                    &nbsp;&nbsp;- Select multiple words and merge to a new word<br>
+                    &nbsp;&nbsp;- Drag words <span class='hint' target='div.editable_words_section'>within the theme</span> or <span class='hint' target='div.bucket'>across lists</span><br>
+                    <br>
+                    For articles, you can <br>
+                    &nbsp;&nbsp;- Mark unrelated articles by clicking <img class='x-icon' src='images/x.png' style='width:24px; vertical-align:bottom;'> <br>
+                    <br>
+                    You can <a class='undo'>undo</a> or <a class='redo'>redo</a> editings. <br><br>
+                    Proceed to next when the theme and articles are at their best possible condition.<br>
+                    
+                    
 
 
-
-
-
-
-
-<!--
-    <div class='topic_container'>
-        <label class='inst'>A Theme From News Articles</label>
-        <ul class='task_list'>
-            {% for i, topic in topics %}
-            <li class='topic' tid='{{(i|int)+1}}' kid='{{loop.index}}' unlocked="false">
-                <div class='topic_rep'>
-                    <label class='topic_index'>{{loop.index}}</label>    
-                    <ul class='topic_terms'>
-                    {% for term in topic.words %}
-                        {% set size = 12+ (term.freq/300) %}
-                        <li><div class='term noselect' style="font-size:{{size}}px">{{term.word}}</div>
+                    </div>
+                    <!--
+                    <ul class='edit_tools'>
+                        To improve the theme, you can  
+                        <li class='edit_tool'>add new words</li>
+                        <li class='edit_tool'>
                         </li>
-                    {% endfor %}
+                        <li class='edit_tool'>Merge similar words to <input type='text' class="merge_word" placeholder='a new word'></li>
+                        <li class='edit_tool'>
+                            Remove / Separate words
+                            <ol>
+                                <li>Select unnecessary or distracting words</li>
+                                <li>    <button class='remove_words'>Remove</button> or 
+                                        <button class='split_words'>Separate</button> words</li>
+                            </ol>
+                            <ul class='list_removed'></ul>
+                        </li>
+                        
+                        <li class='edit_tool'><a class='split_words'>Split a group of words</a> for a new themes
+                            <ul class='list_splited'></ul>
+                        </li>
+                        <li class='edit_tool'>Change word order by drag-and-drop to place most meaningful words at front.</li>
+                        <li class='edit_tool'>Remove unrelated articles by clicking <img class='x-icon' src='images/x.png'></li>
+                        <li class='edit_tool'><a class='revert_changes'>Revert all changes</a></li>
+                        <li class='edit_tool'>Describe any other ideas you have<br><textarea data-autoresize class='answer' role="other_ideas" placeholder='Describe any other ways to improve the theme and articles.'></textarea></li>
+                    </ul>
+                    -->
+                </div>
+                <a class='next_section'>next</a>
+                <a class='next_theme'>
+                    <span></span><img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE OF THE UI --> 
+    <div class="theme_container"> 
+        <!-- SECTION FOR THEME WORDS -->
+        <div class="words_wrapper">
+            <label>Theme</label>
+            <div class='words_section'>
+                <ul class='words'>
+                </ul>
+            </div>
+        </div>
+        <!-- SECTION FOR EDITABLE THEME WORDS -->
+        <div class="editable_words_wrapper hidden">
+            <label>Theme (editable)</label>
+            <div class='editable_words_section'>
+                <ul class='editable_words'>
+                </ul>
+                <span class='add_word'><span class='plus_minus'>+</span> Add a new word</span>
+                <span class='merge_word hidden'>+ Merge selected words</span>
+                <div class='ui_for_adding_words hidden'>
+                    <input type='text' class='text_to_be_added' placeholder='Type word to add and press Enter'> 
+                    or choose among the words listed below 
+                    <ul class='additional_words'>
                     </ul>
                 </div>
-            </li>
-            {% endfor %}
-        </ul>
-        <div class='logging_stuff'>
-            <input type='text' class='user_id' placeholder='logging id'>
-            <button class='submit_log'>SUBMIT</button>
+                <div class='ui_for_merging_words hidden'>
+                    <input type='text' class='text_to_merge_to' placeholder='Type word to merge to and press Enter'>
+                </div>
+            </div>
+            <div class='buckets'>
+                <div class='removed_words_bucket bucket inactive'>
+                    <label class='bucket_title'>Removed words</label>
+                    <label class='bucket_instruction'>Drag word here to remove</label>
+                    <label class='bucket_instruction_bottom hidden'>Click a word to return it back to the theme</label>
+                    <ul class='removed_words ul_bucket'>
+                    </ul>
+                </div>
+                <div class='splitted_words_bucket bucket inactive'>
+                    <label class='bucket_title'>Separated Words for another theme</label>
+                    <label class='bucket_instruction'>Drag words here to separate</label>
+                    <label class='bucket_instruction_bottom hidden'>Click a word to return it back to the theme</label>
+                    <ul class='splitted_words ul_bucket'>
+                    </ul>
+                </div>
+                <div style='clear:both;'></div>
+            </div>
         </div>
-    </div>
-    <div class='document_container'>
-        <label class='inst'>News Articles of Theme <span class='tidx'></span></label>
-        <span class='document_hide_all'>lock all</span>
-        <span class='document_show_all'>unlock / </span>
-        <button class='document_show'>See Articles</button>
-        <ul class='document_list'>
-            
-        </ul>
-    </div>
--->
+        <!-- SECTION FOR ASSOCIATED DOCUMENTS -->
+        <div class="documents_wrapper">
+            <label>News articles associated with the theme. (Click an article to expand it)</label>
+            <div class="documents_section">
+                <ul class='documents'>
+                </ul>
+            </div>
+        </div>
+        
+    </div>    
+</div> <!-- END OF MAIN CONTAINER -->
 
-
-
-
-
-
-
-
-
-    <div class='overlay hidden'>
-        <div class='modal_frame'>
-            <div class='modal_title'></div>
-            <div class='modal_content'></div>
-            <img class='modal_close' src='images/icon-x.png'>
-        </div> 
-    </div>
-
-
+<div class='final_feedback'>
 </div>
 
 
