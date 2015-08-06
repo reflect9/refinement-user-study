@@ -13,7 +13,9 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-TASK_LIMIT_PER_SETTING = 5
+TOPICS_PER_HIT = 3
+TOPIC_ID_FOR_PRACTICE = "10"
+
 
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -49,13 +51,22 @@ class RetrieveThemeDataHandler(webapp2.RequestHandler):
     def get(self):
         file_topicJSON = open("dataset/nytimes-30-topics.json","r")
         topicJSON = json.loads(file_topicJSON.read())
-        topic_ordered_tuples = sorted(topicJSON.items(), cmp=lambda x,y: cmp(int(x[0]), int(y[0])))
-        five_random_topics = random.sample(topic_ordered_tuples, 4)
-        random.shuffle(five_random_topics)
-        for tid, topic in five_random_topics:
+        # SPARE THE FIRST TOPIC FOR PRACTICE
+        tutorial_topic = topicJSON[TOPIC_ID_FOR_PRACTICE]
+        tutorial_topic['tid']= TOPIC_ID_FOR_PRACTICE
+        tutorial_topic['documents'] = json.loads(open("dataset/nytimes-30-documents-"+TOPIC_ID_FOR_PRACTICE+".json","r").read())
+        del topicJSON[TOPIC_ID_FOR_PRACTICE]
+        # PREPARE THREE TOPICS FOR TASKS
+        keys = random.sample(topicJSON.keys(),TOPICS_PER_HIT)
+        topics_for_task = {k:topicJSON[k] for k in keys}
+        for tid, topic in topics_for_task.iteritems():
             file_docJSON = open("dataset/nytimes-30-documents-"+tid+".json","r")
+            topic['tid'] = tid
             topic['documents']=json.loads(file_docJSON.read())
-        self.response.out.write(json.dumps(five_random_topics))
+        self.response.out.write(json.dumps({
+            "tutorial":tutorial_topic,
+            "topics":topics_for_task
+        }))
 
 class SubmitTurkerResultHandler(webapp2.RequestHandler):
     def post(self):

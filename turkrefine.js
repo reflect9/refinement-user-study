@@ -66,7 +66,9 @@ function addWord(w, size) {
 
 function retrieveThemes() {
 	$.get("retrieveThemeData",function(data) {
-		themeData = JSON.parse(data);
+		d = JSON.parse(data);
+		themeData = _.values(d["topics"]);
+		tutorialData = d["tutorial"];
 		console.log("data loaded");
 		$("a.participate_button").text("Participate");
 	});
@@ -85,11 +87,11 @@ function update_ui_for_word_selection() {
 }
 
 function populateTheme(data) {
-	var topicID = parseInt(data[0]);
-	var words = data[1]['words'].slice(0,20);
-	var additional_words = data[1]['words'].slice(20,40);
-	var docs = data[1]['documents'];
-	//$("div.theme_container span.topicID").text((currentTheme==0)?": Exercise":currentTheme);
+	var topicID = parseInt(data['tid']);
+	var words = data['words'].slice(0,20);
+	var additional_words = data['words'].slice(20,40);
+	var docs = data['documents'];
+	
 	////// WORDS FOR MAIN THEME
 	var ul_words = $(".theme_container").find("ul.words");
 	$(ul_words).empty();
@@ -240,30 +242,26 @@ function populateTheme(data) {
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-function openTheme() {
-	// EXCEPT THE TUTORIAL, EXTRACT DATA FROM UI
-	if($(this).parents("div.page").attr("pagetype")!="tutorial") {
-		extractResultFromUI();	// EXTRACT DATA FROM UI AND STORE IN VARIABLE
-	}
-	currentTheme += 1;
-	// IF THIS IS THE LAST THEME, FINALIZE
-	if(themeData.length == currentTheme) {
-		submitResult(); // FINALIZE
-	} else {
-		// O/W OPEN A NEW THEME
-		populateTheme(themeData[currentTheme]);
-		if (currentTheme==0) {
-			// $(".topbar .top_title").text("Practice");	
-		} else {
-			$(".topbar .top_title").text("Task : Theme "+currentTheme);	
-		}
-		// HIDE EDITABLe THEME AND SHOW NORMAL THEME
-		$("div.words_wrapper").removeClass("hidden");
-		$("div.editable_words_wrapper").addClass("hidden");
-		// DISABLE MARKABLE DOCUMENTS
-		$("ul.documents").removeClass("marker_active");
-		$("img.marker_inconsistent").unbind();
-	}
+function openTutorial() {
+	// POPULATE THEME WITH DEMO TOPIC DATA
+	populateTheme(tutorialData);
+
+	// TUTORIAL PAGE IS ALWAYS THE FIRST PAGE OF DEMO
+	openPage("tutorial");	
+}
+
+function openTheme(topicNum) {
+	// O/W OPEN A NEW THEME
+	populateTheme(themeData[topicNum]);
+	$(".topbar .top_title").text("Task : Theme "+(currentTheme+1));	
+
+	// DISABLE THEME EDITING MODE
+	$("div.words_wrapper").removeClass("hidden");
+	$("div.editable_words_wrapper").addClass("hidden");
+	// DISABLE MARKABLE DOCUMENTS
+	$("ul.documents").removeClass("marker_active");
+	$("img.marker_inconsistent").unbind();
+
 }
 
 function openPage(target) {
@@ -284,13 +282,6 @@ function openPage(target) {
 	$(page).find("div.section").addClass("hidden");
 	$(page).find(".next_theme, .next_page").addClass("hidden");
 	$(page).find(".next_section").removeClass("hidden");
-
-	// HIDE DOCUMENTS OR THEME FOR DIFFERENT QUESTIONS
-	if(target=='theme-questions') {
-		$("div.documents_wrapper").hide(); 	$("div.words_wrapper").show(); 	
-	} else {
-		$("div.documents_wrapper").show(); 	$("div.words_wrapper").show(); 	
-	}
 
 	// SPECIAL CASES.  
 	// 1. INCONSISTENT ARTICLES
@@ -367,42 +358,42 @@ function openSection() {
 
 }
 
-
-// function openSection(target_page, secnum) {
-// 	var targetSection = $("div.page[pagetype='"+target_page+"'] div.section[secnum="+secnum+"]");
-// 	$(targetSection).show();
-// 	// SPECIAL CASE 1. INCONSISTENT ARTICLES 
-// 	if($(targetSection).hasClass("question_about_inconsistent_articles")) {
-// 		$("ul.documents").addClass("marker_active");
-// 		$("img.marker_inconsistent").unbind();
-// 		$("img.marker_inconsistent").click(function(event){
-// 			$(this).toggleClass("checked");
-// 			var docID = $(this).parents("li.document").attr("docID");
-// 			var cur_val_list = $("input.answer_inconsistent_articles").val().trim().split(" ");
-// 			if(_.indexOf(cur_val_list, docID)!=-1) {
-// 				cur_val_list = _.without(cur_val_list,docID);
-// 			} else {
-// 				cur_val_list.push(docID)
-// 			}
-// 			$("input.answer_inconsistent_articles").val(cur_val_list.join(" "));
-// 			console.log(cur_val_list);
-// 			event.stopPropagation();
-// 		});
-// 	} else if($(targetSection).hasClass("evaluate_theme_and_articles")) {
-// 		// SPECIAL CASE 2. EVALUATED CORRELATION
-// 		//alert("hfaa");
-// 		$("div.theme_meaning").text($("textarea[role='theme_meaning']").val());
-// 		$("div.document_meaning").text($("textarea[role='document_meaning']").val());
-
-// 	} else if($(targetSection).hasClass("improve_theme_and_documents")) {
-// 		// SPECIAL CASE 3. IMPROVE THEME AND DOCUMENTS 
-// 		// MAKING THEME EDITABLE 
-// 		initThemeEditor();
-// 	} else {
-// 		$("ul.documents").removeClass("marker_active");
-// 		$("img.marker_inconsistent").unbind();
-// 	}
-// }
+function validateSection() {
+	var current_page = $("div.page:visible"); 	var current_page_type = $(current_page).attr("pagetype");
+	var current_section = $(current_page).find("div.section:not(.hidden):last");
+	if($(current_section).length==1) { 
+		var cs = $(current_section).get(0);
+		if(current_page_type=="tutorial" && $(cs).attr("secnum")==2) {
+			// CHECKING THE FIRST TUTORIAL QUESTION OF FIDNING THE MOST FREQUENT TOPIC WORD
+			console.log($(cs).find("textarea.mini_task").val());
+			var correctAnswer = $("div.theme_container div.words_section ul.words li.word:first").text();
+			if ($.trim(correctAnswer) == $.trim($(cs).find("textarea.mini_task").val())) {
+				$(cs).find(".mini_feedback").html("That's a correct answer. Good job!");	
+				return true;
+			} else {
+				$(cs).find(".mini_feedback").html("The correct answer is <b>"+correctAnswer+"</b>. The first and biggest word is the most common word in the theme.");	
+				return true;
+			} 
+		} else if(current_page_type=="tutorial" && $(cs).attr("secnum")==3) {
+			var correctAnswer = "THE WEEK AHEAD: Jan. 21 - 27; CLASSICAL";
+			if ($.trim(correctAnswer) == $.trim($(cs).find("textarea.mini_task").val())) {
+				$(cs).find(".mini_feedback").html("That's a correct answer. Good job!");	
+				return true;
+			} else {
+				$(cs).find(".mini_feedback").html("The correct answer is <b>"+correctAnswer+"</b>. Hover the mouse over <i>music</i> in the theme. You will see 'Classical music often' is the phrase of the first article that contains the word 'music'.");	
+				return true;
+			} 
+		} else if(current_page_type=="theme-questions" && $(cs).attr("secnum")==1) {
+		// ASKING THEME_MEANING
+			if ($.trim($(cs).find("textarea[role='theme_meaning']").val())=="") {
+				alert("Please answer the question to proceed");
+				return false;
+			} else { return true;}
+		}
+	} else { // DO NOTHING
+	}
+	return true;
+}
 
 function extractResultFromUI() {
 	// EXTRACT USER'S INPUT FOR ONE THEME FROM ALL THE PAGES
@@ -535,14 +526,19 @@ $(document).ready(function() {
 		// minimizeIntroduction(); 	
 		$(".introduction").addClass("hidden");
 		$(".main_container").removeClass("hidden");
-		openTheme();
-		openPage("tutorial");	
+		openTutorial();
 	});
 
+	// NEXT THEME BUTTON IS CLICKED FOR SHOWING NEW THEME
 	$("a.next_theme").click(function() {
-		openTheme();
-		openPage("theme-questions");
+		if(currentTheme>0) extractResultFromUI();	// EXTRACT DATA FROM UI AND STORE IN VARIABLE
+		openTheme(currentTheme); // INITIALIZE TASK INFORMATION AND THEME, ARTICLES
+		openPage("theme-questions");	
 	});	
+	$("a.finalize_hit").click(function() {
+		submitResult(); // FINALIZE
+	});
+
 	$("a.next_page").click(function() {
 		// VALIDATE IF THERE'S NO EMPTY TEXTAREA
 		var is_valid = true;
@@ -560,7 +556,9 @@ $(document).ready(function() {
 		// if(target=="next_page") $(this).parents("div.page").find("a.next_page").show();
 		// else if(target=="next_theme") $(this).parents("div.page").find("a.next_theme").show(); 
 		// else openSection($(this).parents("div.page").attr("pagetype"), parseInt(target));
-		openSection();
+		if (validateSection()){
+			openSection();	
+		}
 	});
 
 	// THEME AND DOCUMENTS HANDLERS
@@ -715,7 +713,7 @@ $(document).ready(function() {
 	//$("div.page").hide();
 	//$("div.page[pagetype='tutorial']").show();
 
-	currentTheme = -1;
+	currentTheme = 0;
 	result = [];
 	//ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
