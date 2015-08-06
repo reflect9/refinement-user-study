@@ -79,69 +79,17 @@
             <div class='card'>
                 <label class='page_title'>Understanding the theme</label>
                 <div class='section' secnum=1>
-                    <div class='request'><b>Read every word of the theme shown on the right.</b> What do you think the theme is about? Describe what kind of news articles you expect to be associated with this theme.</div>
+                    <div class='request'><b>Look at the theme and articles on the right side.</b> Describe what this theme is about.</div>
                     <textarea data-autoresize class='answer required' role='theme_meaning'></textarea>
                 </div>
                 <div class='section' secnum=2>
-                    <div class='request'>How clear or unclear is the theme?</div>
+                    <div class='request'>How well does the theme represent the articles?</div>
                     <div class='likert_chart'>
-                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='5'><br>very clear</div>
-                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='4'><br>clear</div>
-                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='3' checked><br>neutral</div>
-                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='2'><br>unclear</div>
-                        <div class="likert_point"><input type='radio' rol='clarity' name='clarity' v='1'><br>very unclear</div>
-                    </div>
-                    <div class='request'>Do you have any problems understanding the theme? If so, what?</div>
-                    <textarea data-autoresize class='answer' role='theme_problem' placeholder='Describe problems you experienced.'></textarea>
-                </div>
-                <div class='section' secnum=3>
-                    <div class='request'>The theme may contain words that are <b>hard to understand</b> or <b>irrelevant with others</b>. If you found any, click those words below.</div>
-                    <ul class='topic_words' role='unclear_words'></ul>
-                </div>
-                <!--<div class='section' secnum=4>
-                    <div class='request'>Click words that are <b>inconsistent with the rest words</b>.</div>
-                    <ul class='topic_words' role='inconsistent_words'></ul>
-                </div>-->
-                <a class='next_section'>next</a>
-                <a class='next_page' target='document-questions'>
-                    Next Questions<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-
-        <!-- TASK INSTURCTION PAGE 2 -->
-        <div class="page" pagetype="document-questions">
-            <div class='card'>
-                <label class='page_title'>Understanding articles</label>
-                <div class='section' secnum=1>
-                    <div class='request'>Skim through the articles associated with the theme. What do you think the articles are about regardless of the theme?<br><b>Describe the central topic of the articles.</b></div>
-                    <textarea data-autoresize class='answer required' role="document_meaning" ></textarea>
-                </div>
-                <div class='section question_about_inconsistent_articles' secnum=2>
-                    <div class='request'>Some articles may not fit with the others. If you find any that are not related to the central topic you identified above, <b>mark them</b> by clicking <img class='x-icon' src='images/x.png' style='width:24px; opacity:0.8; vertical-align:bottom;'> next to them.</div>
-                    <input type="text" class='answer_inconsistent_articles hidden' role='inconsistent_documents'>
-                </div>
-                <a class='next_section'>next</a>
-                <a class='next_page' target='correlation-questions'>
-                    Next Questions<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-
-        <!-- TASK INSTURCTION PAGE 3 -->
-        <div class="page" pagetype="correlation-questions">
-            <div class='card'>
-                <label class='page_title'>Relating the theme and articles</label>
-                <div class='section evaluate_theme_and_articles' secnum=1> <!-- HOW WELL CORRELATED THEY ARE -->
-                    <div class='request'>You described the theme as <span class='quote theme_meaning'></span> and the articles as <span class='quote document_meaning'></span>.
-                    </div>
-                    <div class='request'><b>How related or unrelated are the theme and articles?</b></div>
-                    <div class='likert_chart'>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='5'><br>Highly related</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='4'><br>Related</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='3' checked><br>Neutral</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='2'><br>Unrelated</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='cor' v='1'><br>Highyl unrelated</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='5'><br>very well</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='4'><br>well</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='3' checked><br>neutral</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='2'><br>unrelated</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='1'><br>very unrelated</div>
                     </div>
                 </div>
                 <a class='next_section'>next</a>
@@ -150,7 +98,8 @@
                 </a>
             </div>
         </div>
-        <!-- TASK INSTURCTION PAGE 4 -->
+        
+        <!-- TASK INSTURCTION PAGE 2 -->
         <div class="page" pagetype="improving">
             <div class='card'>
                 <label class='page_title'>Improving theme and articles</label>
