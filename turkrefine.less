@@ -36,6 +36,11 @@ html, body {
 button.simple {
     
 }
+span.smaller {
+    font-size: .6em;
+    font-weight: 600;
+    opacity: .6;
+}
 
 div.introduction {
     div.titl {
@@ -65,6 +70,7 @@ div.introduction {
             text-decoration: underline;
         }
     }
+    button { display:block;}
     
 }
 
@@ -137,6 +143,58 @@ div.main_container {
                             color:@purple;
                             font-weight:500;
                         }
+                        span.tool_name{
+                            display:block;
+                            margin:10px 5px 4px 0px; 
+                            font-size:1.3em;    font-weight:500;
+                            color:@scubablue;
+                            cursor:pointer;
+                        }
+                        div.tool_practice_detail{
+                            font-size: 0.93em;
+                            margin-left:10px;
+                            margin-top:15px;
+                            font-weight: 400;    
+                            em {
+                                color:@tangerineorange;
+                            }
+                        }
+                        div.tool_practice_result {
+                            margin: 18px;
+                            padding: 3px 12px;
+                            border-radius: 10px;
+                            border: 1px solid @tangerineorange;
+                            color: @tangerineorange;
+                            text-align: center;;        
+                        }
+                        div.tool_practice_result.correct {
+                            border: 1px solid @scubablue;
+                            color: @scubablue;
+                        }
+                        ol {
+                            padding-left:20px;
+                            li{
+                            }
+                        }
+                        button.undo {
+                            display:block;
+                            margin:auto;
+                            font-size:17px;
+                            border-radius: 4px;
+                            border:1px solid white;
+                            padding:4px 12px;
+                            cursor:pointer;
+                        }
+                        button.undo:hover {
+                            background-color:@tangerineorange;
+                        }
+                        div.undo_message{
+                            display:block;
+                            height:30px; 
+                            font-size:16px; color:@tangerineorange;
+                            font-weight:600;
+                            text-align:center;
+                        }
                     }
                     div.mini_task{
                         font-size: 0.95em;
@@ -169,7 +227,7 @@ div.main_container {
                             font-size:14px;
                         }
                         div.mini_feedback {
-                            color:@marsalared;
+                            color:@scubablue;
                         }
                     }  
                     textarea.answer {  
@@ -200,6 +258,7 @@ div.main_container {
                         font-weight:500;
                     }
                     div.likert_chart {
+                        margin-bottom:35px;
                         div.likert_point {  
                             display:inline-block;
                             border:0px solid black;
@@ -212,7 +271,6 @@ div.main_container {
                             margin-bottom:10px;
                             input[type='radio'] { 
                             }
-
                         }
                     }
                     ul.topic_words {
@@ -241,19 +299,50 @@ div.main_container {
                         color:@tangerineorange;
                         cursor:pointer;
                     }
-                    /*
+                    //////  
+                    //////  //////  
+                    //////  //////  
+                    //////  //////  
                     ul.edit_tools {
-                        list-style: disc outside none; margin:0px 0px 0px 20px; padding:0px;
-                        li.edit_tool {
-                            margin-top:15px;
+                        list-style: none none; margin:11px 0px 11px 0px; padding:0px;
+                        li {
+                            // margin-top:1px;
+                            background:white;
                             font-size:17px;
+                            padding:8px 16px;
+                            color:#888;
+                            border-bottom: 1px solid #ddd;
+                            .tool_title {
+                                display:block;
+                                font-size:19px;
+                                font-weight:500;
+                            }
+                            .tool_description {
+                                display:none;
+                            }
+                        }
+                        li:last-of-type {
+                            border-bottom:none;
+                        }
+                        li:hover {
+                            color:@scubablue;
+                        }
+                        li.active {
+                            color:black;
+                            background:@scubablue;
+                            box-shadow: inset 0px 3px 0px 0px rgba(0,0,0,0.1);
+                            border-bottom: none;
+                            .tool_description {
+                                display:block;
+                                font-size:13px;
+                            }
+
                         }
                         div.detail_explanation {
                             font-size:0.9em;
                             color:#666;
                         }
-                        i
-
+                        
                         a {
                             color:@tangerineorange;
                             cursor:pointer;
@@ -331,7 +420,7 @@ div.main_container {
 
 
                     }
-                    */
+                    
                     a.next_section {
                         display:block; 
                         position:relative;
@@ -418,7 +507,7 @@ div.main_container {
     }
     /////////////////////////////////////////////////////// THEME CONTAINER
     div.theme_container {
-        position:fixed;
+        position:relative;
         box-sizing: border-box;
         z-index:101;
         margin-left:416px; 
@@ -430,8 +519,8 @@ div.main_container {
         label{
             display: block;
             color: @darkgraydark;
-            font-size: 22px;
-            font-weight: 400;
+            font-size: 23px;
+            font-weight: 500;
             margin: 8px 16px 0px 8px;
         }
         div.sign {
@@ -440,209 +529,237 @@ div.main_container {
             text-align:center;
             color:#aaa;
         }
-        div.words_section {
-            box-sizing: border-box;
-            margin:8px 8px 20px 8px;
-            padding:8px 12px 8px 12px;
-            background-color:#fff;
-            border-radius:2px;
-            box-shadow:0px 4px 3px 1px rgba(0,0,0,0.10);
-            ul.words {
-                list-style-type:none;   list-style:none;    margin:0px; padding:0px;
-                li.word {
-                    display: inline-block;
-                    margin-right: 4px;
-                    padding: 2px 5px 2px 5px;
-                    //background-color: #ddd;
-                    border-radius: 8px;
-                    font-weight:400;
-                    border: 1px solid white;
-                    cursor:pointer;
-                }
-                li.word.selected {
-                    background-color:@scubablue;
-                }
-                li.word.splitted {
-                    display: none !important;
-                }
-                li.word.removed {
-                    display: none !important;
-                }
-
-                
-            }
-        }
-        div.editable_words_section {
-            box-sizing: border-box;
-            margin:8px 8px 0px 8px;
-            padding:8px;
-            background-color:#fff;
-            border-radius:2px 2px 0px 0px;
-            ul.editable_words {
-                display:inline;
-                list-style-type:none;   list-style:none;    margin:0px; padding:0px;
-                li.word {
-                    display: inline-block;
-                    margin-right: 4px;
-                    padding: 2px 5px 2px 5px;
-                    background-color: #ddd;
-                    border-radius: 8px;
-                    font-weight:400;
-                    border: 1px solid white;
-                    cursor:pointer;
-                    span.sub_words{
-                        font-size:0.8em;
-                        opacity:0.8;
-                        margin-left:5px;
-                    }
-                }
-                li.word.selected {
-                    background-color:@scubablue;
-                }
-                li.word.splitted {
-                    display: none !important;
-                }
-                li.word.removed {
-                    display: none !important;
-                }
-            }
-            span.add_word, span.merge_word {
-                display:block;
-                white-space:nowrap;
-                box-shadow: none;
-                color: @scubablue;
-                font-weight: 500;
-                margin-top:4px;
-                border: 1px solid white;
-                padding:2px 4px;
-                border-radius: 6px;
-                background-color: white;
-                font-size: 16px;
-                cursor:pointer;
-            }
-            span.add_word:hover, span.merge_word:hover {
-                // border:1px solid @scubablue;
-            } 
-            div.ui_for_adding_words {
-                display:block;
-                //margin-top:10px;
-                input.text_to_be_added {
-                    display:inline;
-                    width:255px;
-                    margin-left:5px;
-                    font-size:16px;  font-weight:500;
-                    color: @scubablue;
-                    border:1px solid @scubablue;
-                }
-                ul.additional_words {
-                    display:block;
-                    list-style-type:none;   list-style:none;    margin:4px; padding:0px;
+        div.words_wrapper {
+            div.words_section {
+                box-sizing: border-box;
+                margin:8px 8px 20px 8px;
+                padding:8px 12px 8px 12px;
+                background-color:#fff;
+                border-radius:2px;
+                box-shadow:0px 4px 3px 1px rgba(0,0,0,0.10);
+                ul.words {
+                    list-style-type:none;   list-style:none;    margin:0px; padding:0px;
                     li.word {
                         display: inline-block;
-                        margin-right: 3px;
-                        padding: 1px 3px 1px 3px;
-                        border-radius: 5px;
+                        margin:2px 3px 2px 3px;
+                        padding: 2px 11px 2px 11px;
+                        background-color: white;
+                        border-radius: 8px;
                         font-weight:400;
-                        background-color: @scubablue;
-                        color:white;
                         border: 1px solid white;
-                        cursor:pointer;
-                    }
-                }
-            }
-            div.ui_for_merging_words {
-                input.text_to_merge_to {
-                    display:inline;
-                    width:292px;
-                    margin-left:5px;
-                    font-size:16px;  font-weight:500;
-                    color: @scubablue;
-                    border:1px solid @scubablue;
-                }
-            }
-        }
-        div.buckets {
-            margin:0px 8px;
-            //padding:0px 12px 8px 12px;
-            background-color: white;
-            border-radius:0px 0px 2px 2px;
-            border-top:2px solid #ddd;
-            div.bucket {
-                position:relative;
-                box-sizing: border-box;
-                float:left;
-                min-height:75px; 
-                border-left:2px solid #ddd;
-                width:50%;
-                box-shadow:inset 3px 3px 6px 0 rgba(0,0,0,0.05);
-                ul.ul_bucket {
-                    list-style-type:none;   list-style:none;    margin:4px 8px 4px 8px; padding:0px;
-                    li.word{
-                        display: inline-block;
-                        margin-right: 3px;
-                        padding: 1px 3px 1px 3px;
-                        border-radius: 5px;
-                        font-weight:400;
-                        background-color: #ddd;
-                        border: 1px solid white;
-                        cursor:pointer;
-                        //background-image: url("images/x-circle.png");
-                        //background-size:14px;
-                        //background-repeat:no-repeat;
-                        //background-position:right center;
                         span.sub_words{
                             font-size:0.8em;
                             opacity:0.8;
                             margin-left:5px;
                         }
                     }
+                    li.word.selected {
+                        background-color:@scubablue;
+                    }
+                    li.word.splitted {
+                        text-decoration: line-through;
+                    }
+                    li.word.removed {
+                        text-decoration: line-through;
+                        color:@tangerineorange;
+                    }  
+                    li.word.temporary {
+                        color:@scubablue;
+                    }      
                 }
-                label.bucket_title {
-                    font-size:14px;
-                    font-weight:600;
-                    margin:4px 8px;
-                }
-                label.bucket_instruction {
-                    display:block;
-                    text-align:center;
-                    font-size:23px; font-weight:500;
-                    color:@scubablue;
-                    opacity:0.7; 
-                }   
-                div.move_to_bucket {
-                    display: block;
-                    position:absolute;
-                    top:0px; left:0px; right:0px; bottom:0px;
-                    background:rgba(0,0,0,0.1);
-                    label{
-                        text-align: center;
-                        color: @scubablue;
-                        font-weight: 400;
-                        border-radius: 5px;
-                        border: 1px solid @scubablue;
-                        padding: 3px;
-                        cursor:pointer;
+                div.edit_ui {
+                    box-sizing: border-box;
+                    margin: 8px -12px -8px -12px;
+                    // border:1px solid @scubablue;
+                    background-color: @scubablue;
+                    box-shadow: inset 0px 4px 0px 0px rgba(0,0,0,0.1);
+                    span.tool_inst {
+                        display:inline-block;
+                        margin:12px 8px 8px 16px;
+                        font-weight:500;
+                        font-size:18px;
+                    }
+                    div.confirmation {
+                        text-align: right;
+                        // background-color: @scubablue;
+                        padding: 4px;
+                        div.status {
+                            display:inline-block;
+                            font-style:italic;
+                            font-size:15px;
+                            margin-right:10px;
+                            color:rgba(255,255,255,0.8);
+                        }   
+                        button{
+                            font-size: 14px;
+                            border-radius: 2px;
+                            background-color: white;
+                            border: 1px solid rgba(0,0,0,0.2);
+                            color: #444;
+                        }
+                        button.apply {  }
+                        button.cancel {  }
                     }
                 }
-                label.bucket_instruction_bottom {
+            }
+            div.words_section[mode='add_words'] {
+                ul.additional_words {
                     display:block;
-                    white-space: nowrap;
-                    position:absolute;
-                    bottom:5px; left:5px; 
-                    font-size:14px;
-                    color:#ccc;
-                    font-weight:500;
+                    list-style-type:none;   list-style:none;        
+                    margin: 0px 8px 8px 24px;
+                    padding:0px;
+                    li.word {
+                        display: inline-block;
+                        margin-right: 10px;
+                        padding: 1px 3px 1px 3px;
+                        border-radius: 5px;
+                        font-weight:400;
+                        // background-color: @scubablue;
+                        color:#444;
+                        // border: 1px solid white;
+                        cursor:pointer;
+                    }
+                    li.word:hover {
+                        background-color:rgba(255,255,255,0.3);
+                    }
                 }
-                label.move_to_bucket:hover {
-                    color:white; 
-                    background-color:@scubablue;
+                input.text_to_be_added {
+                    display: inline;
+                    width: 120px;
+                    margin: 8px 8px 4px 4px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: black;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    padding: 5px;
+                    box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.2)
                 }
             }
-            div.bucket:hover {
-                
+            div.words_section[mode='merge_words'] {   
+                li.word{
+                    cursor:cell;
+                }
+                span.tool_inst {
+                    span.words_for_merging {
+                        display:inline-block;
+                        font-weight:600;
+                    }
+                }
+                input.text_to_merge_to {
+                    display: inline-block;
+                    width: 204px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: black;
+                    margin-left:3px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    padding: 4px 6px;
+                    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.2);
+                }
+                ul.words_for_merging { 
+                    list-style-type:none;   list-style:none; margin:0px 4px 8px 32px; padding:0; 
+                    display:inline-block;
+                    background-color:rgba(255,255,255,0.3);
+                    border-radius:4px;
+                    padding:4px 8px;
+                    li {
+                        display:inline-block;
+                        margin-right: 10px;
+                        padding: 1px 3px 1px 3px;
+                        border-radius: 5px;
+                        font-weight:400;
+                    }           
+                }
+                ul.words_for_merging:empty::after {
+                    font-style:italic;
+                    content:"No word selected";
+                }
             }
-        }
-        
+            div.words_section[mode='remove_words'] { 
+                li.word {
+                    cursor:pointer;
+                    /*background-color:#d8d8d8;*/
+                    /*box-shadow: 2px 1px 4px 0px rgba(0,0,0,0.1);*/
+                    background-image: url("images/x-rect-bl.png");
+                    z-index: 200;
+                    padding: 2px 5px 2px 17px !important;
+                    background-repeat: no-repeat;
+                    background-position: 1px 50%;
+                    background-size: 15px;
+                }
+                li.word:hover {
+                    opacity:0.4;
+                    text-decoration: line-through;
+                }
+            }
+            div.words_section[mode='change_word_order'] {   
+                li.word {
+                    //background-color:#d8d8d8;
+                    //box-shadow: 2px 1px 4px 0px rgba(0,0,0,0.1);
+                    border-radius:6px;
+                    cursor:move;
+                    background-image: url("images/drag-rect.png");
+                    z-index: 200;
+                    padding: 2px 5px 2px 17px !important;
+                    background-repeat: no-repeat;
+                    background-position: 1px 50%;
+                    background-size: 15px;
+                }
+                li.word:hover {
+                    background-color:#ddd;
+                }
+            }
+            div.words_section[mode='split_theme'] {
+                li.word {
+                    border-radius:6px;
+                    background-image: url("images/drag-rect.png");
+                    z-index: 200;
+                    padding: 2px 5px 2px 17px !important;
+                    background-repeat: no-repeat;
+                    background-position: 1px 50%;
+                    background-size: 15px;
+                }
+                input.name_the_new_theme {
+                    display: inline;
+                    width: 273px;
+                    margin: 8px 8px 4px 4px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: black;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    padding: 5px;
+                    box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.2)
+                }
+                ul.words_for_splitting { 
+                    list-style-type:none;   list-style:none; padding:0; 
+                    display:inline-block;
+                    box-sizing: border-box;
+                    width:95%;
+                    box-shadow: inset 2px 2px 4px 0px rgba(0,0,0,0.1);
+                    background-color:rgba(255,255,255,0.4);
+                    border-radius:4px;
+                    min-height:40px;
+                    margin:0 4px 8px 18px;
+                    padding:4px 8px;
+                    li {
+                        display:inline-block;
+                        margin-right:10px;
+                        background-image: url("images/x-rect.png");
+                        border-radius: 5px;
+                        font-weight:400;
+                    }           
+                }
+                ul.words_for_splitting:empty::after {
+                    text-align:center;
+                    content: "No word is split yet";
+                }
+
+            }
+            div.words_section[mode='other_ideas'] {   }
+        } // END OF WORDS_WRAPPER
         div.documents_section {
             box-sizing: border-box;
             margin:8px 8px 24px 8px;
@@ -652,6 +769,42 @@ div.main_container {
             background-color:#fff;
             border-radius:2px;
             box-shadow:0px 4px 3px 1px rgba(0,0,0,0.10);
+            /////////////////////////////////////////////////////////////////
+            div.edit_ui {
+                box-sizing: border-box;
+                margin: 0px;
+                background-color: @scubablue;
+                box-shadow: inset 0px 4px 0px 0px rgba(0,0,0,0.1);
+                span.tool_inst {
+                    display:inline-block;
+                    margin:8px 8px 8px 16px;
+                    font-weight:500;
+                    font-size:18px;
+                    img { width:25px;  vertical-align:bottom; }
+                }
+                div.confirmation {
+                    text-align: right;
+                    // background-color: @scubablue;
+                    padding: 4px;
+                    div.status {
+                        display:inline-block;
+                        font-style:italic;
+                        font-size:15px;
+                        margin-right:10px;
+                        color:rgba(255,255,255,0.8);
+                    }   
+                    button{
+                        font-size: 14px;
+                        border-radius: 2px;
+                        background-color: white;
+                        border: 1px solid rgba(0,0,0,0.2);
+                        color: #444;
+                    }
+                    button.apply {  }
+                    button.cancel {  }
+                }
+            }
+            /////////////////////////////////////////////////////////////////
             ul.documents {
                 list-style-type:none;   list-style:none;    margin:0px; padding:0px;
                 li.document{
@@ -681,6 +834,7 @@ div.main_container {
                     div.relevancyScore {
                         display:none;
                     }
+                    em { font-weight:500; font-style:normal;}
                     span.keyword { color:@tangerineorange; }
                     div.otherTopics{ }
                 }
@@ -706,7 +860,7 @@ div.main_container {
                 li.document.removed {
                     div.title{
                         text-decoration:line-through;
-                        color:@tangerineorange;
+                        color:#999;
                     }
                 }
             }
@@ -715,8 +869,8 @@ div.main_container {
                     display:block !important; 
                     position:absolute; 
                     top:8px;  left:7px;
-                    width:25px; height:21px;
-                    opacity:0.15;
+                    height:21px;
+                    opacity:0.3;
                     cursor:pointer;
                 }
                 img.marker_inconsistent:hover { 
@@ -780,7 +934,19 @@ div.final_feedback {
     display:none !important;
 }
 
-
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
 
 
 
