@@ -16,7 +16,6 @@ function addWord(html) {
 	}
 	// CREATING WORD
 	$("<li class='word'>"+html+"</li>")
-		.click(function() { $(this).remove(); })
 		.appendTo(".theme_container div.words_section ul.words")
 		.css({"background-color":"#aaa"})
 		.animate({"background-color":"white"},1500, 
@@ -28,13 +27,11 @@ function removeWord(text) {
 			return $(el).text_without_children()==text; 
 		}).remove();
 }
-function mergeWord(target,newText) {
-	if(target.length==0) { alert("You must select multiple words first."); return; }
-	_.each(target, function(t){ removeWord(t); });
+function mergeWord(targetEl,newText) {
+	if(targetEl.length==0) { alert("You must select multiple words first."); return; }
+	_.each(targetEl, function(t){ removeWord($(t).text_without_children()); });
 	// IF IT IS SIMPLY JOINING TARGET, THEN DO NOT SHOW WHAT MERGED WORDS ARE. 
-	if(target.join("-")==newText) {
-		addWord(newText);
-	} else addWord(newText + "<span class='sub_words'>"+target.join(",")+"</span>");
+	addWord(newText + "<span class='sub_words'>"+$.makeArray($(targetEl).map(function(i,el){return $(el).html();})).join(", ")+"</span>");
 }
 function text_only(el) {
 	return $(el).text_without_children();
@@ -46,7 +43,8 @@ function pushCurrentStateToHistory(desc, ul_words_backup) {
 		"mode": $(".theme_container div.words_section").attr("mode"),
 		"message": desc,
 		"words": words,
-		"documents": $.makeArray($("div.documents_section ul.documents li.document").map(function(i,li){return $(li).hasClass("removed")==false;}))
+		"documents": $.makeArray($("div.documents_section ul.documents li.document").map(function(i,li){return $(li).hasClass("removed")==false;})),
+		"splittedTheme": $(splittedTheme).clone()
 	});
 	// UPDATE UNDO BUTTON TEXT
 	if (stateHistory.length>0) {
@@ -75,10 +73,14 @@ function revertToTheLatestState() {
 			$(el).find(".marker_inconsistent").addClass("checked");
 		}
 	});
+	splittedTheme = state_to_restore["splittedTheme"];
 	// UPDATE UNDO BUTTON TEXT
 	if (stateHistory.length>0) {
 		$("button.undo").text("Undo "+ stateHistory[stateHistory.length-1]["message"]);	
 	} else $("button.undo").text("Nothing to undo");
+
+	// ADD LOG
+	addLog("UNDO",state_to_restore["message"]);
 }
 
 
@@ -86,24 +88,6 @@ function revertToTheLatestState() {
 function disableEditing(cur_mode) {
 	// WHAT IS THE CURRENT EDITING MODE?
 	cur_mode = (typeof cur_mode=="undefined") ? $(".theme_container div.words_section").attr("mode"): cur_mode;
-	// //// CHECK IF THERE's CHANGE. IF SO, PUSH THE BACKUPSTATE TO THE STATEHISTORY
-	// var changeMade = false;
-	// if(stateHistory.length>0) {
-	// 	var currentWords = $(".theme_container div.words_section ul.words").text();
-	// 	var lastState = $(stateHistory[stateHistory.length-1]['words']).text();
-	// 	var currentDocs = $.makeArray($("div.documents_section ul.documents li.document").map(function(i,li){return $(li).hasClass("removed")==false;}));
-	// 	var lastDocs = $(stateHistory[stateHistory.length-1]['documents']);
-	// 	if(currentWords!=lastState || !currentDocs.equals(lastDocs)) changeMade=true;
-	// } else changeMade=true;
-	// if(changeMade) {
-	// 	stateHistory.push({
-	// 		"mode":cur_mode,
-	// 		"words":$(".theme_container div.words_section ul.words").clone(),
-	// 		"documents":$.makeArray($("div.documents_section ul.documents li.document").map(function(i,li){return $(li).hasClass("removed")==false;}))
-	// 	});
-	// 	$("button.undo").text((cur_mode=="" || typeof cur_mode=="undefined")?"No refinement to undo" : "Undo "+cur_mode.replace("_"," "));
-	// }
-	//// 
 	switch(cur_mode) {
 		case "add_words":
 			$(".theme_container div.words_section ul.words li.word.temporary").removeClass("temporary");
@@ -124,12 +108,13 @@ function disableEditing(cur_mode) {
 			$(".theme_container div.words_section ul.words").sortable("destroy");
 			// TBD
 			break;
-		case "remove_documents":
+		case "remove_articles":
 			$("div.documents_section ul.documents img.marker_inconsistent").unbind("click");
 			$("div.documents_section ul.documents").removeClass("marker_active");
 			// 
 			break;
 		case "split_theme":
+			splittedTheme = $("ul.words_for_splitting").clone();
 			$(".theme_container div.words_section ul.words li.word.selected").removeClass("selected");
 			$(".theme_container div.words_section ul.words li.word").draggable("destroy");
 			break;
@@ -156,8 +141,9 @@ function enableEditing(mode, isPractice) {
 			$(el).find("input.text_to_be_added").keydown(function(e){
 				if(e.keyCode == 13 && $(this).val()!="") {
 					var word_to_add = $(this).val();
-					pushCurrentStateToHistory("adding \""+word_to_add+"\"");
+					if (isPractice) pushCurrentStateToHistory("adding \""+word_to_add+"\"");
 					addWord(word_to_add);		$(this).val("");
+					addLog("ADD_WORDS",word_to_add);
 					if(isPractice) validateSection();
 				}
 			});
@@ -176,6 +162,7 @@ function enableEditing(mode, isPractice) {
 				$(this).hide(1000,function(){
 					var textToDelete = $(this).text_without_children();
 					removeWord(textToDelete);	
+					addLog("REMOVE_WORDS",textToDelete);
 					if(isPractice) validateSection();
 				});
 			});
@@ -194,25 +181,35 @@ function enableEditing(mode, isPractice) {
 				$(this).toggleClass("selected");
 				var text_selected = $(this).text_without_children();
 				// REMOVE IF THE WORD EXISTS, O/W ADD WORD
-				var word_already_selected = $("div.edit_ui ul.words_for_merging li").filter(function(i,li){return $(li).text()==text_selected;});
+				var word_already_selected = $("div.edit_ui ul.words_for_merging li").filter(function(i,li){return $(li).text_without_children()==text_selected;});
 				if($(word_already_selected).length>0) $(word_already_selected).remove();
 				else {
-					$("<li>"+$(this).text_without_children()+"</li>").appendTo("div.edit_ui ul.words_for_merging");
+					$("<li>"+$(this).html()+"</li>").appendTo("div.edit_ui ul.words_for_merging");
 				}
-				// THEN UPDATE THE TEXTBOX (IF EMPTY)
-				// if($("div.edit_ui input.text_to_merge_to").val()=="") {
-				// 	$("div.edit_ui input.text_to_merge_to").attr("placeholder", $("div.edit_ui ul.words_for_merging li").children_text().join("-"));
-				// } 
 			});
 			$(el).find("input.text_to_merge_to").keydown(function(e){
 				if(e.keyCode == 13) {
 					if($(this).val()!="") {
-						var words_to_be_merged = $.makeArray($("div.edit_ui ul.words_for_merging li").map(function(i,li){return $(li).text();}));
+						var el_to_be_merged = $("div.edit_ui ul.words_for_merging li");
+						var text_to_be_merged = $.makeArray($("div.edit_ui ul.words_for_merging li").map(function(i,el){ return $(el).text_with_gap(); })).join(",");
 						var new_word = $(this).val();
-						pushCurrentStateToHistory("merging "+words_to_be_merged.join(","));
-						mergeWord(words_to_be_merged, new_word);
+						pushCurrentStateToHistory("merging words to "+new_word);
+						mergeWord(el_to_be_merged, new_word);
+						addLog("MERGE_WORDS",text_to_be_merged + "->" + new_word);
 						$(this).val("");
 						$("div.edit_ui ul.words_for_merging li").remove();
+						////// REASSIGN CLICK EVENt HANDLERS FOR THE WORDS
+						$(".theme_container div.words_section ul.words li.word").unbind("click").click(function() {
+							$(this).toggleClass("selected");
+							var text_selected = $(this).text_without_children();
+							// REMOVE IF THE WORD EXISTS, O/W ADD WORD
+							var word_already_selected = $("div.edit_ui ul.words_for_merging li").filter(function(i,li){return $(li).text_without_children()==text_selected;});
+							if($(word_already_selected).length>0) $(word_already_selected).remove();
+							else {
+								$("<li>"+$(this).html()+"</li>").appendTo("div.edit_ui ul.words_for_merging");
+							}
+						});
+						////////
 						if(isPractice) validateSection();
 					} else {
 						alert("Try again after typing a new word in the input box.");
@@ -234,7 +231,9 @@ function enableEditing(mode, isPractice) {
 			$(words_el).sortable({	
 				appendTo:"body",
 				update:function(event,ui){
-					pushCurrentStateToHistory("changing position of \""+$(ui.item).text_without_children()+"\"", temp_ul_words);
+					var movedWord = $(ui.item).text_without_children();
+					pushCurrentStateToHistory("changing position of \""+movedWord+"\"", temp_ul_words);
+					addLog("CHANGE_WORD_ORDER",movedWord);
 					if(isPractice) validateSection();
 					temp_ul_words = $(".theme_container div.words_section ul.words").clone();
 				}
@@ -249,6 +248,17 @@ function enableEditing(mode, isPractice) {
 				<span class='tool_inst'>Drag words into the box below to split them into a new theme.</span><br>\
 				<ul class='words_for_splitting'></ul>\
 			");
+			// RESUME EXISTING SPLIT BUCKET
+			if (typeof splittedTheme!=="undefined" && $(splittedTheme).length>0) {
+				$(el).find("ul.words_for_splitting").replaceWith(splittedTheme);
+				$(el).find("ul.words_for_splitting li").mousedown(function(){
+					pushCurrentStateToHistory("returning \""+$(this).text_without_children()+"\"");
+					$(this).unbind("mousedown").appendTo(".theme_container div.words_section ul.words");
+					$(".theme_container div.words_section ul.words li.word").draggable("destroy");
+					$(".theme_container div.words_section ul.words li.word").draggable( { revert:"invalid" } );
+					temp_ul_words = $(".theme_container div.words_section ul.words").clone();
+				});		
+			}
 			// MAKE DRAGGABLE BUCKETS
 			temp_ul_words = $(".theme_container div.words_section ul.words").clone();
 			$(".theme_container div.words_section ul.words li.word").draggable( { revert:"invalid" } );
@@ -256,12 +266,15 @@ function enableEditing(mode, isPractice) {
 				accept: "li.word",
 				drop:function(event,ui) {
 					console.log("dropped");
-					pushCurrentStateToHistory("splitting \""+$(ui.draggable).text_without_children()+"\"", temp_ul_words);
+					var split_word = $(ui.draggable).text_without_children();
+					pushCurrentStateToHistory("splitting \""+split_word+"\"", temp_ul_words);
+					addLog("SPLIT_THEME",split_word);
 					$(ui.draggable)
 						.css("position","").css("top","").css("left","")
 						.mousedown(function() {
 							// RETURN TO THE WORD
 							pushCurrentStateToHistory("returning \""+$(this).text_without_children()+"\"");
+							addLog("UN_SPLIT_THEME",$(this).text_without_children());
 							$(this).unbind("mousedown").appendTo(".theme_container div.words_section ul.words");
 							$(".theme_container div.words_section ul.words li.word").draggable("destroy");
 							$(".theme_container div.words_section ul.words li.word").draggable( { revert:"invalid" } );
@@ -278,7 +291,7 @@ function enableEditing(mode, isPractice) {
 		/////////////////////////////////////////////////////////////////////////////////////	
 		/////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////////////////	
-		case "remove_documents":
+		case "remove_articles":
 			var el = $("<div class='edit_ui remove_documents clearfix'>\
 				<span class='tool_inst'>Click <img class='marker_inconsistent' src='images/x-rect.png'> of articles to remove .</span>\
 			</class>");
@@ -286,6 +299,7 @@ function enableEditing(mode, isPractice) {
 			$("div.documents_section ul.documents").addClass("marker_active");
 			$("div.documents_section ul.documents img.marker_inconsistent").click(function(event){
 				pushCurrentStateToHistory("removing articles");
+				addLog("REMOVE_ARTICLES",$(this).parents("li.document").attr("docid"));
 				$(this).toggleClass("checked");
 				$(this).parents("li.document").toggleClass("removed");
 				if(isPractice) validateSection();
@@ -303,10 +317,6 @@ function enableEditing(mode, isPractice) {
 	$(".theme_container div.words_section").attr("mode",mode);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-
 function retrieveThemes() {
 	$.get("retrieveThemeData",function(data) {
 		d = JSON.parse(data);
@@ -314,20 +324,22 @@ function retrieveThemes() {
 		tutorialData = d["tutorial"];
 		console.log("data loaded");
 		$("a.participate_button").text("Participate");
+		$("a.participate_button").removeClass("hidden");
 	});
 }
-
-
 function populateTheme(data) {
 	////// INITIALIZE SPLITTED THEME DATA
-	splittedThemes = [[]];
 	stateHistory = [];
+	evaluation_before = []; evaluation_after = [];
+	$("button.undo").text("Undo the latest refinement");
+	splittedTheme = $("");
 	/////
 	var topicID = parseInt(data['tid']);
 	var words = data['words'].slice(0,20);
 	var additional_words = data['words'].slice(20,40);
 	var docs = data['documents'];
 	////// WORDS FOR MAIN THEME
+	$(".theme_container").attr("tid",topicID);
 	var ul_words = $(".theme_container").find("ul.words");
 	$(ul_words).empty();
 	_.each(words, function(w) {
@@ -373,72 +385,52 @@ function populateTheme(data) {
 	});
 
 	/////// UPDATE NEXT THEME BUTTON TO SHOW PROGRESS
-	if(currentTheme == themeData.length-1) {  // SHOW FINALIZE
-		$("a.next_theme span").text("Finish");
-	} else {
-		$("a.next_theme span").text("Next theme ("+(currentTheme+1)+" of "+(themeData.length-1)+")");
-	}
+	// if(currentTheme == themeData.length-1) {  // SHOW FINALIZE
+	// 	$("a.next_theme span").text("Finish");
+	// } else {
+	// 	$("a.next_theme span").text("Next theme ("+(currentTheme+1)+" of "+(themeData.length-1)+")");
+	// }
 	
 }
 
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-
 function openTutorial() {
-	// POPULATE THEME WITH DEMO TOPIC DATA
 	populateTheme(tutorialData);
-
-	// TUTORIAL PAGE IS ALWAYS THE FIRST PAGE OF DEMO
 	openPage("intro");	
 }
-
 function openTheme(topicNum) {
-	// O/W OPEN A NEW THEME
-	populateTheme(themeData[topicNum]);
-	$(".topbar .top_title").text("Task : Theme "+(currentTheme+1));	
-
-	// DISABLE MARKABLE DOCUMENTS
-	$("ul.documents").removeClass("marker_active");
-	$("img.marker_inconsistent").unbind();
-
+	// HIDE MAIN COMPONENTS AND SHOW LOADING MESSAGE
+	$("div.main_container").hide();
+	$("<div class='loading'>Loading the next theme</div>").appendTo("body")
+	.toggleClass("dimmed",1000).toggleClass("dimmed",1000)
+	.queue(function() {
+		$("div.loading").remove();
+		$("div.main_container").show("fade");
+		populateTheme(themeData[topicNum]);
+		$(".topbar .top_title").text("Theme "+(currentTheme+1)+" out of 3");	
+		openPage("task-intro");
+	});
 }
-
 function openPage(target) {
 	disableEditing();
 	$("div.page:visible").addClass("hidden");
 	var page = $("div.page[pagetype='"+target+"']");
-	$(page).removeClass("hidden");
-	// $("div.page").hide();
-	// setTimeout(function(){
-	// 	$("div.page[pagetype='"+target+"']").show();
-	// },500);
-
-	// RESET INPUT AND TEXTAREA
-	$(page).find("textarea,input").val("");
+	///// CLEAN UP ALL THE INPUT AND TEXTAREA
+	$(page).find("textarea, input").val("");
 	$(page).find("input[type='radio']").prop('checked',false);
-	$(page).find("input[v='3']").prop('checked',true);
-
+	/////
+	$(page).removeClass("hidden");
+	addLog("OPEN_PAGE",target);
+	// if(target=="theme-questions") {
+	// 	$(page).find("input[v='3']").prop('checked',true);	
+	// }
 	// HIDE SECTIONS AND NEXT THEME / PAGE BUTTON
 	$(page).find("div.section").addClass("hidden");
-	$(page).find(".next_theme, .next_page").addClass("hidden");
+	$(page).find(".next_theme, .next_page, .finalize_hit").addClass("hidden");
 	$(page).find(".next_section").removeClass("hidden");
-
-	// SPECIAL CASE
-	if(target=="practice_split_theme") { 
-		////////  ADD WORDS FOR SPLITTING THEME
-		_.each(["pasta","olive","fish"], function(w) {
-			$("<li class='word'>"+w+"</li>").appendTo("div.theme_container div.words_section ul.words");
-		});  
-	}
-	if(target=="practice_add_words" || target=="practice_remove_words" || target=="practice_merge_words" ||
-		target=="practice_change_word_order" || target=="practice_split_theme" || target=="practice_remove_documents"){
-		////////  OPEN UI WHEN OPENING EVERY TOOL PAGE
-		enableEditing(target.replace("practice_",""),true);
-	} 
 	$("div.information_container").animate({
+		scrollTop: 0
+	},'fast');
+	$("div.theme_container").animate({
 		scrollTop: 0
 	},'fast');
 
@@ -451,48 +443,87 @@ function openSection() {
 	// WILL BE TRIGGERED WHEN A PAGE IS OPENEND OR CONTINUE BUTTON IS CLICKED
 	// 0. REMOVE HIGHLIGHTS
 	$(".castAura").removeClass("castAura");
+	$(".dimmed").removeClass("dimmed");
 
 	// 1. FIND CURRENTLY OPEN SECTION
 	var current_page = $("div.page:visible");
 	var invisible_sections = $(current_page).find("div.section.hidden");
-	//var first_invisible_section = $(current_page).find("div.section.hidden").filter(":first");
-	
+
 	// 2. OPEN NEXT SECTION.  
 	//	   case a. IF NEXT SECTION EXISTs, JUST OPEN IT
 	if (invisible_sections.length>=1) {
 		var section_to_show = invisible_sections[0];
 		$(section_to_show).removeClass("hidden");
+		addLog("OPEN_SECTION",$(section_to_show).attr("sectionID"));
+
 		// SPECIAL CASES: IF THERE's highlight attribute, then highlight the element.
 		if($(section_to_show).attr("highlight")) {
 			var div_to_highlight = $(section_to_show).attr("highlight");
 			$(div_to_highlight).addClass("castAura");
+		}
+		if($(section_to_show).attr("dim")) {
+			var dim_to_dim = $(section_to_show).attr("dim");
+			$(dim_to_dim).addClass("dimmed");
 		}
 		// SPECIAL CASE:  HIDE NEXT BUTTON IF IT's ABOUT PRACTICING TOOL USAGE
 		if($(section_to_show).find("div.tool_practice_detail").length>0) {
 			$(section_to_show).parents(".page").find(".next_section").addClass("hidden");
 		}
 	}
-	// if (invisible_sections.length==1) {
-	// 	$(current_page).find(".next_section").addClass("hidden");
-	// 	$(current_page).find(".next_theme, .next_page").removeClass("hidden");
-	// }
-	// 		case b. IF NO NEXT SECTION EXISTS, SHOW NEXT_THEME BUTTON
-	if (invisible_sections.length==0) {
-		// $(current_page).find(".next_section").addClass("hidden");
-		// $(current_page).find(".next_theme, .next_page").removeClass("hidden");
-		$(current_page).find(".next_theme, .next_page").trigger("click");
+	// IF NO NEXT SECTION EXISTS, SHOW NEXT_THEME BUTTON
+	else if (invisible_sections.length==0) {
+		$(current_page).find(".next_theme, .next_page, .finalize_hit").trigger("click");
 	}
-
-
+	////// SPECIAL CASES
+	/// OPENING TOOLS FOR PRACTICE
+	var target = $(section_to_show).attr("sectionID");
+	if(target=="read_over_the_theme" || target=="explore_articles") {
+		$(section_to_show).parents(".page").find(".next_section").addClass("hidden");
+	}
+	////////  ADD WORDS FOR SPLITTING THEME
+	if(target=="split_theme") { 	
+		_.each(["pasta","olive","fish"], function(w) {
+			$("<li class='word'>"+w+"</li>").appendTo("div.theme_container div.words_section ul.words");
+		});  
+	}
+	if(target=="remove_words") { 	
+		_.each(["york","west"], function(w) {
+			if ($("div.theme_container div.words_section ul.words li.word").filter(function(i,li){return $(li).text()==w; }).length==0) {
+				$("<li class='word'>"+w+"</li>").appendTo("div.theme_container div.words_section ul.words");	
+			}
+		});  
+	}
+	if(target=="change_word_order") { 	
+		_.each(["concert"], function(w) {
+			if ($("div.theme_container div.words_section ul.words li.word").filter(function(i,li){return $(li).text()==w; }).length==0) {
+				$("<li class='word'>"+w+"</li>").appendTo("div.theme_container div.words_section ul.words");	
+			}
+		});  
+	}
+	if(target=="add_words" || target=="remove_words" || target=="merge_words" || target=="change_word_order" || target=="split_theme" || target=="remove_articles"){
+		enableEditing(target.replace("practice_",""),true);
+	}
+	if(target=="eval_after_improvements") {
+		// TELL WHAT WAS THE USER'S EVALUATION FOR THE ORIGINAL THEME AND ARTICLES
+		var original_likert_el = $("div.section[sectionid='likert_evaluation']");
+		var theme_clarity = $(original_likert_el).find("input[name='theme_clarity']:checked").parents(".likert_point").text();
+		var article_consistency = $(original_likert_el).find("input[name='article_consistency']:checked").parents(".likert_point").text();
+		var correlation = $(original_likert_el).find("input[name='correlation']:checked").parents(".likert_point").text();
+		var improved_likert_el = $("div.section[sectionID='eval_after_improvements']");
+		$(improved_likert_el).find("div.likert_chart[name='theme_clarity'] div.tiny_notice span").text(theme_clarity);
+		$(improved_likert_el).find("div.likert_chart[name='article_consistency'] div.tiny_notice span").text(article_consistency);
+		$(improved_likert_el).find("div.likert_chart[name='correlation'] div.tiny_notice span").text(correlation);
+	}
 }
 
 function validateSection() {
 	var current_page = $("div.page:visible"); 	var current_page_type = $(current_page).attr("pagetype");
 	var current_section = $(current_page).find("div.section:not(.hidden):last");
-	var html_goodjob = "<b>Good job!</b> Let's move on to the next pratice.";
+	var html_goodjob = "<b>Good job!</b> Let's move on to the next practice.";
+	var html_badjob = "<b>Try again.</b> You can proceed after completing the task above.";
 	if($(current_section).length==1) { 
 		var cs = $(current_section).get(0);
-		if(current_page_type=="intro" && $(cs).attr("secnum")==2) {
+		if(current_page_type=="intro" && $(cs).attr("sectionID")=="read_over_the_theme") {
 			// CHECKING THE FIRST TUTORIAL QUESTION OF FIDNING THE MOST FREQUENT TOPIC WORD
 			console.log($(cs).find("textarea.mini_task").val());
 			var correctAnswer = $("div.theme_container div.words_section ul.words li.word:first").text();
@@ -503,7 +534,7 @@ function validateSection() {
 				$(cs).find(".mini_feedback").html("Try again. The first and biggest word is the most common word in the theme.");	
 				return false;
 			} 
-		} else if(current_page_type=="intro" && $(cs).attr("secnum")==3) {
+		} else if(current_page_type=="intro" && $(cs).attr("sectionID")=="explore_articles") {
 			var correctAnswer = "a season";
 			var answer = $.trim($(cs).find("textarea.mini_task").val().toLowerCase()); 
 			if (answer.indexOf(correctAnswer) != -1) {
@@ -514,90 +545,113 @@ function validateSection() {
 				return false;
 			} 
 		// PRACTICE 
-		} else if(current_page_type=="practice_add_words" && $(cs).attr("secnum")==1) {
+		} else if($(current_section).attr("sectionID")=="add_words") {
 			// CHECK ADD_WORDS RESULT : CHECKING classical and program in the THEME WORDS
 			var words = $.map($("div.theme_container div.words_section ul.words li.word"),function(li,i){
 				return $(li).text();
 			});
 			if(_.contains(words,"classical")) { 
-				$(current_page).find(".tool_practice_result").addClass("correct").html(html_goodjob);
-				$(current_page).find("a.next_section").removeClass("hidden");
-				return true;
+				$(current_section).find(".tool_practice_result").addClass("correct").html(html_goodjob).css("background-color","#00b3ca").animate({"background-color":"#fff"},500);
+				$("div.page:visible a.next_section").removeClass("hidden");
+				$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
 			}
 			else {  
-				$(current_page).find(".tool_practice_result").text("Nope.");
+				$(current_section).find(".tool_practice_result").html(html_badjob).css("background-color","#f69256").animate({"background-color":"#fff"},500);;
 				//alert("Two words are not in the theme. Make sure that you added both, and confirmed the change.");
-				return false;
 			}
-		} else if(current_page_type=="practice_remove_words" && $(cs).attr("secnum")==1) {
+		} else if($(current_section).attr("sectionID")=="remove_words") {
 			// CHECK REMOVE_WORDS RESULT : CHECKING york is still in the THEME WORDS
 			var words = $.map($("div.theme_container div.words_section ul.words li.word"),function(li,i){ return $(li).text(); });
 			if(!_.contains(words,"york") && !_.contains(words,"west")) { 
-				$(current_page).find(".tool_practice_result").addClass("correct").html(html_goodjob);
-				$(current_page).find("a.next_section").removeClass("hidden");
-				return true; 
+				$(current_section).find(".tool_practice_result").addClass("correct").html(html_goodjob).css("background-color","#00b3ca").animate({"background-color":"#fff"},500);
+				$("div.page:visible a.next_section").removeClass("hidden");
+				$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
 			} else { 
-				$(current_page).find(".tool_practice_result").text("Nope.");
+				$(current_section).find(".tool_practice_result").html(html_badjob).css("background-color","#f69256").animate({"background-color":"#fff"},500);
 				//alert("The word 'york' or 'west' is still in the theme. Make sure the word is crossed and you confirmed the change.");
 				return false;
 			}
-		} else if(current_page_type=="practice_merge_words" && $(cs).attr("secnum")==1) {
+		} else if($(current_section).attr("sectionID")=="merge_words") {
 			// CHECK MERGE_WORDS RESULT : CHECKING SONG AND SONGS
 			var words = $.map($("div.theme_container div.words_section ul.words li.word"),function(li,i){ return $(li).text(); });
 			if(!_.contains(words,"opera") && !_.contains(words,"jazz") && !_.contains(words,"rock") 
 				&& _.filter(words,function(ww){return ww.indexOf("genre")!=-1;}).length>0 ) { 
-				$(current_page).find(".tool_practice_result").addClass("correct").html(html_goodjob);
-				$(current_page).find("a.next_section").removeClass("hidden");
-				return true; 
+				$(current_section).find(".tool_practice_result").addClass("correct").html(html_goodjob).css("background-color","#00b3ca").animate({"background-color":"#fff"},500);
+				$("div.page:visible a.next_section").removeClass("hidden");
+				$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
 			} else { 
-				$(current_page).find(".tool_practice_result").text("Nope.");
+				$(current_section).find(".tool_practice_result").html(html_badjob).css("background-color","#f69256").animate({"background-color":"#fff"},500);
 				//alert("Make sure that song and songs are not in the theme, and song(s) is in.");
 				return false;
 			}
-		} else if(current_page_type=="practice_change_word_order" && $(cs).attr("secnum")==1) {
+		} else if($(current_section).attr("sectionID")=="change_word_order") {
 			// CHECK WORD_ORDER RESULT : CHECKING WHETHER CONCERT IS AT FRONT
 			var words = $.map($("div.theme_container div.words_section ul.words li.word"),function(li,i){ return $(li).text(); });
 			if(words[0]=="concert") { 
-				$(current_page).find(".tool_practice_result").addClass("correct").html(html_goodjob);
-				$(current_page).find("a.next_section").removeClass("hidden");
-				return true; 
+				$(current_section).find(".tool_practice_result").addClass("correct").html(html_goodjob).css("background-color","#00b3ca").animate({"background-color":"#fff"},500);
+				$("div.page:visible a.next_section").removeClass("hidden");
+				$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
 			} else { 
-				$(current_page).find(".tool_practice_result").text("Nope.");
+				$(current_section).find(".tool_practice_result").html(html_badjob).css("background-color","#f69256").animate({"background-color":"#fff"},500);
 				//alert("Make sure that concert is at front of the theme, and you confirmed the changes.");
 				return false;
 			}
-		} else if(current_page_type=="practice_split_theme" && $(cs).attr("secnum")==1) {
+		} else if($(current_section).attr("sectionID")=="split_theme") {
 			// CHECK SPLIT_THEME RESULT : CHECKING WHETHER PASTA, OLIVE and FISH ARE there
 			var words = $.map($("div.theme_container ul.words_for_splitting li"),function(li,i){ return $(li).text(); });
 			if(_.contains(words,"pasta") && _.contains(words,"olive") && _.contains(words,"fish")) {
-				$(current_page).find(".tool_practice_result").addClass("correct").html(html_goodjob);
-				$(current_page).find("a.next_section").removeClass("hidden");
-				return true; 
+				$(current_section).find(".tool_practice_result").addClass("correct").html(html_goodjob).css("background-color","#00b3ca").animate({"background-color":"#fff"},500);
+				$("div.page:visible a.next_section").removeClass("hidden");
+				$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
 			} else { 
-				$(current_page).find(".tool_practice_result").text("Nope.");
+				$(current_section).find(".tool_practice_result").html(html_badjob).css("background-color","#f69256").animate({"background-color":"#fff"},500);
 				//alert("Make sure that pasta, oil, and fish are not in the theme.");
 				return false;
 			}
-		} else if(current_page_type=="practice_remove_documents" && $(cs).attr("secnum")==1) {
-			// CHECK REMOVE_DOCUMENTS RESULT : CHECKING WHETHER "ASKING TOO MUCH" IS STILL IN THE ARTICLES
+		} else if($(current_section).attr("sectionID")=="remove_articles") {
+			// CHECK REMOVE_ARTICLES RESULT : CHECKING WHETHER "ASKING TOO MUCH" IS STILL IN THE ARTICLES
 			var title = $("div.theme_container div.documents_section ul.documents li.document.removed div.title")
 				.filter(function(i,el){ return $(el).text()=="Asking Too Much"; });
 			if($(title).length==1) { 
-				$(current_page).find(".tool_practice_result").addClass("correct").html(html_goodjob);
-				$(current_page).find("a.next_section").removeClass("hidden");
-				return true; 
+				$(current_section).find(".tool_practice_result").addClass("correct").html(html_goodjob).css("background-color","#00b3ca").animate({"background-color":"#fff"},500);
+				$("div.page:visible a.next_section").removeClass("hidden");
+				$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
 			} else { 
-				$(current_page).find(".tool_practice_result").text("Nope.");
+				$(current_section).find(".tool_practice_result").html(html_badjob).css("background-color","#f69256").animate({"background-color":"#fff"},500);
 				//alert("Make sure that the article 'Asking Too Much' is marked to be removed, and you clicked 'Apply this change' button.");
 				return false;
 			}
-		} else if(current_page_type=="theme-questions" && $(cs).attr("secnum")==1) {
-		// ASKING THEME_MEANING
+		} else if($(current_section).attr("sectionID")=="meaning_of_the_theme") {
+			// ASKING THEME_MEANING
 			if ($.trim($(cs).find("textarea[role='theme_meaning']").val())=="") {
 				alert("Please answer the question to proceed");
 				return false;
 			} else { return true;}
-		}
+		} else if($(current_section).attr("sectionID")=="likert_evaluation") { 
+			var checkedInputs = $(current_section).find("input:checked");
+			if($(checkedInputs).length==3) {
+				evaluation_before = $.makeArray($(checkedInputs).map(function(i,el){return $(el).attr("v");}));
+				return true;
+			} else {
+				alert("Please answer all the questions to proceed");
+				return false;
+			}
+		} else if($(current_section).attr("sectionID")=="eval_after_improvements") {
+			var checkedInputs = $(current_section).find("input:checked");
+			if($(checkedInputs).length==3) {
+				evaluation_after = $.makeArray($(checkedInputs).map(function(i,el){return $(el).attr("v");}));
+				return true;
+			} else {
+				alert("Please answer all the questions to proceed");
+				return false;
+			}
+		} else if($(current_section).attr("sectionID")=="eval_tools") {
+			// EVALUATION AFTER IMPROVEMENTS
+			if($(current_section).find("input:checked").length!=6) {
+				alert("Please answer all the questions to proceed");
+				return false;
+			} else { return true; }
+		} 
 	} else { // DO NOTHING
 	}
 	return true;
@@ -605,41 +659,33 @@ function validateSection() {
 
 function extractResultFromUI() {
 	// EXTRACT USER'S INPUT FOR ONE THEME FROM ALL THE PAGES
-	var resultForTheme = {};
-	$("textarea.answer").each(function(i,el) {
-		var role = $(el).attr("role");  
-		var textAnswer = $(el).val();  
-		resultForTheme[role]=textAnswer;
-	});
-	$("input.answer").each(function(i,el) {
-		var role = $(el).attr("role");  
-		var textAnswer = $(el).val();  
-		resultForTheme[role]=textAnswer;
-	});
-	$("ul.topic_words").each(function(i,el) {
-		var role = $(el).attr("role");  
-		var clickedWords = $(el).find("li.selected").map(function(i,el){return $(el).text();});
-		resultForTheme[role]=$.makeArray(clickedWords);
-	});
-	resultForTheme["inconsistent_documents"] = $.makeArray($("input.answer_inconsistent_articles").val());
-	resultForTheme["correlation"] = $("input[name='cor']:checked").attr('v');
-	// EXTRACT DATA FROM MODIFIED THEME
-	resultForTheme["modified_theme"] = $.makeArray($("ul.words li:not(.removed,.splitted)").map(function(i,el){
-		return $(el).text();
-	}));
-	resultForTheme["theme_removed"] = $.makeArray($("ul.words li.removed").map(function(i,el){
-		return $(el).text();
-	}));
-	resultForTheme["theme_splitted"] = $.makeArray($("ul.words li.splitted").map(function(i,el){
-		return $(el).text();
-	}));
-	resultForTheme["documents_removed"] = $.makeArray($("ul.documents li.removed").map(function(i,el){
-		return $(el).attr('docid');
-	}));
+	var resultForTheme = {"tid":$("div.theme_container").attr("tid")  };
+	///// THEME MEANING
+	resultForTheme["theme_meaning"] = $("div.page[pagetype='theme-questions'] textarea[role='theme_meaning']").val();
+	///// IMPROVED THEME AND ARTCLES
+	resultForTheme["improved_theme"]=$.makeArray($("div.theme_container div.words_section ul.words li.word").map(function(i,li){return $(li).text_with_gap();}));   
+	resultForTheme["improved_articles"]=$.makeArray($("div.documents_section ul.documents li.document").map(function(i,li){return $(li).hasClass("removed")==false;}));
+	///// LOG DATA
+	resultForTheme["log"]=JSON.parse(JSON.stringify(log));  // DEEP COPY LOG OBJECT
+	///// EVALUATION OF THEME AND ARTICLES BEFORE IMPROVEMENT
+	resultForTheme["evaluation_before"]=evaluation_before;
+	///// EVALUATION OF AFTER 
+	resultForTheme["evaluation_after"]=evaluation_after;
+	
 	// PUSH THEME RESULT TO THE OVERALL RESULT
-	result.push(resultForTheme);
+	result["topics"].push(resultForTheme);
 }
 function submitResult() {
+	///// EXTRACTING FROM CLOSING SURVEY
+	var eval_tools = {};
+	$("table.table_tool_eval tbody tr").each(function(i,tr){
+		var tid = $(tr).attr("toolID");
+		var checked_value = $(tr).find("input:checked").attr("v");
+		eval_tools[tid]=checked_value;
+	});
+	result["general"]["eval_tools"]=eval_tools;
+	result["general"]["other_idea"] = $("div.section[sectionID='other_ideas'] textarea[role='other_refinements']").val();
+	///// SUBMISSION 
 	var data = {
 		'result':JSON.stringify(result)
 	};
@@ -677,6 +723,7 @@ function focusWord(word, onoff) {
 	// 	$(el).html($(el).text());	// REMOVE SPAN TAGS
 	// });
 	$("li.document").removeClass("showingKeyPhrase");
+	$("li.document em").removeClass("kw");
 	// ADD NEW HIGHLIGHTS
 	_.each(focusedWords, function(w) {
 		$("li.document").each(function(i,el) {
@@ -706,10 +753,11 @@ function focusWord(word, onoff) {
 				phraseAroundWord= phraseAroundWord.replace(w_reg_with_space_around, " <span class='keyword'>$2</span> ");
 				$(el).find(".keyPhrase").html(phraseAroundWord);
 				//$(el).addClass("showingKeyPhrase");
-			// 	// ALSO HIGHLIGHT THE WORD IN THE FULLTEXT
-			// 	text_with_highlight = fulltext.replace(w_reg_with_space_around, " <span class='keyword'>$2</span> "); 
-			// 	$(el).find(".fulltext").html(text_with_highlight);
-			} 
+			}
+			// ALSO HIGHLIGHT THE WORD IN THE FULLTEXT
+			$(el).find("em").filter(function(i,em){ 
+				return $(em).text().toLowerCase()==w.toLowerCase(); 
+			}).addClass("kw"); 
 		});
 	});
 }
@@ -743,27 +791,77 @@ Array.prototype.equals = function (array) {
     }       
     return true;
 }   
+function shuffle(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+}
+
+function addLog(event, message) {
+	log.push({
+		"event": event,
+		"message": (typeof message==="undefined")?"":message,
+		"timestamp": Math.floor(Date.now() / 1000)
+	});
+	console.log(event, message);
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function() {
+
+	/////////////////  SHUFFLE REFINEMENTS
+	tool_order = shuffle(["add_words","remove_words","merge_words","change_word_order","split_theme","remove_articles"]);
+	$("div.information_container div.page[pagetype='practice'] div.section.practice").sort(function(a,b) {
+		return tool_order.indexOf($(a).attr("sectionID")) > tool_order.indexOf($(b).attr("sectionID"));
+	}).each(function() {
+		var el = $(this);
+		el.remove();
+		$(el).insertBefore("div.information_container div.page[pagetype='practice'] div.section.outro");
+	});
+	$("ul.edit_tools li").sort(function(a,b) {
+		return tool_order.indexOf($(a).attr("toolID")) > tool_order.indexOf($(b).attr("toolID"));
+	}).each(function() {
+		var el = $(this);
+		el.remove();
+		$(el).appendTo("ul.edit_tools");
+	});
+	$("table.table_tool_eval tbody tr").sort(function(a,b) {
+		return tool_order.indexOf($(a).attr("toolID")) > tool_order.indexOf($(b).attr("toolID"));
+	}).each(function() {
+		var el = $(this);
+		el.remove();
+		$(el).appendTo("table.table_tool_eval tbody");
+	});
+
+
+
 	// NAV HANDLERS
 	$("a.participate_button").click(function() {
 		// minimizeIntroduction(); 	
 		$(".introduction").addClass("hidden");
 		$(".main_container").removeClass("hidden");
 		openTutorial();
+		addLog("START_TUTORIAL");
 	});
 
 	// NEXT THEME BUTTON IS CLICKED FOR SHOWING NEW THEME
 	$("a.next_theme").click(function() {
+		currentTheme+=1;
+		disableEditing();
 		if(currentTheme>0) extractResultFromUI();	// EXTRACT DATA FROM UI AND STORE IN VARIABLE
-		openTheme(currentTheme); // INITIALIZE TASK INFORMATION AND THEME, ARTICLES
-		openPage("theme-questions");	
+		if(currentTheme==3) {
+			openPage("closing-survey");
+		} else {
+			openTheme(currentTheme); // INITIALIZE TASK INFORMATION AND THEME, ARTICLES
+			addLog("OPEN_THEME",currentTheme);	
+		}
+		
+		// openPage("theme-questions");	
 	});	
 	$("a.finalize_hit").click(function() {
+		addLog("FINALIZE");
 		submitResult(); // FINALIZE
 	});
 
@@ -773,44 +871,33 @@ $(document).ready(function() {
 		$(this).parents(".page").find("textarea.required").each(function(i,el){
 			if ($(el).val()=="") is_valid=false;
 		});
-		// if (!is_valid) {
-		// 	alert("One or more textarea is still empty. Please fill in them before proceeding.");
-		// 	return;
-		// }
-		openPage($(this).attr("target"));
+		var pageType = ($(this).attr("target")==undefined)? $(this).parents("div.page").next("div.page").attr("pagetype") : $(this).attr("target");
+		openPage(pageType);
 	});
 	$("a.next_section").click(function(event) {
-		// var target = $(this).attr("target");
-		// if(target=="next_page") $(this).parents("div.page").find("a.next_page").show();
-		// else if(target=="next_theme") $(this).parents("div.page").find("a.next_theme").show(); 
-		// else openSection($(this).parents("div.page").attr("pagetype"), parseInt(target));
-		if (validateSection()){
+		var conf = true;
+		if($(this).hasClass("require_confirmation")) {
+			var conf = confirm("Are you sure you are done improving?");
+		}
+		if (conf && validateSection()){
+			disableEditing();
 			openSection();
-			// if($("a.next_section:visible").length==1) var scrollTo=$("a.next_section:visible").offset().top;
-			// else if($("a.next_page:visible").length==1) var scrollTo=$("a.next_page:visible").offset().top+50;
-			// else if($("a.next_theme:visible").length==1) var scrollTo=$("a.next_theme:visible").offset().top+50;
-			// $("div.information_container").animate({
-			// 	scrollTop: scrollTo
-			// },'slow');
+			$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
 		}
 	});
 
 	// THEME AND DOCUMENTS HANDLERS
 	$("ul.documents").on("click","li.document", function() {
-		$(this).toggleClass("selected");
+		$(this).toggleClass("selected",500);
+		addLog("TOGGLE_DOCUMENT",$(this).attr("docid"));
 	});
-	$("div.theme_container div.words_section ul.words").on("mouseenter","li.word",function(){
+	$("div.theme_container div.words_section").on("mouseenter","ul.words li.word",function(){
 		focusWord($(this).text_without_children(),true);
 		event.stopPropagation();
 	});
-	$("div.theme_container div.words_section ul.words").on("mouseleave","li.word",function(){
+	$("div.theme_container div.words_section").on("mouseleave","ul.words li.word",function(){
 		focusWord($(this).text_without_children(),false);
 		event.stopPropagation();
-	});
-	
-	$("a.topic_add_words").click(function() {
-		$(this).parent().find(".dummy_new_words").addClass("hidden");
-		$(this).parent().find("input.topic_add_words").removeClass("hidden");;
 	});
 	// EDITING TOOLS HANDLER
 	$("ul.edit_tools li").click(function() {
@@ -825,15 +912,18 @@ $(document).ready(function() {
 		revertToTheLatestState();
 	})
 
-	// DOCUMENT RELATED EVENT HANDLING
-	$("li.doc_item").click(function() {
-		$(this).toggleClass("zoomed");
-	});
-
 	// PRACTICE TOOL HANDLERS
 	$(".tool_name").click(function(){
 		enableEditing($(this).attr("tool"),true);
 		$(this).parent().find("div.tool_practice_detail").removeClass("hidden");
+	});
+
+	$("textarea.mini_task").on('input propertychange paste',function(){
+		var isValid = validateSection();
+		if (isValid) {
+			$(this).parents("div.page").find("a.next_section").removeClass("hidden");
+			$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
+		}
 	});
 
 	// MAKING THEME STICKY AT THE TOP
@@ -868,8 +958,8 @@ $(document).ready(function() {
 	});
 	$("button.shortcut_task").click(function() {
 		$("a.participate_button").trigger("click");
-		openTheme(0);
-		openPage($(this).attr("target"));
+		currentTheme= parseInt($(this).attr("target_theme"));
+		openTheme(currentTheme);
 	});
 
 	// GETTING TOP-LEVEL TEXT OF ELEMENT WITHOUT CHILDREN
@@ -878,9 +968,30 @@ $(document).ready(function() {
   	}
   	// GETTING ARRAY Of CHILDREN TEXT
   	$.fn.children_text = function() {
-    	return $.makeArray($(this).map(function(i,el){return $(el).text();}));
+    	return $.makeArray($(this).find("span").map(function(i,el){return $(el).text_with_gap();}));
+  	}
+  	$.fn.text_with_gap = function() {
+    	var result =  $(this).text_without_children();
+    	if ($(this).children_text().join(",")=="") return result;
+    	else return result + "[" + $(this).children_text()  + "]";
   	}
 	
+	$.fn.shuffle = function() {
+        var allElems = this.get(),
+            getRandom = function(max) {
+                return Math.floor(Math.random() * max);
+            },
+            shuffled = $.map(allElems, function(){
+                var random = getRandom(allElems.length),
+                    randEl = $(allElems[random]).clone(true)[0];
+                allElems.splice(random, 1);
+                return randEl;
+           });
+        this.each(function(i){
+            $(this).replaceWith($(shuffled[i]));
+        }); 
+        return $(shuffled);
+    };
 
 	// SET AUTO-RESIZE TEXTAREA
 	$.each($('textarea[data-autoresize]'), function() {
@@ -895,10 +1006,11 @@ $(document).ready(function() {
 	//$("div.page").hide();
 	//$("div.page[pagetype='tutorial']").show();
 
-	currentTheme = 0;
-	result = [];
-	//ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+	currentTheme = -1;
+	result = {"topics":[], "general":{}};
+	log = [];
 
+	
 	// RETRIEVE THEME DATA FROM SERVER
 	retrieveThemes();
 

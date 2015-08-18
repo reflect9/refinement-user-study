@@ -60,18 +60,33 @@ div.introduction {
         color:black;
         a {
             display:block;
+            width:180px;
             color:@darkgraydark;
+            border:1px solid @darkgraydark;
+            border-radius:10px;
             cursor:pointer; 
             margin:20px;
-            padding:20px;
+            padding:10px 20px;
             font-size:32px;
         }
         a:hover {
-            text-decoration: underline;
+            background-color:@darkgraydark;
+            color:#eee;
         }
     }
     button { display:block;}
     
+}
+
+div.loading {
+    width:100%; height:100%;
+    text-align:center;
+    padding-top:18%; 
+    font-family: "Roboto", sans-serif;
+    font-size:54px;
+    font-weight:200;
+    color:#455a64;
+    // text-shadow:-1px -1px 1px rgba(0,0,0,0.3),  1px 1px 2px rgba(255,255,255,1.0);
 }
 
 div.main_container {
@@ -131,6 +146,11 @@ div.main_container {
                 }
                 div.section {
                     padding:16px;
+                    div.section_title {
+                        font-size:20px;
+                        color:@darkgraydark;
+                        font-weight:500;
+                    }
                     div.request { 
                         display:block; 
                         font-size:15px;
@@ -138,6 +158,9 @@ div.main_container {
                         line-height:1.5em;
                         margin-bottom:5px;
                         color: black;
+                        em {
+                            color:@tangerineorange;
+                        }
                         span.noticing {
                             font-size:0.95em;
                             color:@purple;
@@ -258,7 +281,9 @@ div.main_container {
                         font-weight:500;
                     }
                     div.likert_chart {
-                        margin-bottom:35px;
+                        margin:10px -16px 5px -16px;
+                        padding:10px 16px 10px 24px;
+                        border-top:1px solid #eee;
                         div.likert_point {  
                             display:inline-block;
                             border:0px solid black;
@@ -271,6 +296,13 @@ div.main_container {
                             margin-bottom:10px;
                             input[type='radio'] { 
                             }
+                        }
+                    }
+                    div.tiny_notice {
+                        color:@tangerineorange;
+                        font-size:13px;
+                        span {
+                            font-weight:800;
                         }
                     }
                     ul.topic_words {
@@ -420,6 +452,37 @@ div.main_container {
 
 
                     }
+                    
+                    table.table_tool_eval {
+                        border-collapse: collapse;
+                        border-spacing:0;
+                        width:100%;
+                        // border:1px solid #aaa;
+                        thead {
+                            font-weight:500;
+                            font-size:14px;
+                        }
+                        tbody {
+                            td{
+                                background:#fff;
+                                padding:3px;
+                            }
+                            td:first-child{
+                                text-align:right;
+                                padding-right:5px;
+                            }
+                            td:not(first-child){
+                                text-align:center;
+                            }
+                            td:nth-of-type(even), th:nth-of-type(even) {
+                                background:#eee;
+                            }
+                        }
+
+                    }
+
+
+
                     
                     a.next_section {
                         display:block; 
@@ -670,6 +733,11 @@ div.main_container {
                         padding: 1px 3px 1px 3px;
                         border-radius: 5px;
                         font-weight:400;
+                        span.sub_words{
+                            font-size:0.8em;
+                            opacity:0.8;
+                            margin-left:5px;
+                        }
                     }           
                 }
                 ul.words_for_merging:empty::after {
@@ -738,6 +806,7 @@ div.main_container {
                     display:inline-block;
                     box-sizing: border-box;
                     width:95%;
+                    border: 1px solid rgba(255,255,255,0.5);
                     box-shadow: inset 2px 2px 4px 0px rgba(0,0,0,0.1);
                     background-color:rgba(255,255,255,0.4);
                     border-radius:4px;
@@ -754,7 +823,7 @@ div.main_container {
                 }
                 ul.words_for_splitting:empty::after {
                     text-align:center;
-                    content: "No word is split yet";
+                    content: "No words moved to new theme yet";
                 }
 
             }
@@ -835,11 +904,12 @@ div.main_container {
                         display:none;
                     }
                     em { font-weight:500; font-style:normal;}
+                    em.kw { color:@tangerineorange;}
                     span.keyword { color:@tangerineorange; }
                     div.otherTopics{ }
                 }
                 li.document.selected {
-                    max-height:600px;
+                    max-height:1200px;
                     overflow:scroll;
                     cursor: -webkit-zoom-out; cursor: -moz-zoom-out;
                     div.fulltext {
@@ -900,18 +970,6 @@ div.final_feedback {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -926,10 +984,13 @@ div.final_feedback {
 }
 
 .castAura {
-    box-shadow:0 0 8px 1px @tangerineorange !important;
+    box-shadow:inset 0 0 8px 1px @tangerineorange !important;
     border:1px solid @tangerineorange;
 }
 
+.dimmed {
+    opacity:0.25;
+}
 .hidden {
     display:none !important;
 }

@@ -14,7 +14,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 TOPICS_PER_HIT = 3
-TOPIC_ID_FOR_PRACTICE = "10"
+TOPIC_ID_FOR_PRACTICE = "21"
 
 
 pp = pprint.PrettyPrinter(indent=4)
@@ -32,7 +32,7 @@ class Report(db.Model):
 class TurkRefineHandler(webapp2.RequestHandler):
     def get(self):
         # PREPARE TOPIC AND DOCUMENTS
-        # file_topicJSON = open("dataset/nytimes-30-topics.json","r")
+        # file_topicJSON = open("dataset/nytimes-31-topics.json","r")
         # topicJSON = json.loads(file_topicJSON.read())
         # topic_ordered_tuples = sorted(topicJSON.items(), cmp=lambda x,y: cmp(int(x[0]), int(y[0])))
         
@@ -40,7 +40,7 @@ class TurkRefineHandler(webapp2.RequestHandler):
         # random.shuffle(five_random_topics)
 
         # for tid, topic in five_random_topics:
-        #     file_docJSON = open("dataset/nytimes-30-documents-"+tid+".json","r")
+        #     file_docJSON = open("dataset/nytimes-31-documents-"+tid+".json","r")
         #     topic['documents']=json.loads(file_docJSON.read())
         template_values = {}
         template = JINJA_ENVIRONMENT.get_template('turkrefine.html')
@@ -49,18 +49,18 @@ class TurkRefineHandler(webapp2.RequestHandler):
 
 class RetrieveThemeDataHandler(webapp2.RequestHandler):
     def get(self):
-        file_topicJSON = open("dataset/nytimes-30-topics.json","r")
+        file_topicJSON = open("dataset/nytimes-31-topics.json","r")
         topicJSON = json.loads(file_topicJSON.read())
         # SPARE THE FIRST TOPIC FOR PRACTICE
         tutorial_topic = topicJSON[TOPIC_ID_FOR_PRACTICE]
         tutorial_topic['tid']= TOPIC_ID_FOR_PRACTICE
-        tutorial_topic['documents'] = json.loads(open("dataset/nytimes-30-documents-"+TOPIC_ID_FOR_PRACTICE+".json","r").read())
+        tutorial_topic['documents'] = json.loads(open("dataset/nytimes-31-documents-"+TOPIC_ID_FOR_PRACTICE+".json","r").read())
         del topicJSON[TOPIC_ID_FOR_PRACTICE]
         # PREPARE THREE TOPICS FOR TASKS
         keys = random.sample(topicJSON.keys(),TOPICS_PER_HIT)
         topics_for_task = {k:topicJSON[k] for k in keys}
         for tid, topic in topics_for_task.iteritems():
-            file_docJSON = open("dataset/nytimes-30-documents-"+tid+".json","r")
+            file_docJSON = open("dataset/nytimes-31-documents-"+tid+".json","r")
             topic['tid'] = tid
             topic['documents']=json.loads(file_docJSON.read())
         self.response.out.write(json.dumps({
@@ -76,6 +76,13 @@ class SubmitTurkerResultHandler(webapp2.RequestHandler):
         r.put()
         self.response.out.write("Thank you for your participation. Your survey code is <b style='color:red;'>"+r.userID+"</b><br> Do not forget to copy and paste the code in the Amazon Mechanical Turk page.</div>");
 
+class ReportTurkerResultHandler(webapp2.RequestHandler):
+    def get(self):
+        all_data = TurkHIT.all().run(limit=1000)
+        for d_raw in all_data:
+            d = json.loads(d_raw)
+            print d
+        
 
 ########################################################################################
 ########################################################################################
@@ -83,7 +90,7 @@ class SubmitTurkerResultHandler(webapp2.RequestHandler):
 class RefineHandler(webapp2.RequestHandler):
     def get(self):
         # PREPARE TOPIC AND DOCUMENTS
-        file_topicJSON = open("dataset/nytimes-30-topics.json","r")
+        file_topicJSON = open("dataset/nytimes-31-topics.json","r")
         topicJSON = json.loads(file_topicJSON.read())
         topic_ordered_tuples = sorted(topicJSON.items(), cmp=lambda x,y: cmp(int(x[0]), int(y[0])))
         # RENDER PAGE
@@ -97,7 +104,7 @@ class RefineHandler(webapp2.RequestHandler):
 class RelatedDocumentsHandler(webapp2.RequestHandler):
     def get(self):
         topicIdx = str(int(self.request.get("topicIdx"))-1)
-        file_docJSON = open("dataset/nytimes-30-documents-"+topicIdx+".json","r")
+        file_docJSON = open("dataset/nytimes-31-documents-"+topicIdx+".json","r")
         self.response.out.write(file_docJSON.read())
 
 class SubmitLogHandler(webapp2.RequestHandler):
@@ -118,6 +125,8 @@ app = webapp2.WSGIApplication([
     ('/turkRefine', TurkRefineHandler),
     ('/submitTurkerResult', SubmitTurkerResultHandler),
     ('/retrieveThemeData', RetrieveThemeDataHandler),
+    ('/reportTurkerResult', ReportTurkerResultHandler),
+    #########
     ('/refine', RefineHandler),
     ('/relatedDocuments', RelatedDocumentsHandler),
     ('/submitLog', SubmitLogHandler),

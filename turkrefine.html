@@ -13,19 +13,16 @@
 <body>
 
 <div class='introduction'>
-    <div class='titl'>Understanding and Improving News Topics</div>
+    <div class='titl'>Understanding and Improving Overview of News</div>
     <div class='txt'>
-        We are researchers from the University of Maryland attempting to measure how people understand themes discovered from newspaper articles, and suggest improvements. Participants of the study are required to be at least 18 years old. If you have any questions about this study, please contact Leah Findlater (http://terpconnect.umd.edu/~leahkf/).
+        We are researchers from the University of Maryland creating new technologies to generate overviews of news articles. In this study, we are interested in how people understand and improve automatically generated overviews. Participants are required to be at least 18 years old. If you have any questions about the study, please contact Leah Findlater (http://terpconnect.umd.edu/~leahkf/).
         Press the button below if you voluntarily agree to participate.
-    <center><a class='participate_button'>..Loading data..</a></center>
-    <button class='shortcut' target='practice_add_words'>practice_add_words</button>
-    <button class='shortcut' target='practice_merge_words'>practice_merge_words</button>
-    <button class='shortcut' target='practice_remove_words'>practice_remove_words</button>
-    <button class='shortcut' target='practice_change_word_order'>practice_change_word_order</button>
-    <button class='shortcut' target='practice_split_theme'>practice_split_theme</button>
-    <button class='shortcut' target='practice_remove_documents'>practice_remove_documents</button>
-    <button class='shortcut_task' target='theme-questions'>theme 1: theme-questions</button>
-    <button class='shortcut_task' target='improving'>theme 1: improving</button>
+    <center><a class='participate_button hidden'>Loading data</a></center>
+    <!--<button class='shortcut' target='practice'>practice</button>
+    <button class='shortcut_task' target_theme="0">theme 1</button>
+    <button class='shortcut_task' target_theme="1">theme 2</button>
+    <button class='shortcut_task' target_theme="2">theme 3</button>
+    <button class='shortcut' target='closing-survey'>closing-survey</button>-->
     </div>
 </div>
 
@@ -40,24 +37,29 @@
         <div class="page" pagetype="intro">
             <div class="card">
                 <label class='page_title'>Exploring theme and articles</label>
-                <div class='section' secnum=1>
+                <div class='section' sectionID="1" dim="div.theme_container">
                     <div class="request">
-                        Imagine that you have thousands of New York Times articles published in January 2007, and have to create themes that summarize what the articles are about. While the task seems tedious and time consuming, computers can help. <br><br>This screen shows one of the themes that have been automatically identified by the computer, and the news articles that go with that theme. 
+                        Imagine that you have thousands of New York Times articles published in January 2007. Your task is to create themes that summarize what they articles are about. Although the task may seem tedious and time consuming, a computer program can help you get started. 
                     </div>
                 </div>
-                <div class='section' secnum=2 highlight="div.words_section">
+                <div class='section' sectionID="2" highlight="div.theme_container">
+                    <div class="request">
+                        This screen shows one of the themes that have been automatically identified by the computer program and the news articles that go with that theme. 
+                    </div>
+                </div>
+                <div class='section' sectionID="read_over_the_theme" highlight="div.words_section">
                     <div class="request">
                         <b>1. Read over the theme.</b> The computer has grouped the words that appear together in many news articles. The sizes and orders of words represent how frequently they appear in the associated articles. 
                         <div class="mini_task">
-                            <b>Question.</b> What word appears most frequently in the theme?  
+                            <b>Question.</b> What word appears most frequently in the Theme?  
                             <textarea data-autoresize class='mini_task'></textarea>
                             <div class="mini_feedback"></div>
                         </div>
                     </div>
                 </div>
-                <div class='section' secnum=3 highlight="div.documents_section">
+                <div class='section' sectionID="explore_articles" highlight="div.documents_section">
                     <div class="request">
-                        <b>2. Explore the theme and articles.</b> Click a few articles to see full text. Hover the mouse cursor over words to see some context for where it appears in the articles.       
+                        <b>2. Explore the theme and articles.</b> Click a few articles to see full text. Hover the mouse cursor over the theme words to see some context for where they appear in the articles.       
                     </div>
                     <div class="mini_task">
                         <b>Question.</b> What is the title of the first article containing the theme word <b>"ballet"</b>?
@@ -65,13 +67,14 @@
                         <div class="mini_feedback"></div>
                     </div>
                 </div>
-                <div class='section' secnum=4>
+                <div class='section' sectionID="closing_intro">
                     <div class="request">
                         <!--Idealy, both theme and articles are consistent and correlated with each other. But if you look closer, you may notice problems. Your task is to identify problems and to suggest how to improve three themes in this HIT.  
                         <br><br>-->
-                        Nice work! Let's move on to the next page. 
                         <!--Ideally the theme and articles should be clear and closely related to each other. But, the computer isn't perfect and you may notice problems. Your task is to identify these problems and suggest how to fix them that you will learn in the following pages.-->
-                        <!--Through this HIT, you will see three more themes. For each theme, you will be asked to answer questions about how you understand and improve them. Completing the entire HIT will take around 15 minutes. Please read questions carefully and answer every question. <b>Participants who were best at improving themes will receive $10 bonus.</b>-->
+                        Through this HIT, you will see three themes. For each theme, you will be asked to answer questions about how well you understand the theme, as well as ideas for improving them. <b>Participants who were best at improving themes will receive $10 bonus.</b>
+                        <br><br>
+                        Completing the entire HIT will take around 20 minutes. Please read questions carefully and answer every question. 
                     </div>
                 </div>
                 <a class='next_section'>next</a>
@@ -84,19 +87,11 @@
         <div class="page" pagetype="practice">
             <div class="card">
                 <label class='page_title'>Practice</label>
-                <div class='section' secnum=1>
-                    <div class='request'>Ideally the theme and articles should be clear and closely related to each other. However, they often contain various kinds of problems that need to be fixed.<br><br> <b>You will learn how to use six types of refinements</b> that improve the quality of the theme and associated articles.</div>
+                <div class='section intro' sectionID="practice_intro">
+                    <div class='request'>Ideally the automatically generated theme and associated articles should be clear and closely related to each other. However, they often contain various kinds of problems that need to be fixed.<br><br> <b>In this page, you will learn how to use six types of refinements</b> for fixing theme. Follow the instruction below.</div>
                 </div>
-                <a class='next_section'>next</a>
-                <a class='next_page' target='practice_add_words'>
-                    Next practice<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-        <div class="page" pagetype="practice_add_words">
-            <div class="card">
-                <label class='page_title'>1. Add words</label>
-                <div class='section' secnum=1>
+                <div class='section practice' sectionID="add_words">
+                    <div class='section_title'>Add words</div>
                     <div class='request'>
                         New words can be added to the theme. 
                         <div class='tool_practice_detail'>
@@ -105,148 +100,126 @@
                         </div>                        
                     </div>
                 </div>
-                <a class='next_section'>next</a>
-                <a class='next_page' target='practice_remove_words'>
-                    Next practice<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-        <div class="page" pagetype="practice_remove_words">
-            <div class="card">
-                <label class='page_title'>2. Remove words</label>
-                <div class='section' secnum=1>
+                <div class='section practice' sectionID="remove_words">
+                    <div class='section_title'>Remove words</div>
                     <div class='request'>
                         Words can be removed from the theme. 
                         <div class='tool_practice_detail'>
-                            In the theme to the right, <b>click 
+                            In the Theme to the right, <b>click 
                             <img src='images/x-rect-bl.png' style='width:15px; vertical-align:text-top;'> 
                             of <em>"york"</em> and <em>"west"</em> to delete them.</b>
                             <div class='tool_practice_result'>Complete the practice above.</div>
                         </div>                        
                     </div>
                 </div>
-                <a class='next_section'>next</a>
-                <a class='next_page' target='practice_merge_words'>
-                    Next practice<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-        <div class="page" pagetype="practice_merge_words">
-            <div class="card">
-                <label class='page_title'>3. Merge words</label>
-                <div class='section' secnum=1>
+                <div class='section practice' sectionID="merge_words">
+                    <div class='section_title'>Merge words</div>
                     <div class='request'>
                         Merging combines two or more words into a single new word. 
                         <div class='tool_practice_detail'>
-                        In the blue box to the right, do the following to merge <em>"opera"</em>, <em>"jazz"</em>, and <em>"rock"</em> to <em>"genre"</em>. 
+                        Do the following to merge <em>"jazz"</em>, <em>"opera"</em>, and <em>"rock"</em> to <em>"genre"</em>. 
                         <ol>
-                            <li><b>Click <em>"opera"</em>, <em>"jazz"</em>, and <em>"rock"</em></b></li>
+                            <li><b>In the Theme to the right, click <em>"jazz"</em>, <em>"opera"</em>, and <em>"rock"</em></b></li>
                             <li><b>Type <em>"genre"</em> in the text input box, and press Enter.</b> </li>
                         </ol>
-                        Can you see the new word <em>"genre"</em> that contains "opera", "jazz", and "rock"?
+                        Can you see the new word <em>"genre"</em> that contains the three merged words?
                         <div class='tool_practice_result'>Complete the practice above.</div>
                         </div>                        
                     </div>
                 </div>
-                <a class='next_section'>next</a>
-                <a class='next_page' target='practice_change_word_order'>
-                    Next practice<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-        <div class="page" pagetype="practice_change_word_order">
-            <div class="card">
-                <label class='page_title'>4. Change word order</label>
-                <div class='section' secnum=1>
+                <div class='section practice' sectionID="change_word_order">
+                    <div class='section_title'>Change word order</div>
                     <div class='request'>
                         Words can be rearranged by drag and drop. 
                         <div class='tool_practice_detail'>
-                            In the theme to the right, <b>Drag <em>"concert"</em> to the front of the theme.</b>Although "concert" is not the most meaningful word,  this is just for practice.
+                            In the Theme to the right, <b>Drag <em>"concert"</em> to be the first word of the theme.</b>
                             <div class='tool_practice_result'>Complete the practice above.</div>
                         </div>                        
                     </div>
                 </div>
-                <a class='next_section'>next</a>
-                <a class='next_page' target='practice_split_theme'>
-                    Next practice<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-        <div class="page" pagetype="practice_split_theme">
-            <div class="card">
-                <label class='page_title'>5. Split theme</label>
-                <div class='section' secnum=1>
+                <div class='section practice' sectionID="split_theme">
+                    <div class='section_title'>Split theme</div>
                     <div class='request'>
                         A theme can be split into two themes.
                         <div class='tool_practice_detail'>
-                        Do the following to split words into a new theme. 
-                        <ol>
-                            <li><b>Drag <em>pasta</em>, <em>olive</em>, and <em>fish</em></b> from the theme to the blue box below.</li>
-                        </ol>
+                        In the Theme to the right, <b>drag <em>pasta</em>, <em>olive</em>, and <em>fish</em></b> from the theme to the box below.
                         <div class='tool_practice_result'>Complete the practice above.</div>
                         </div>                        
                     </div>
                 </div>
-                <a class='next_section'>next</a>
-                <a class='next_page' target='practice_remove_documents'>
-                    Next practice<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
-                </a>
-            </div>
-        </div>
-        <div class="page" pagetype="practice_remove_documents">
-            <div class="card">
-                <label class='page_title'>6. Remove articles</label>
-                <div class='section' secnum=1>
+                <div class='section practice' sectionID="remove_articles">
+                    <div class='section_title'>Remove articles</div>
                     <div class='request'>
                         Articles can be excluded. 
                         <div class='tool_practice_detail'>
-                        Do the following steps.
-                        <ol>
-                            <li><b>Find an article <em>"Asking Too Much"</em>, and click <img class='x-icon' style='width:21px; vertical-align:top;' src='images/x.png'>.</b> (The article is relevant, but we are doing it for practice)</li>
-                            <li><b>Confirm by clicking <em>Apply this change</em> button</b>.</li>
-                        </ol>
+                        In the News articles to the right, <b>find an article <em>"Asking Too Much"</em>, and click <img class='x-icon' style='width:21px; vertical-align:top;' src='images/x-rect-bl.png'>.</b> 
                         <div class='tool_practice_result'>Complete the practice above.</div>
                         </div>                        
+                    </div>
+                </div>
+                <div class='section outro' sectionID="practice_outro">
+                    <div class='request'>
+                        You have learned how to use six types of refinements. In the following pages you will start actual tasks with new theme and articles. Are you ready?    
                     </div>
                 </div>
                 <a class='next_section'>next</a>
                 <a class='next_theme'>
-                    Start Actual Task<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                    <span></span><img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
                 </a>
             </div>
         </div>
 
-
         <!-- TASK INSTURCTION PAGE 1 -->
+        <div class="page" pagetype="task-intro">
+            <div class='card'>
+                <label class='page_title'>Task instruction</label>
+                <div class='section' sectionID="task-inst">
+                    <div class='request'>        
+                        <b>Look at the theme and articles for actual tasks.</b> 
+                        <br><br>
+                        Ideally the theme and articles should be clear, consistent, and closely related to each other. However, the computer isn't perfect, and you may notice various kinds of problems. 
+                        <br><br>Your task is to identify problems and fix the problems so that other people can get a better understanding of articles from January 2007 of the New York Times.
+                    </div>
+                </div>
+                <a class='next_section'>next</a>
+                <a class='next_page' target='theme-questions'>
+                    Start task<img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
+        </div>
+
+        <!-- TASK INSTURCTION PAGE 2 -->
         <div class="page" pagetype="theme-questions">
             <div class='card'>
-                <label class='page_title'>Understanding the theme</label>
-                <div class='section' secnum=1>
-                    <div class='request'><b>Look at the theme and articles on the right side.</b> Describe what the theme is about.</div>
+                <label class='page_title'>Evaluating the theme and articles</label>
+                <div class='section' sectionID="meaning_of_the_theme">
+                    <div class='request'>Quickly read through the theme words and associated news articles. Describe what they are about in a short sentence (3-20 words).</div>
                     <textarea data-autoresize class='answer required' role='theme_meaning'></textarea>
-                    <div class='request' style='margin-top:10px;' >How clear is the theme words (regardless of the articles) ?</div>
-                    <div class='likert_chart'>
+                </div>
+                <div class='section' sectionID="likert_evaluation">
+                    <div class='likert_chart' style='border-top:none !important;' name='theme_clarity'>
+                        <div class='request'><b>How clear is the theme based only on the theme words? </b> (regardless of the articles)</div>
                         <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='5'><br>very clear</div>
                         <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='4'><br>clear</div>
                         <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='3' checked><br>neutral</div>
                         <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='2'><br>unclear</div>
                         <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='1'><br>very unclear</div>
                     </div>
-                    <div class='request' style='margin-top:10px;'>How consistent are the articles (regardless of the theme words) ?</div>
-                    <div class='likert_chart'>
+                    <div class='likert_chart' name='article_consistency'>
+                        <div class='request' style=''>How consistent are the articles?</div>
                         <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='5'><br>very consistent</div>
                         <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='4'><br>consistent</div>
                         <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='3' checked><br>neutral</div>
                         <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='2'><br>inconsistent</div>
                         <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='1'><br>very inconsistent</div>
                     </div>
-                    <div class='request' style='margin-top:10px;'>How well correlated are the theme words and the articles?</div>
-                    <div class='likert_chart'>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='5'><br>Highly correlated</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='4'><br>correlated</div>
+                    <div class='likert_chart' name='correlation'>
+                        <div class='request' style=''>To what extent are the theme words and articles related? </div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='5'><br>highly related</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='4'><br>related</div>
                         <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='3' checked><br>neutral</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='2'><br>un-correlated</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='1'><br>very un-correlated</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='2'><br>unrelated</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='1'><br>very unrelated</div>
                     </div>
                 </div>
                 <a class='next_section'>next</a>
@@ -260,32 +233,33 @@
         <div class="page" pagetype="improving">
             <div class='card'>
                 <label class='page_title'>Improving theme and articles</label>
-                <div class='section improve_theme_and_documents' secnum=1> <!-- IMPROVE THEME AND ARTICLES -->
+                <div class='section improve_theme_and_documents' sectionID="theme_improvements"> <!-- IMPROVE THEME AND ARTICLES -->
                     <div class='request'><b>Improve the theme and articles using the six types of refinements listed below.
                     Participants who make the best-quality theme will receive $10 bonus.</b> 
-                    <br>Click titles to activate refinmenets.</div>
+                    <br>Click options below to make the refinements.
+                    </div>
                     <ul class='edit_tools'>
-                        <li class='add_words'>
+                        <li class='add_words' toolID='add_words'>
                             <label class='tool_title'>Add words</label>
                             <div class='tool_description'>New words can be added to the theme</div>
                         </li>
-                        <li class='merge_words'>
+                        <li class='merge_words' toolID='merge_words'>
                             <label class='tool_title'>Merge words</label>
                             <div class='tool_description'>Merging combines two or more words into a single new word</div>
                         </li>
-                        <li class='remove_words'>
+                        <li class='remove_words' toolID='remove_words'>
                             <label class='tool_title'>Remove words</label>
                             <div class='tool_description'>Words can be removed from the theme</div>
                         </li>
-                        <li class='change_word_order'>
+                        <li class='change_word_order' toolID='change_word_order'>
                             <label class='tool_title'>Change word order</label>
                             <div class='tool_description'>Words can be rearranged by drag and drop</div>
                         </li>
-                        <li class='remove_documents'>
+                        <li class='remove_articles' toolID='remove_articles'>
                             <label class='tool_title'>Remove articles</label>
                             <div class='tool_description'> </div>
                         </li>
-                        <li class='split_theme'>
+                        <li class='split_theme' toolID='split_theme'>
                             <label class='tool_title'>Split theme</label>
                             <div class='tool_description'>A theme can be split into two themes.</div>
                         </li>
@@ -293,16 +267,110 @@
                     <div class='request'>
                         <button class='undo'>Undo the latest refinement</button>
                     </div>
-                    <div class='request'>
-                    When the theme and articles cannot be improved more, finish improving and submit the current state.  
+                    <div class='request' style='margin: 24px -16px 0px -16px; border-top: 1px solid #ddd; padding: 16px 16px 8px 16px;'>
+                    Once you think the theme and articles cannot be improved any further, submit the current state and move on to the questionnaire.  
                     </div>
                 </div>
-                <a class='next_section'>Finish and submit the current state</a>
+                <a class='next_section require_confirmation'>Submit the theme and articles</a>
+                <a class='next_page' target='questionnaire'>
+                    <span></span><img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
+        </div>
+
+        <!-- POST-QUESTIONS 3 -->
+        <div class="page" pagetype="questionnaire">
+            <div class='card'>
+                <label class='page_title'>Questionnaire</label>
+                <div class='section' secnum=1 sectionID="eval_after_improvements">
+                    <div class='request'>
+                        Now that you have made changes to the theme words and/or articles, please answer the following questions. 
+                    </div>
+                    <div class='likert_chart' name='theme_clarity'>
+                        <div class='request' style='margin-top:10px;' ><b>How clear is the theme now based only on the theme words?</b> (regardless of the articles)</div>
+                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='5'><br>very clear</div>
+                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='4'><br>clear</div>
+                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='3' checked><br>neutral</div>
+                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='2'><br>unclear</div>
+                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='1'><br>very unclear</div>
+                        <div class='tiny_notice'>Your answer for the original theme : <span></span></div>
+                    </div>
+                    <div class='likert_chart' name='article_consistency'>
+                        <div class='request' style='margin-top:10px;'><b>How consistent are the articles now?</b></div>
+                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='5'><br>very consistent</div>
+                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='4'><br>consistent</div>
+                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='3' checked><br>neutral</div>
+                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='2'><br>inconsistent</div>
+                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='1'><br>very inconsistent</div>
+                        <div class='tiny_notice'>Your answer for the original articles : <span></span></div>
+                    </div>
+                    <div class='likert_chart' name='correlation'>
+                        <div class='request' style='margin-top:10px;'><b>To what extent are the theme words and articles related now?</b></div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='5'><br>highly related</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='4'><br>related</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='3' checked><br>neutral</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='2'><br>unrelated</div>
+                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='1'><br>very unrelated</div>
+                        <div class='tiny_notice'>Your answer for the original theme and articles : <span></span></div>
+                    </div>
+                </div>
+                <a class='next_section'>next</a>
                 <a class='next_theme'>
                     <span></span><img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
                 </a>
             </div>
         </div>
+
+        <div class="page" pagetype="closing-survey">
+            <div class='card'>
+                <label class='page_title'>Closing survey</label>
+                <div class='section' sectionID="eval_tools">
+                    <div class='request'>Thanks a lot for your time and effort. Please answer the following questions to wrap up this HIT.</div>
+                    <div class='request'>
+                        <b>To what extent was each refinement useful?  </b>
+                        <div style='text-align:right;'><b>1</b>:Not useful at all, <b>3</b>: Neutral, <b>5</b>:Very useful </div>
+                    </div>
+                    <table class='table_tool_eval'>
+                        <thead>
+                            <tr><th></th>
+                                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+                        </thead>
+                        <tbody>
+                            <tr toolID="add_words">
+                                <td>Add words</td><td><input type='radio' name='add_words' v='1'></td><td><input type='radio' name='add_words' v='2'></td><td><input type='radio' name='add_words' v='3'></td><td><input type='radio' name='add_words' v='4'></td><td><input type='radio' name='add_words' v='5'></td>
+                            </tr>
+                            <tr toolID="remove_words">
+                                <td>Remove words</td><td><input type='radio' name='remove_words' v='1'></td><td><input type='radio' name='remove_words' v='2'></td><td><input type='radio' name='remove_words' v='3'></td><td><input type='radio' name='remove_words' v='4'></td><td><input type='radio' name='remove_words' v='5'></td>
+                            </tr>
+                            <tr  toolID="merge_words">
+                                <td>Merge words</td><td><input type='radio' name='merge_words' v='1'></td><td><input type='radio' name='merge_words' v='2'></td><td><input type='radio' name='merge_words' v='3'></td><td><input type='radio' name='merge_words' v='4'></td><td><input type='radio' name='merge_words' v='5'></td>
+                            </tr>
+                            <tr  toolID="change_word_order">
+                                <td>Change word order</td><td><input type='radio' name='change_word_order' v='1'></td><td><input type='radio' name='change_word_order' v='2'></td><td><input type='radio' name='change_word_order' v='3'></td><td><input type='radio' name='change_word_order' v='4'></td><td><input type='radio' name='change_word_order' v='5'></td>
+                            </tr>
+                            <tr  toolID="split_theme">
+                                <td>Split theme</td><td><input type='radio' name='split_theme' v='1'></td><td><input type='radio' name='split_theme' v='2'></td><td><input type='radio' name='split_theme' v='3'></td><td><input type='radio' name='split_theme' v='4'></td><td><input type='radio' name='split_theme' v='5'></td>
+                            </tr>
+                            <tr toolID="remove_articles">
+                                <td>Remove articles</td><td><input type='radio' name='remove_articles' v='1'></td><td><input type='radio' name='remove_articles' v='2'></td><td><input type='radio' name='remove_articles' v='3'></td><td><input type='radio' name='remove_articles' v='4'></td><td><input type='radio' name='remove_articles' v='5'></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class='section' sectionID="other_ideas">
+                    <div class='request'>
+                        <b>Do you have any other ideas for refining themes and articles?</b>
+                        <textarea data-autoresize class='answer' role='other_refinements'></textarea>
+                    </div>
+                </div>
+                <a class='next_section'>next</a>
+                <a class='finalize_hit'>
+                    <span></span><img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
+        </div>
+
+
     </div>
 
     <!-- RIGHT SIDE OF THE UI --> 
