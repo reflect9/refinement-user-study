@@ -29,6 +29,10 @@ handlers:
   static_files: turkrefine.css
   upload: turkrefine.css
 
+- url: /turkevaluation.css
+  static_files: turkevaluation.css
+  upload: turkevaluation.css
+
 - url: /task.js
   static_files: task.js
   upload: task.js
@@ -40,6 +44,10 @@ handlers:
 - url: /turkrefine.js
   static_files: turkrefine.js
   upload: turkrefine.js
+
+- url: /turkevaluation.js
+  static_files: turkevaluation.js
+  upload: turkevaluation.js
 
 - url: /evaluation.js
   static_files: evaluation.js

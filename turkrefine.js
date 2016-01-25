@@ -141,7 +141,7 @@ function enableEditing(mode, isPractice) {
 			$(el).find("input.text_to_be_added").keydown(function(e){
 				if(e.keyCode == 13 && $(this).val()!="") {
 					var word_to_add = $(this).val();
-					if (isPractice) pushCurrentStateToHistory("adding \""+word_to_add+"\"");
+					pushCurrentStateToHistory("adding \""+word_to_add+"\"");
 					addWord(word_to_add);		$(this).val("");
 					addLog("ADD_WORDS",word_to_add);
 					if(isPractice) validateSection();
@@ -230,9 +230,14 @@ function enableEditing(mode, isPractice) {
 			temp_ul_words = $(".theme_container div.words_section ul.words").clone();
 			$(words_el).sortable({	
 				appendTo:"body",
+				start: function(event,ui) {
+					// REMEMBER ORIGINAL POSITION
+					original_pos_change_order = $(ui.item).prevAll("li.word").length;
+				},
 				update:function(event,ui){
+					new_pos_change_order = $(ui.item).prevAll("li.word").length;
 					var movedWord = $(ui.item).text_without_children();
-					pushCurrentStateToHistory("changing position of \""+movedWord+"\"", temp_ul_words);
+					pushCurrentStateToHistory("Moving \""+movedWord+"\" "+original_pos_change_order+"->"+new_pos_change_order, temp_ul_words);
 					addLog("CHANGE_WORD_ORDER",movedWord);
 					if(isPractice) validateSection();
 					temp_ul_words = $(".theme_container div.words_section ul.words").clone();
@@ -319,12 +324,15 @@ function enableEditing(mode, isPractice) {
 
 function retrieveThemes() {
 	$.get("retrieveThemeData",function(data) {
+		$("span.loading_status").addClass("hidden");
 		d = JSON.parse(data);
 		themeData = _.values(d["topics"]);
 		tutorialData = d["tutorial"];
-		console.log("data loaded");
-		$("a.participate_button").text("Participate");
+		taskID = d["taskID"];
+		tid_list = d["tid_list"];
 		$("a.participate_button").removeClass("hidden");
+	}).fail(function() {
+		$("span.loading_status").text("Sorry. It failed to retrieve data from server. Please contact the administrator: reflect9@gmail.com").css("color","red");
 	});
 }
 function populateTheme(data) {
@@ -503,23 +511,30 @@ function openSection() {
 	if(target=="add_words" || target=="remove_words" || target=="merge_words" || target=="change_word_order" || target=="split_theme" || target=="remove_articles"){
 		enableEditing(target.replace("practice_",""),true);
 	}
+	////// START TIMER FOR THEME_IMPROVEMENTS
+	if(target=="theme_improvements") {
+		startTime = Math.floor(Date.now() / 1000);
+	}
 	if(target=="eval_after_improvements") {
 		// TELL WHAT WAS THE USER'S EVALUATION FOR THE ORIGINAL THEME AND ARTICLES
-		var original_likert_el = $("div.section[sectionid='likert_evaluation']");
-		var theme_clarity = $(original_likert_el).find("input[name='theme_clarity']:checked").parents(".likert_point").text();
-		var article_consistency = $(original_likert_el).find("input[name='article_consistency']:checked").parents(".likert_point").text();
-		var correlation = $(original_likert_el).find("input[name='correlation']:checked").parents(".likert_point").text();
 		var improved_likert_el = $("div.section[sectionID='eval_after_improvements']");
-		$(improved_likert_el).find("div.likert_chart[name='theme_clarity'] div.tiny_notice span").text(theme_clarity);
-		$(improved_likert_el).find("div.likert_chart[name='article_consistency'] div.tiny_notice span").text(article_consistency);
-		$(improved_likert_el).find("div.likert_chart[name='correlation'] div.tiny_notice span").text(correlation);
+		//// 
+		var prev_answer_desc = $(improved_likert_el).find("div.likert_chart[name='theme_clarity'] div.likert_point[v='"+evaluation_before[0]+"']").attr('desc');
+		$(improved_likert_el).find("div.likert_chart[name='theme_clarity'] div.tiny_notice span").text(prev_answer_desc);	
+		//// 
+		var prev_answer_desc = $(improved_likert_el).find("div.likert_chart[name='article_consistency'] div.likert_point[v='"+evaluation_before[1]+"']").attr('desc');
+		$(improved_likert_el).find("div.likert_chart[name='article_consistency'] div.tiny_notice span").text(prev_answer_desc);
+		//// 
+		var prev_answer_desc = $(improved_likert_el).find("div.likert_chart[name='correlation'] div.likert_point[v='"+evaluation_before[2]+"']").attr('desc');
+		$(improved_likert_el).find("div.likert_chart[name='correlation'] div.tiny_notice span").text(prev_answer_desc);
 	}
 }
+
 
 function validateSection() {
 	var current_page = $("div.page:visible"); 	var current_page_type = $(current_page).attr("pagetype");
 	var current_section = $(current_page).find("div.section:not(.hidden):last");
-	var html_goodjob = "<b>Good job!</b> Let's move on to the next practice.";
+	var html_goodjob = "<b>Good job!</b> Move on to the next refinement.";
 	var html_badjob = "<b>Try again.</b> You can proceed after completing the task above.";
 	if($(current_section).length==1) { 
 		var cs = $(current_section).get(0);
@@ -651,17 +666,56 @@ function validateSection() {
 				alert("Please answer all the questions to proceed");
 				return false;
 			} else { return true; }
-		} 
+		} else if($(current_section).attr("sectionID")=="theme_improvements") {
+			// CHECK TIME AND TELL USED REFINEMENTS
+			var currentTime = Math.floor(Date.now() / 1000)
+			var secondsElapsed = currentTime - startTime;
+			if(!isInternal && secondsElapsed<120) {  
+				alert("Please improve the theme and articles for at least 2 minutes.");
+			} else {
+				// CREATE CONFIRMATION DIALOG
+				var diag_el = $("<div id='dialog-confirm' title='Finish Improving The Theme and Articles'>\
+					<div class='talking'>The current state of the theme and articles were improved as summarized below.</div>\
+					<ul class='tool_usage'></ul>\
+					<div class='talking'>Do you want to finish improving and submit?</div>\
+				</div>");
+				_.each(tool_order, function(toolName) {
+					var numToolUsage = _.filter(stateHistory, function(sh){ return sh['mode'].toLowerCase()==toolName.toLowerCase(); }).length;
+					$(diag_el).find("ul").append("<li>"+capitalize(toolName).replace(/_/g," ")+" : "+ numToolUsage +"</li>");
+				});
+				$(diag_el).dialog({
+					resizable: false,
+					width:500,
+					modal: true,
+					buttons: {
+						"Finish and Submit": function() {
+							disableEditing();
+							openSection();
+				          	$( this ).dialog( "close" );
+				        },
+				        "Cancel": function() {
+				          	$( this ).dialog( "close" );
+				        }
+					}
+				});
+			}
+			return false;
+		}
 	} else { // DO NOTHING
 	}
 	return true;
 }
-
+function capitalize(s) {
+    // returns the first letter capitalized + the string from index 1 and out aka. the rest of the string
+    return s[0].toUpperCase() + s.substr(1);
+}
 function extractResultFromUI() {
 	// EXTRACT USER'S INPUT FOR ONE THEME FROM ALL THE PAGES
 	var resultForTheme = {"tid":$("div.theme_container").attr("tid")  };
 	///// THEME MEANING
 	resultForTheme["theme_meaning"] = $("div.page[pagetype='theme-questions'] textarea[role='theme_meaning']").val();
+	///// EXTRA INFORMATION
+	resultForTheme["extra_information"] = $("div.page[pagetype='questionnaire'] textarea[role='extra_information']").val();
 	///// IMPROVED THEME AND ARTCLES
 	resultForTheme["improved_theme"]=$.makeArray($("div.theme_container div.words_section ul.words li.word").map(function(i,li){return $(li).text_with_gap();}));   
 	resultForTheme["improved_articles"]=$.makeArray($("div.documents_section ul.documents li.document").map(function(i,li){return $(li).hasClass("removed")==false;}));
@@ -687,7 +741,9 @@ function submitResult() {
 	result["general"]["other_idea"] = $("div.section[sectionID='other_ideas'] textarea[role='other_refinements']").val();
 	///// SUBMISSION 
 	var data = {
-		'result':JSON.stringify(result)
+		'result':JSON.stringify(result),
+		"taskID":taskID,
+		"tid_list":tid_list
 	};
 	$.post("submitTurkerResult",data, function(res){
 		$(".main_container").addClass("hidden");
@@ -812,7 +868,8 @@ function addLog(event, message) {
 $(document).ready(function() {
 
 	/////////////////  SHUFFLE REFINEMENTS
-	tool_order = shuffle(["add_words","remove_words","merge_words","change_word_order","split_theme","remove_articles"]);
+	tools = ["add_words","remove_words","merge_words","change_word_order","split_theme","remove_articles"];
+	tool_order = shuffle(tools);
 	$("div.information_container div.page[pagetype='practice'] div.section.practice").sort(function(a,b) {
 		return tool_order.indexOf($(a).attr("sectionID")) > tool_order.indexOf($(b).attr("sectionID"));
 	}).each(function() {
@@ -875,15 +932,18 @@ $(document).ready(function() {
 		openPage(pageType);
 	});
 	$("a.next_section").click(function(event) {
-		var conf = true;
-		if($(this).hasClass("require_confirmation")) {
-			var conf = confirm("Are you sure you are done improving?");
-		}
-		if (conf && validateSection()){
-			disableEditing();
-			openSection();
-			$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');	
-		}
+		// var conf = true;
+		// if($(this).hasClass("require_confirmation")) {
+		// 	var conf = confirm("Are you sure you are done improving?");
+		// }
+		// if (conf){
+			if($(this).hasClass("already_validated") || validateSection()) {
+				disableEditing();
+				openSection();
+				$("div.information_container").animate({ scrollTop: $("div.page:visible").height() },'slow');		
+			}
+			
+		// }
 	});
 
 	// THEME AND DOCUMENTS HANDLERS
@@ -1009,7 +1069,7 @@ $(document).ready(function() {
 	currentTheme = -1;
 	result = {"topics":[], "general":{}};
 	log = [];
-
+	isInternal = false;
 	
 	// RETRIEVE THEME DATA FROM SERVER
 	retrieveThemes();

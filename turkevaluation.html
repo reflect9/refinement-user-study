@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey - Evaluating News Overview</title>
+    <link href="turkevaluation.css" rel="stylesheet" type="text/css"/>
+    <link href="lib/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <script src="lib/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="lib/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="turkevaluation.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300,300italic,900,900italic,700italic,700,500italic,100,100italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div class='introduction'>
+    <div class='titl'>Understanding news overviews</div>
+    <div class='txt'>
+        We are researchers from the University of Maryland creating new technologies to generate overviews of news articles. In this study, we are interested in how people understand and evaluate news overviews. Participants are required to be at least 18 years old. If you have any questions about the study, please contact <a href='http://terpconnect.umd.edu/~leahkf/'>Leah Findlater</a>.
+        Press the button below if you voluntarily agree to participate.
+    <center><span class='loading_status'>Loading data...</span></center><br>
+    <center><a class='participate_button hidden'>Participate</a></center>
+    <!-- <button class='shortcut' target='practice'>practice</button>
+    <button class='shortcut_task' target_theme="0">theme 1</button>
+    <button class='shortcut_task' target_theme="1">theme 2</button>
+    <button class='shortcut_task' target_theme="2">theme 3</button>
+    <button class='shortcut' target='closing-survey'>closing-survey</button> -->
+    </div>
+</div>
+
+<div class='main_container hidden'>
+    <!-- TOP BAR -->
+    <div class='topbar'>
+        <label class='top_title'>Introduction</label>
+    </div>
+    <!-- LEFT SIDE OF THE UI --> 
+    <div class='information_container'>
+        <!-- TUTORIAL INSTRUCTION -->
+        <div class="page" pagetype="intro">
+            <div class="card">
+                <div class='section' sectionID="1">
+                    <div class="request">
+                        To the right is a group of words that represent a theme of New York Times articles published in January 2007, and some news articles that may or may not go with the theme. <!---->
+                    </div>
+                </div>
+                <div class='section' sectionID="read_over_the_theme" highlight="div.words_section">
+                    <div class="request">
+                        <b>1. Read over the theme words.</b> The orders of words represent how frequent or important they are in the associated articles. 
+                        <div class="mini_task">
+                            <b>Question.</b> What word is the most frequent or important in the Theme?  
+                            <textarea data-autoresize class='mini_task'></textarea>
+                            <div class="mini_feedback"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='section' sectionID="nested_words" highlight="div.words_section">
+                    <div class="request">
+                        <b>2. Nested word groups.</b> Multiple specific words are sometimes grouped under a more general word. For example, <em>jazz</em>,<em>opera</em>, and <em>rock</em> are grouped under <em>genre</em>.     
+                        <div class="mini_task">
+                            <b>Question.</b> What word is in the same group with <em>theater</em>?  
+                            <textarea data-autoresize class='mini_task'></textarea>
+                            <div class="mini_feedback"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='section' sectionID="explore_articles" highlight="ul.documents">
+                    <div class="request">
+                        <b>3. Skim through the articles.</b> Click a few articles to see the full text. Ideally, the theme words and articles should be consistent and closely related with each other. However, there is an article that is not related to the theme. <b>Find the most unrelated article and click <img class='x-icon' style='width:21px; vertical-align:text-bottom;' src='images/x-rect-bl.png'> next to it.</b>
+                        <div class='tool_practice_result'>Complete the practice above.</div>
+                    </div>
+                </div>
+                <div class='section' sectionID="closing_intro">
+                    <div class="request">
+                        In this HIT you will find the most unrelated articles for 10 themes. This will take around 15 minutes. Are you ready to start? 
+                    </div>
+                </div>
+                <a class='next_section'>next</a>
+                <a class='next_theme' target='real_task'>
+                    Practice <img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
+        </div>
+
+        <!-- TASK PAGE -->
+        <div class="page" pagetype="real_task">
+            <div class='card'>
+                <label class='page_title'>Finding the most unrelated article</label>
+                <div class='section' sectionID="finding_unrelated_article">
+                    <div class='request'>Read through the theme words and associated news articles. Find the most unrelated article and click <img class='x-icon' style='width:21px; vertical-align:text-bottom;' src='images/x-rect-bl.png'> next to it.
+                    </div>
+                </div>
+                <a class='next_section already_validated'>Confirm your choice</a>
+                <a class='next_theme'>
+                    <span></span><img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE OF THE UI --> 
+    <div class="theme_container"> 
+        <!-- SECTION FOR THEME WORDS -->
+        <div class="words_wrapper">
+            <label>Theme</label>
+            <div class='words_section'>
+                <ul class='words'>
+                </ul>
+            </div>
+        </div>
+        <!-- SECTION FOR ASSOCIATED DOCUMENTS -->
+        <div class="documents_wrapper">
+            <label>News articles associated with the theme &nbsp; <span class='smaller'>Click an article to expand it</span></label>
+            <div class="documents_section">
+                <ul class='documents'>
+                </ul>
+            </div>
+        </div>
+        
+    </div>    
+</div> <!-- END OF MAIN CONTAINER -->
+
+
+<div class='final_feedback'>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+

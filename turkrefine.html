@@ -15,14 +15,15 @@
 <div class='introduction'>
     <div class='titl'>Understanding and Improving Overview of News</div>
     <div class='txt'>
-        We are researchers from the University of Maryland creating new technologies to generate overviews of news articles. In this study, we are interested in how people understand and improve automatically generated overviews. Participants are required to be at least 18 years old. If you have any questions about the study, please contact Leah Findlater (http://terpconnect.umd.edu/~leahkf/).
+        We are researchers from the University of Maryland creating new technologies to generate overviews of news articles. In this study, we are interested in how people understand and improve automatically generated overviews. Participants are required to be at least 18 years old. If you have any questions about the study, please contact <a href='http://terpconnect.umd.edu/~leahkf/'>Leah Findlater</a>.
         Press the button below if you voluntarily agree to participate.
-    <center><a class='participate_button hidden'>Loading data</a></center>
-    <!--<button class='shortcut' target='practice'>practice</button>
+    <center><span class='loading_status'>Loading data...</span></center><br>
+    <center><a class='participate_button hidden'>Participate</a></center>
+    <!-- <button class='shortcut' target='practice'>practice</button>
     <button class='shortcut_task' target_theme="0">theme 1</button>
     <button class='shortcut_task' target_theme="1">theme 2</button>
     <button class='shortcut_task' target_theme="2">theme 3</button>
-    <button class='shortcut' target='closing-survey'>closing-survey</button>-->
+    <button class='shortcut' target='closing-survey'>closing-survey</button> -->
     </div>
 </div>
 
@@ -88,7 +89,7 @@
             <div class="card">
                 <label class='page_title'>Practice</label>
                 <div class='section intro' sectionID="practice_intro">
-                    <div class='request'>Ideally the automatically generated theme and associated articles should be clear and closely related to each other. However, they often contain various kinds of problems that need to be fixed.<br><br> <b>In this page, you will learn how to use six types of refinements</b> for fixing theme. Follow the instruction below.</div>
+                    <div class='request'>Ideally the automatically generated theme and associated articles should be clear and closely related to each other. However, they often contain various kinds of problems that need to be fixed.<br><br> <b>In this page, you will learn how to use six types of refinements</b> for a fixing theme. Follow the instructions below.</div>
                 </div>
                 <div class='section practice' sectionID="add_words">
                     <div class='section_title'>Add words</div>
@@ -159,10 +160,10 @@
                 </div>
                 <div class='section outro' sectionID="practice_outro">
                     <div class='request'>
-                        You have learned how to use six types of refinements. In the following pages you will start actual tasks with new theme and articles. Are you ready?    
+                        You have learned how to use six types of refinements. In the following pages you will start actual tasks with new theme and articles.
                     </div>
                 </div>
-                <a class='next_section'>next</a>
+                <a class='next_section already_validated'>next</a>
                 <a class='next_theme'>
                     <span></span><img class="arrow_right" src="images/Arrow-right_24x24px.svg"/>
                 </a>
@@ -268,7 +269,7 @@
                         <button class='undo'>Undo the latest refinement</button>
                     </div>
                     <div class='request' style='margin: 24px -16px 0px -16px; border-top: 1px solid #ddd; padding: 16px 16px 8px 16px;'>
-                    Once you think the theme and articles cannot be improved any further, submit the current state and move on to the questionnaire.  
+                        Once you think the theme and articles cannot be improved any further, submit the current state and move on to the questionnaire.  
                     </div>
                 </div>
                 <a class='next_section require_confirmation'>Submit the theme and articles</a>
@@ -288,30 +289,34 @@
                     </div>
                     <div class='likert_chart' name='theme_clarity'>
                         <div class='request' style='margin-top:10px;' ><b>How clear is the theme now based only on the theme words?</b> (regardless of the articles)</div>
-                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='5'><br>very clear</div>
-                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='4'><br>clear</div>
-                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='3' checked><br>neutral</div>
-                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='2'><br>unclear</div>
-                        <div class="likert_point"><input type='radio' rol='theme_clarity' name='theme_clarity' v='1'><br>very unclear</div>
+                        <div class="likert_point" v='5' desc='very clear'><input type='radio' rol='theme_clarity' name='theme_clarity' v='5'><br>very clear</div>
+                        <div class="likert_point" v='4' desc='clear'><input type='radio' rol='theme_clarity' name='theme_clarity' v='4'><br>clear</div>
+                        <div class="likert_point" v='3' desc='neutral'><input type='radio' rol='theme_clarity' name='theme_clarity' v='3' checked><br>neutral</div>
+                        <div class="likert_point" v='2' desc='unclear'><input type='radio' rol='theme_clarity' name='theme_clarity' v='2'><br>unclear</div>
+                        <div class="likert_point" v='1' desc='very unclear'><input type='radio' rol='theme_clarity' name='theme_clarity' v='1'><br>very unclear</div>
                         <div class='tiny_notice'>Your answer for the original theme : <span></span></div>
                     </div>
                     <div class='likert_chart' name='article_consistency'>
                         <div class='request' style='margin-top:10px;'><b>How consistent are the articles now?</b></div>
-                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='5'><br>very consistent</div>
-                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='4'><br>consistent</div>
-                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='3' checked><br>neutral</div>
-                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='2'><br>inconsistent</div>
-                        <div class="likert_point"><input type='radio' rol='article_consistency' name='article_consistency' v='1'><br>very inconsistent</div>
+                        <div class="likert_point" v='5' desc='very consistent'><input type='radio' rol='article_consistency' name='article_consistency' v='5'><br>very consistent</div>
+                        <div class="likert_point" v='4' desc='consistent'><input type='radio' rol='article_consistency' name='article_consistency' v='4'><br>consistent</div>
+                        <div class="likert_point" v='3' desc='neutral'><input type='radio' rol='article_consistency' name='article_consistency' v='3' checked><br>neutral</div>
+                        <div class="likert_point" v='2' desc='inconsistent'><input type='radio' rol='article_consistency' name='article_consistency' v='2'><br>inconsistent</div>
+                        <div class="likert_point" v='1' desc='very inconsistent'><input type='radio' rol='article_consistency' name='article_consistency' v='1'><br>very inconsistent</div>
                         <div class='tiny_notice'>Your answer for the original articles : <span></span></div>
                     </div>
                     <div class='likert_chart' name='correlation'>
                         <div class='request' style='margin-top:10px;'><b>To what extent are the theme words and articles related now?</b></div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='5'><br>highly related</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='4'><br>related</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='3' checked><br>neutral</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='2'><br>unrelated</div>
-                        <div class="likert_point"><input type='radio' rol='correlation' name='correlation' v='1'><br>very unrelated</div>
+                        <div class="likert_point" v='5' desc='highly related'><input type='radio' rol='correlation' name='correlation' v='5'><br>highly related</div>
+                        <div class="likert_point" v='4' desc='related'><input type='radio' rol='correlation' name='correlation' v='4'><br>related</div>
+                        <div class="likert_point" v='3' desc='neutral'><input type='radio' rol='correlation' name='correlation' v='3' checked><br>neutral</div>
+                        <div class="likert_point" v='2' desc='unrelated'><input type='radio' rol='correlation' name='correlation' v='2'><br>unrelated</div>
+                        <div class="likert_point" v='1' desc='very unrelated'><input type='radio' rol='correlation' name='correlation' v='1'><br>very unrelated</div>
                         <div class='tiny_notice'>Your answer for the original theme and articles : <span></span></div>
+                    </div>
+                    <div class='request' style="margin: 16px -16px 5px -16px; border-top: 1px solid #ddd; padding: 16px;">
+                        Is there any <b>extra information</b> that would help you improve the theme and articles?
+                        <textarea data-autoresize class='answer' role='extra_information'></textarea>
                     </div>
                 </div>
                 <a class='next_section'>next</a>
