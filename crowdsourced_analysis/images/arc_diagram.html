@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="http://underscorejs.org/underscore-min.js"></script>
+  <script src="svg.js"></script>
+  <script>  
+  var MATRIX = [[8, 2, 0, 2, 0, 1, 0, 3, 1, 0, 1, 0, 1, 0, 2, 1, 0, 0, 0, 0, 9],
+ [10, 6, 7, 2, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 11],
+ [10, 11, 10, 7, 4, 2, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0, 8],
+ [10, 9, 9, 6, 2, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+ [5, 10, 7, 6, 6, 2, 0, 1, 2, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 10],
+ [12, 5, 6, 0, 2, 2, 3, 3, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 6],
+ [13, 8, 8, 4, 7, 1, 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 7],
+ [3, 8, 2, 2, 6, 7, 4, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
+ [2, 3, 4, 1, 3, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 8],
+ [5, 2, 6, 3, 7, 1, 2, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 8],
+ [10, 5, 1, 6, 2, 5, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 11],
+ [0, 1, 6, 8, 1, 4, 3, 0, 1, 1, 0, 0, 0, 1, 0, 0, 3, 0, 0, 0, 4],
+ [4, 3, 1, 2, 3, 2, 0, 2, 1, 4, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2],
+ [4, 3, 7, 1, 7, 1, 0, 3, 1, 0, 1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 4],
+ [1, 0, 0, 3, 3, 4, 1, 1, 1, 0, 1, 0, 0, 3, 0, 0, 0, 1, 0, 0, 6],
+ [0, 5, 3, 3, 2, 3, 5, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6],
+ [1, 0, 0, 2, 6, 3, 5, 2, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+ [2, 1, 4, 2, 6, 4, 2, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+ [3, 3, 2, 3, 4, 0, 3, 1, 1, 1, 1, 0, 2, 1, 1, 0, 1, 0, 0, 0, 2],
+ [3, 2, 2, 7, 0, 1, 1, 5, 0, 1, 2, 0, 2, 1, 0, 0, 2, 0, 0, 0, 3],
+ [23, 21, 24, 14, 6, 4, 3, 4, 2, 4, 4, 1, 2, 1, 1, 0, 0, 1, 0, 1, 85]];
+
+  function draw_square() {
+    var draw = SVG('arc').size(1024,768);
+    var square = draw.rect(100, 100);
+    square.attr({ fill: '#f06' });
+  }
+
+
+
+  $(document).ready(function() {
+    canvas_width = 1024;
+    canvas_height = 768;
+    left_end = 100;
+    right_end = 700;
+    middle = 500;
+    x_range = _.range(left_end,right_end+1, 30);
+    var draw = SVG('canvas').size(1024,768);
+    _.each(MATRIX, function(row, i_from) {
+      _.each(row, function(freq, i_to) {
+        if (i_from<i_to) {  // LEFT TO RIGHT.  LOWERED
+          if (i_to==20) return; // DO NOT DRAW IF DRAGGED WORDS ARE EVENTUALLY REMOVED or MERGED
+          var radius = (x_range[i_to] - x_range[i_from])/2;
+          var circle = draw.path("M "+x_range[i_from]+" "+middle+" \
+                                  A "+radius+" "+radius+", 0, 0, 0, "+x_range[i_to]+" "+middle)
+            .fill({opacity:0})
+            .stroke({color:"#000", opacity:0.5, width:freq/1.5});
+        } else if(i_from>i_to) {
+          var radius = (x_range[i_from] - x_range[i_to])/2;
+          var circle = draw.path("M "+x_range[i_from]+" "+middle+" \
+                                  A "+radius+" "+radius+", 0, 0, 0, "+x_range[i_to]+" "+middle)
+            .fill({opacity:0})
+            .stroke({color:"#000", opacity:0.5, width:freq/1.5});
+
+
+        } else {
+
+        }
+      });
+    });
+    _.each(x_range, function(x,i) {
+      var label = (i==20)? "New" : (i+1).toString();
+      var circle = draw.circle(22).fill('white').stroke("black").move(x-11,middle-11);
+      var text = draw.text(label).move(x, middle);
+      text.font({
+        family: 'Helvetica'
+      , size: 12
+      , anchor: 'middle'
+      , leading: 1
+      }).style('background-color:white;');
+    });
+
+
+
+
+
+
+  });
+  
+  
+
+  </script>
+</head>
+<body>
+
+<div id='canvas'></div>
+
+</body>
+</html>

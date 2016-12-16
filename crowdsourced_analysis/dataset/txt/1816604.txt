@@ -1,0 +1,1 @@
+corrections   the nasd trace corporate bond data chart in business day yesterday misstated the dollar volume for trading in convertible bonds and for all issues. the volume for convertible bonds was $2.956 billion, not $4.155 billion; the volume for all issues was $18.817 billion, not $20.017 billion.  

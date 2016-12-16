@@ -1,0 +1,65 @@
+0,-296.31396507326025
+1,-216.0242364083351
+2,-342.20087711740058
+3,-265.80100076018522
+4,-263.05108258506294
+5,-282.41452860024077
+6,-420.31634730572506
+7,-298.55463737117361
+8,-274.86839435262198
+9,-281.44362978998186
+10,-183.38901112126283
+11,-236.52890559102809
+12,-266.8516399195874
+13,-287.41686077248022
+14,-222.40309255419317
+15,-284.6528981465305
+16,-232.63990295246558
+17,-222.48311427142656
+18,-259.67723426990005
+19,-312.03048951214981
+
+	13 0 music mr theater dance street band jazz songs ballet musical song york album play performance ms hall west rock
+	14 1 iraq american mr government iraqi military war officials iran troops united security baghdad bush states forces al hussein president
+	15 2 winter water www snow miles beach island park day travel year air airport west south north club ski trees
+	12 3 art museum street mr jan show work artists arts artist works american gallery center century exhibition modern ms made
+	16 4 food restaurant wine restaurants chicken bar chef good meat menu sauce fish dinner place cream room chocolate minutes dining
+	8 5 state mr city health york tax officials year million money public federal system government spitzer care pay insurance plan
+	9 6 show mr television car million series ford corrections article news year fox cars radio executive ms viewers toyota nbc
+	17 7 united energy oil china states world mr government europe nuclear power country chinese gas countries european international trade global
+	3 8 city building street house mr number square million town york market year avenue room park half weeks buildings area
+	5 9 school children students ms york university college schools church high parents education year child student family brooklyn class women
+	6 10 game season team coach games players play year league football points giants bowl teams player field won back time
+	2 11 people time make years long don work made good end part world jan change put editor recent making important
+	4 12 mr police court case law judge justice lawyer yesterday ms federal lawyers department trial death investigation state man officials
+	11 13 film book mr movie books life world story films ms man war characters review movies director author wrote love
+	7 14 mr bush president house democrats senator republican senate democratic congress political white party iraq campaign clinton administration war committee
+	18 15 company web site internet online mr technology microsoft video service advertising companies computer software digital apple media year marketing
+	19 16 mr company percent year business market million billion companies chief sales stock executive investors price financial money years executives
+	1 17 mr ms back time home day people year years life family don man night told father didn mother left
+	20 18 paid notice january deaths family york wife died beloved president father years st husband mother ny john survived late
+	10 19 dr health drug research medical patients women study people disease drugs care cancer hospital researchers science percent found brain
+
+
+[IN THE APPENDIX]
+	ID	Topic Words 	NPMI	LCP
+I1	mr ms back time home day people year years life family don man night told father didn mother left 	0.00	-222
+I2	people time make years long don work made good end part world jan change put editor recent making important 	0.01	-236
+I3	city building street house mr number square million town york market year avenue room park half weeks buildings area 	0.03	-274
+I4	mr police court case law judge justice lawyer yesterday ms federal lawyers department trial death investigation state man officials  	0.10	-266
+I5	school children students ms york university college schools church high parents education year child student family brooklyn class women 	0.09	-281
+I6	game season team coach games players play year league football points giants bowl teams player field won back time	0.19	-183
+I7	mr bush president house democrats senator republican senate democratic congress political white party Iraq campaign Clinton administration war committee 	0.08	-222
+I8	state mr city health york tax officials year million money public federal system government spritzer care pay insurance plan	0.04	-282
+I9	show mr television car million series ford corrections article news year fox cars radio executive ms viewers toyota nbc 	0.01	-420
+I10	dr health drug research medical patients women study people disease drugs care cancer hospital researchers science percent found brain 	0.10	-312
+I11	film book mr movie books life world story films ms man war characters review movies director author wrote love	0.04	-287
+I12	art museum street mr jan show work artists arts artist works american gallery center century exhibition modern ms made	0.07	-265
+I13	music mr theater dance street band jazz songs ballet musical song york album play performance ms hall west rock	0.12	-296
+I14	iraq american mr government iraqi military war officials iran troops united security baghdad bush states forces al hussein president	0.09	-216
+I15	winter water www snow miles beach island park day travel year air airport west south north club ski trees	0.06	-342
+I16	food restaurant wine restaurants chicken bar chef good meat menu sauce fish dinner place cream room chocolate minutes dining	0.19	-265
+I17	united energy oil china states world mr government europe nuclear power country chinese gas countries european international trade global	0.04	-298
+I18	company web site internet online mr technology microsoft video service advertising companies computer software digital apple media year marketing	0.10	-284
+I19	mr company percent year business market million billion companies chief sales stock executive investors price financial money years executives	0.08	-232
+I20	paid notice january deaths family york wife died beloved president father years st husband mother ny john survived late	0.02	-259

@@ -1,0 +1,300 @@
+0
+education schools public professor teachers high middle class program campus harvard Children [children, kids, student]
+school students high university children college education student parents class public state middle teachers campus
+school children students schools high education parents University[university, college, campus] class public professor state program middle teachers
+education students school university college schools high children student parents class professor state program teachers campus kids prep
+school education schools students university college high parents class public professor state program middle teachers campus harvard
+school[school, schools] students[students, student] university college education high parents class public professor state middle teachers campus harvard
+school students schools high education children student parents class public state program middle teachers kids
+school university students college schools public education children parents class teachers
+school university education students teachers college children student parents class public professor state program middle campus kids harvard ranking
+1
+travel caribbean island vacation hotel beach water ocean airport air weather travelers resort airlines sea fare club
+weather[winter, trees, snow, ice, weather] science and nature[science and nature, mountain, miles, park] vacation[air, vacation[ski, travel, beach[airlines, travel[travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel],travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel],airlines, travel[travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel],travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel],ski, travel, beach[airlines, travel[travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel],travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel],airlines, travel[travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel],travel, airport[travelers, travel, resort, hotel],travelers, travel, resort, hotel] offers[www]
+travel resort hotel water island ski beach winter[ice, winter, snow] mountain airport travelers airlines
+travel airport hotel island trees miles ski beach travelers resort airlines motel hostel agent Weather[winter, water, snow, air, ice, weather]
+www water island trees miles ski beach airport air ice mountain weather travelers resort airlines park winter[winter, snow] vacation[hotel, travel]
+travel airlines winter hotel water island ski airport air weather resort park scenery[trees, mountain, ice, snow, beach]
+travel hotel island trees miles ski beach airport air mountain travelers resort airlines park weather[winter, snow, ice, water, weather]
+water snow travel island beach airport air weather travelers park winter escape Places[resort, hotel] destination
+winter water snow trees miles ski beach airport air ice mountain weather travelers resort airlines park Travel[travel, hotel, island] summer
+2
+finance economy stock market stock prices investors investment business earnings mutual funds banks
+finances[stock, sales, investment, fund, growth, price, percent] time[year, quarter] economy[market, company, investors]
+stock business economic market percent year numbers[billion, million] company companies investors sales price prices funds growth quarter bank financial investment
+percent year market billion company million companies stock business investors sales price prices funds growth quarter financial investment
+percent market year billion million stock business investors funds growth quarter fund bank financial investment Money [sales, price, prices]
+investment business market financial funds company companies stock investors sales price prices growth quarter fund bank
+stock investment market price funds investors growth percent company year billion million companies business sales prices quarter fund bank financial strategy gain value share
+percent market billion company million companies stock business investors sales price prices funds growth quarter fund bank financial investment international domestic
+financial company investors investment percent year market billion million companies stock business sales funds growth quarter fund bank Price[price, prices] profit interest rate
+3
+neediest street family society service city article brooklyn times children cases bronx apartment homelessness
+york children family mother times bronx apartment fund social child brooklyn city society parents cases neediest
+neediest york brooklyn times street children fund family cases year service bronx society
+fund family children homeless struggle brooklyn times street year service bronx city society apartment genre[neediest, cases]
+cases[neediest, cases] children fund family service society corrections[misstated, corrections, correction] area[brooklyn, bronx]
+brooklyn york bronx society article fund money times corrections children neediest family cases building[city, street] east year correction service apartment
+The Neediest Cases corrections neediest cases children correction misstated fund family city society
+article brooklyn New York City[york, city] times children fund neediest family cases east year service bronx society apartment
+New York[york, bronx, brooklyn] article times street corrections children fund neediest family cases year society apartment
+4
+company business group board president leadership[chief, executive, management, executives] firm part companies director deal chairman
+company business management[executive, chief, president, executives, management] board of directors[board[board, chairman, director],board, chairman, director] money[million, deal] group firm office employees advertising
+business company companies group million firm office director deal employees advertising
+management executives chief group board president director deal employees advertising chairman executive
+company executive business New York chief group board president executives companies director deal employees advertising management
+company companies business management chairman executive chief group board president director employees office advertising
+company boss[executive, chief, president, chairman, director] business group million board executives firm office deal employees advertising management
+company business group million firm york office part companies deal advertising Associates[employees, chairman, management, executive, chief, board, president, executives, director]
+management[executive, chief, president, executives, director, chairman, management] company lawsuit financial business group million board firm york office part companies deal employees advertising
+5
+food menu chicken wine chef bar sauce meat dinner good fish street cream wines cheese chocolate
+food restaurant good chicken cheese menu dish chocolate cream delicious chef
+food restaurant flavor[lemon, chocolate, cream, cheese] meat[fish, meat[chicken, pork],chicken, pork] wine menu bar sauce dinner dining street
+food dinner restaurant restaurants dining bar chef menu wines wine chicken meat fish sauce street cream cheese chocolate
+food restaurant wine restaurants chicken chef menu bar sauce meat dinner fish dining street cream cheese chocolate
+restaurants[restaurant, restaurants] food menu dinner Drinking[wine, bar[wine, wines],wine, wines] good chicken chef sauce meat cream cheese fish chocolate dining
+restaurant food wine chef menu bar dinner good dining street wines ingredients[cream, cheese, meat, sauce, fish, chicken, chocolate]
+food restaurant wine restaurants chicken chef menu bar sauce dinner fish dining
+food restaurant restaurants wine chicken chef menu bar sauce meat dinner good fish dining street cream minutes cheese wines chocolate recipe ethnic food
+6
+court case charges police law judge attorney pleaded[pleaded, plead, plea] justice lawyer[lawyer, lawyers] investigation sentence accused guilty trial death legal officials evidence testified defendant prosecutor jury[jurors, jury] testimony[testify, testimony] bail
+police court case justice federal lawyers state trial department investigation death charges wilson sentenced death penalty civil criminal jury
+police[department, police] investigation death charges officials court[court, case, law, judge, justice, lawyer, federal, lawyers, state, trial, attorney, legal]
+law police case justice federal state department investigation death legal charges Courtroom[attorney, trial, lawyers, judge, lawyer, court]
+police court case law judge justice lawyer federal lawyers yesterday state trial investigation death legal attorney charges officials wilson civilian black
+department judge court law justice investigation trial case federal lawyers state death legal charges officials police legal representatives[lawyer, attorney]
+law court police case judge justice lawyer federal state trial department investigation death legal attorney charges officials illegal criminal
+case litigators[lawyers, attorney] charges police court law judge justice trial investigation death legal officials victim shooting
+police law justice federal yesterday state department investigation death legal charges officials Courtroom[court, case, judge, trial] Lawyer[lawyer, lawyers, attorney] convicted
+7
+holiday office closings city service Martin Luther King Birthday city york state island town jersey building park local long county center residents people community officials
+city york jersey transportation transit development officials street state island park building county community government local project mayor
+city york project development building community mayor officials street state town island park local county center residents
+york city state street island jersey building park local long development officials project offices genre[train, transportation]
+development[development, project] local[county, local] community Long Island[long, island] jersey officials[officials, mayor] landmarks[landmarks, center[street, park, building],street, park, building] town
+city york street state island local development mayor town jersey building park long county holiday center project property people community residents officials
+Local News Holidays Corrections community development people mayor town building park local county residents officials project
+city york street state island mayor town jersey building development park long county center citizens[people, residents] community officials project
+New York City[city, york, local, community] street state island mayor jersey building park long county center Residents[residents, people] development officials project
+8
+cars energy oil gas ford power fuel production ethanol emissions plants plant companies environmental car company[car, company] technology toyota BMW Ford Audi Jeep Honda Accord Chrysler alternative fuel auto industry
+energy oil car cars power production emissions plants plant company companies environmental prices manufacturer[ford, toyota] fuel[gas, ethanol]
+new sports car cars company fuel production plants companies prices genre[ford, toyota]
+energy oil car gas cars ford power company fuel toyota production ethanol emissions companies environmental prices plants[plants, plant]
+cars green friendly[environmental, green ] non green energy oil car gas power fuel production ethanol emissions plants plant prices
+car brand[ford, toyota] company fuel production ethanol emissions plant mileage efficiency
+energy oil fuel gas ethanol emissions car cars production toyota ford power companies environmental prices
+Brands[ford, toyota, companies, production] cars energy oil car gas power fuel ethanol emissions plants plant environmental prices
+energy oil gas company fuel production ethanol emissions plants plant environmental manufacturers[ford, toyota]
+9
+bush president administration american united white states house congress officials security nuclear policy secretary  military [war, military, troops] correction
+bush iraq war president administration iran united white states plan congress officials security nuclear policy soldiers[military, troops]
+bush iraq iran war USA[american, states, united] president administration troops military congress security nuclear policy
+bush politics government iraq president war american administration iran united troops states military house plan congress officials security nuclear policy
+american iraq war administration iran united white troops states military congress officials security nuclear policy secretary president
+bush iraq president war american administration iran united states house plan congress officials security policy secretary attack[nuclear, troops, military]
+bush president iraq strategy iran war american united states congress security nuclear secretary armed forces[troops, military]
+iran iraq war american administration united white troops states military house plan officials security policy government[congress, secretary] elected officials
+war iraq iran american military troops plan officials security nuclear policy Location[White, House] American President[president, bush] United Nations[United, Nations]
+10
+time years people long back work part recent making process[make, made] decade added called
+change made long back work part end making decision
+people recent change church F.A.A.
+change[making, made, make, change, added] time[back, time[time, end[years, year, time, ago],years, year, time, ago],time, end[years, year, time, ago],years, year, time, ago]
+change people make made called back work part recent time[years, time, year, long, ago, end] political parties[republican, democrat] environment[climate, global] F.A.A. business presidential earth politicians[obama, clinton] campaign church companies
+Election president politics candidates people long recent change global warming
+time year people work part recent change end major
+Politics people recent government campaign President race 2008 Romney Obama
+news politics science people work
+11
+health tax state percent pay money year federal care government system insurance workers plan budget cost officials law people property
+health insurance health care workers government state plan budget percent system pay money federal cost officials law people tax
+health insurance government federal state cost pay workers plan President care system country drug tax policy uninsured
+government state federal system insurance tax workers plan people million healthcare[health, care] cost[budget, money]
+state health tax pay money year federal care government insurance budget officials law
+tax percent Healthcare[health, care, insurance] budget pay state money million year federal government system workers plan cost officials law people
+state health tax percent million year federal care government system insurance plan officials law people[workers, people] finance[budget, cost, money, pay]
+state health tax percent pay money year federal care government system insurance workers plan officials law people
+Health Care[Health Care, care[health, insurance, plan],health, insurance, plan] tax[tax, taxes]
+12
+congress[senate, house, senator] political party[political, party] state campaign republican governor democrat presidential election vote democratic
+political republican democrat senate[senate, senator] governor campaign committee election spitzer clinton house vote presidential
+democrat[democrats, democrat] republican[republican, republicans] senat[senate, senator] presidential house democratic campaign state political[election, political] vote spitzer governor clinton party committee york
+democrats state republican house senate senator democratic spitzer governor campaign political clinton party democrat republicans committee election york vote presidential GOP race
+political republican democrat presidential campaign house senate state senator democratic governor party committee republicans democrats election vote
+democrats state republican house senate governor campaign political election vote presidential
+political senate senator republican democratic governor campaign clinton democrat republicans democrats committee election presidential vote
+democrats state republican house senate senator democratic governor campaign political clinton party democrat republicans committee election york vote presidential
+republican democrat state house senate senator campaign clinton committee election vote presidential govenor[spitzer]
+13
+art museum art news exhibition gallery artists work artist show arts works american painting center century paintings french antique
+art arts artist works location[museum, gallery] origin[french, american, mexican, spanish, congolese, hungarian] medium[sculpture, photographs, paintings] event[fair, show, exhibition]
+paintings art display work artists artist arts works gallery avenue painting genre[street, american, french, century]
+art museum artists artist arts gallery american paintings[painting, paintings] showcase[show, exhibition]
+art[art, arts] artists[artists, artist] museum work show gallery exhibition american avenue center century west Misc.
+art artist exhibition gallery show museum work painting paintings photography sculpture folk art drawings textile art origin[french, american]
+art museum work arts artist artists show works gallery exhibition painting century paintings american french
+Locations[art, museum, exhibition, gallery] show artist painting work american century french
+art museum arts artists artist gallery exhibition painting paintings show works work cultures[american, french]
+14
+people night year father life left found friends asked wife baby family[years, man, told]
+day home time family years people man night year father life house found son friends wife
+home[home, house] family father son friends wife
+crime dead family back day home time years people man night told year father life house left found son wife
+family home time years people man night year father life house left found friends dead accident
+time years people man told year life left found friends household[family, home, house] part of day[day, night]
+family[wife, father, son, friends, people, family] home man told life house found saved hero murder
+back day time years people man night year house father life left son friends wife found family[found, family] veteran violence
+years day home time family man night told year father life house left found son friends wife Shooting School Sorrow
+15
+national league san year named contract louis terms coach brown agreed states[ohio, calif, tex] fla
+baseball contract terms league national players contracts
+Deaths[memorial, death, notice, dead] Sports[national, Sports[league, Transactions[terms, contract, agreed],terms, contract, agreed],league, Transactions[terms, contract, agreed],terms, contract, agreed]
+major league baseball league[minor league, development league, national league, american league] player[john, johnson, james, david, brown, jr] contract[contract, terms, agreed] named coach year location[tex, location[ohio, calif, louis, st, san],ohio, calif, louis, st, san]
+baseball league american national year named contract terms coach agreed player names[john, brown, david, jr, johnson, james] locations[san, st, calif, louis, ohio]
+baseball[major, league, baseball] national year named contract louis terms coach brown agreed
+league baseball contract national john san st year named tex louis terms coach brown agreed jr david johnson james
+league national year contract coach Death Baseball suspended traded signed Hockey[NHL, hockey]
+coach agreed terms league named national contract
+16
+book history review american best seller books life author story published war world children young adult
+book books life author history story war american writing review
+best seller book books author story review genre[wrote, writing, write, writes, written]
+author wrote history story published war american mailer writing review write writes books[book, books]
+books life history story published war american review world simon children's written by[writing, written, writes, wrote] online best sellers
+book review books author wrote novel story published fiction non-fiction history editor
+book books author story published writing review write writes written
+book author List Best published review american
+book books author writing published life wrote history story war american review death write writes written
+17
+passed away[deaths, died] funeral memorial
+death[deaths, died] january beloved family husband wife father loving funeral president memorial years survived ny paid notice
+deaths family beloved notice paid january wife york died years husband ny president survived late funeral father st memorial loving
+notice deaths family wife beloved died years husband survived late funeral father memorial loving obituary newspaper church
+Notice Deaths[notice, deaths] Obituaries[Obituary, Obituaries] january funeral memorial Family Wife Mother Father Grandfather Grandmother
+Obituaries[paid, notice, deaths] Date[january, died] Relatives[family, wife, beloved, husband, survived, father, late, loving] Service[funeral, memorial]
+deaths family memorial beloved died husband funeral paid father st loving
+paid notice deaths january family wife beloved york died years husband ny president survived late funeral father st memorial loving nj temple rabbi
+notice deaths january family wife husband father mother died survived funeral memorial
+18
+football season game teams[jets, bears, giants, patriots, colts]
+game[game, games] football sports teams[patriots, colts, giants, jets] season coach team quarterback manning year players play field baseball
+team game football games colts bowl players season coach play super field year player[manning, quarterback]
+season game football team coach bowl giants players patriots colts manning play super field games quarterback year jets baseball bears NFL MLB ESPN sports news
+football season Super Bowl[super, bowl] Football Teams[colts, jets, giants, patriots] Playoff Eli Manning Peyton Manning Manning[Eli, Peyton]
+season game football team coach players quarterback
+season game football team coach bowl giants players patriots colts play super field games quarterback year jets bears
+season game football team coach bowl giants players patriots colts manning play super field games quarterback year jets bears Chicago Fiesta Coughlin
+football season game coach bowl players quarterback
+19
+people life world editor good make makes real kind things america work free bad thing gay spending[great, time]
+American people people freedom Politics world america work religion Social Policy Civil Rights free will
+editor letter times life people america world time work free thing religious faith
+people life good times free make things work opinion[editor, voice, speak]
+editor people life world
+life people world editor good jan great time make makes real kind things america times work free bad thing Politics Advice
+editor people life world jan time make real things america times work free Health
+good editor great time make makes real kind things times work free bad thing learn culture[people, world, america]
+To The Editor[Editor[editor, the editor],editor, the editor]
+20
+theatre[movie, movies, films] film show television series million fox hollywood viewers comedy nbc season shows cbs
+ratings viewers film show movie television series films season shows
+entertainment[million, entertainment[film, show, movie, television, series, films, fox, hollywood, movies, viewers, director, producer, comedy, nbc, season, shows],film, show, movie, television, series, films, fox, hollywood, movies, viewers, director, producer, comedy, nbc, season, shows]
+television season series shows show movies[movie, film, movies[film, films],film, films] genre[drama, tragedy, comedy] networks[ABC's, ABC, networks[abc, cbs, pbs, nbc, fox],abc, cbs, pbs, nbc, fox]
+million viewers show movie series comedy night year season channels[CBS, ABC, CW, nbc, fox] demographic
+film show movie television series fox hollywood movies director producer comedy night year tonight nbc season shows viewers[million, viewers]
+show television series million fox hollywood viewers comedy night year tonight nbc season shows
+television fox hollywood movies viewers director producer comedy tonight nbc season Ratings reviews schedule Broadway Theater awards Movies[films, movie, film] shows[shows, show, series]
+reviews awards hollywood television movies series shows
+22
+technology web internet digital computer company software online site microsoft laptop video service companies apple mail system sites music
+www[site, www[online, sites, web, internet],online, sites, web, internet] companies[company, apple, companies, microsoft] systems, security and software[software, system] tech[computer, technology] phone, media and services[phone and other services, video[radio, service, music, digital, mail, phone],radio, service, music, digital, mail, phone]
+technology Internet[internet, online, site, sites, web] computer software microsoft video service apple digital mail radio system phone music
+internet technology web online site company microsoft software video computer service apple digital system phone PC
+web internet online site technology software video computer service companies digital mail radio system sites phone music vendor[apple, microsoft, company]
+web internet online site company software video computer service digital mail radio system sites phone music brands[microsoft, apple]
+technology web internet online site software video computer service digital mail radio system sites phone music companies[apple, microsoft, companies]
+technology web internet system computer online software mail site audio music video service digital phone company companies microsoft information sites
+site company technology microsoft video service companies apple digital sites phone music Online[internet, web, online] Computer[computer, software, system]
+23
+real estate[real, estate] new york residential sales home sales apartment house building bathrooms bedroom home property square feet real estate transactions
+time[weeks, year] rooms[bathrooms, bedroom] size[foot, square] living space[apartment, house, property] available[market, listed] location[number, street]
+house number listed market room estate million street real bathrooms apartment year bedroom home property New York size[square, foot]
+building residential sales house square market room estate million real weeks apartment year half foot listed home property rooms[bedroom, bathrooms] location[street, number]
+number market estate million street weeks year foot listed property Building information[house, apartment, bedroom, bathrooms, building, square, room, home] Accomodation
+property real estate[real, estate] house building market listed room street bathrooms apartment bedroom home rent
+real estate[real, estate] listing[listed, listing] property house building number market room street bathrooms apartment square foot[square, foot] bedroom home seller buyer agent pets
+million weeks apartment listed home property sale rent properties of real estate[room, year, bedroom, half]
+residential house building apartment number square market room street bathrooms bedroom listed home property real estate[real, estate]
+24
+basketball game team season points players coach won
+game team season points players play knicks nets coach basketball player thomas williams won hockey sports
+game basketball games season points play knicks nets year played won playing
+teams game games season points players knicks nets coach basketball player won
+basketball game nets team games season players coach
+game games team teams season points players player play playing played knicks nets coach basketball year night won
+game team season points players play knicks nets coach basketball year night played won playing Player[thomas, williams] lost
+basketball season games points players knicks nets coach player teams
+NY NBA Teams[knicks, nets] NBA New York team season points coach basketball year teams played playing players[players, thomas, williams, player]
+25
+american iraqi iraq hussein baghdad shiite killed forces sunni maliki iraqis people war attack government[government, officials]
+iraq iraqi military war troops army american government officials hussein baghdad shiite soldiers killed forces
+Iraq[iraqi, iraqis, iraq] american military[army, military, forces, troops, soldiers] government officials hussein baghdad shiite killed sunni people war
+american death iraqi government iraq military officials hussein baghdad shiite army soldiers killed troops sunni maliki iraqis war casualty militia
+american military government iraqi officials army soldiers killed forces troops iraqis dead group[sunni, maliki, shiite, hussein]
+american government officials hussein baghdad al shiite killed sunni maliki people war people in iraq[iraqis, iraqi, iraq] fighters[military, soldiers, army, forces, troops]
+dead iraqi government military hussein army soldiers killed forces troops iraqis people war Islam branch[al, shiite, maliki, sunni]
+killed american government iraq military officials hussein shiite army soldiers forces iraqis people war war groups[sunni, troops] amputation
+american iraqi government iraq military officials hussein baghdad shiite army soldiers killed forces troops sunni war
+26
+women children church child mother father marriage abortion parents sex baby family gay married daughter men woman names city[new, york]
+tournament bridge card game winner deal diagramed deal prizes Poker
+marriage married wedding Bride  Groom Bridegroom daughter father couple ceremony mother church pastor parents family
+family women men children parents mother father baby child daughter son legal partnerships[marriage, married, gay]
+women children child Church[church, pastor] Marriages[Marriages, daughter[mother, father, parents, family, marriage, married],mother, father, parents, family, marriage, married]
+marriage women family children church child mother father abortion parents king york sex baby gay married daughter men pastor woman
+marriage married family women church children king york sex men pastor woman parents[mother, father, parents] Lifestyle Love
+church marriage parents king york sex gay married pastor woman wedding family[men, women, child, daughter]
+Cards[spades, clubs, diamonds, hearts, no-trump, trump, king] Marriages[church, marriage, married] mother father parents york sex baby family gay daughter men pastor woman
+27
+study medical health care patients people disease cancer hospital doctors test found medicine [drugs, drug] preventive 
+health drug study disease patients researchers people risk medical cancer test research percent found diet
+health research[medical, study] researchers drug patients disease people cancer drugs care food hospital brain doctors test risk
+health medical drug patients risk people research study cancer disease drugs care researchers doctors test percent found
+health medical study drug research patients disease cancer drugs researchers food hospital brain doctors risk
+health research[research, researchers, study, risk] drug medical disease people patients drugs cancer food care brain doctors test hospital found
+health drug research medical patients study disease people cancer drugs care researchers food hospital brain doctors test risk percent found
+health drug research medical patients study disease people cancer drugs researchers risk
+health drug research researchers hospital medical patients doctors study disease cancer drugs care food brain test risk patient medication
+28
+black design store made red light designer line glass stores small space interior
+design fashion style store designer line stores hair coat glass furnishings interior home
+women design designer store stores high fashion line black white blue red green
+store stores sales fashion women small designer design genre [green, red, blue, black, white]
+fashion hair color[black, white, blue, red, green] shopping[store, stores, designer] design [design, glass, space]
+design fashion store designer women stores white blue black made red high green light hair line glass small space grooming club
+fashion shopping money store stores design designer hair women
+design store made fashion high shopping light designer hair line glass women small space Colors[black, white, blue, red, green]
+design store fashion high light designer hair line glass stores women Colors[black, white, blue, green, red]
+29
+international world politics foreign nations[foreign, nations] government europe middle east asia china israel russia united states[united, states] palestine
+china government israeli chinese israel european palestinian russia party nations politicians[minister, president]
+international political united nations[united, nations] foreign relations country china government world states minister countries israeli chinese israel european palestinian russia America
+minister political united government world states international israeli chinese israel european palestinian president foreign nations briefing countries[china, russia]
+united government minister political international russia president nations party Operation Interaction Places [china, world, israel, european, israeli, chinese, palestinian, foreign, countries, country]
+international nations world china european government russia minister countries chinese president foreign africa
+politics[politics, political] international world government foreign economy[economic, economy] china middle east chinese european eastern europe russia president party leaders negotiation prime minister[prime minister, minister] relations war united states[united, states] nation[country, nations[country, countries],country, countries] israel[israeli, israel] palestine[palestinian, palestine]
+countries[china, israeli, chinese, israel, european, palestinian, russia, united states] government minister political international president foreign nations party
+international political government china united world minister israeli chinese israel european palestinian russia president foreign party Nations[nations, states, country, countries]
+30
+police Poland war church secret history world century soviet god communist
+space earth years history world university
+god church jews jewish years holocaust israel soviet world history[world, history] anti communist[anti, communist] secret war[secret, war]
+church history war israel holocaust soviet god communist Judiaism[jewish, jews]
+jewish jews israel history war holocaust soviet anti church god communist
+space earth god world church years secret history century war communist holocaust jewish jews foxman
+jewish israel jews anti war carter church earth years secret history world holocaust century soviet god communist
+jewish war israel jews carter church university soviet space god communist history[history, world, earth, years, holocaust]
+Religion[church, jewish, jews, god] israel carter earth secret history world holocaust foxman century soviet communist
